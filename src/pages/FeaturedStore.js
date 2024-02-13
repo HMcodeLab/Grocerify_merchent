@@ -8,27 +8,25 @@ import "../styles/FeaturedStore.css";
 
 const FeaturedStore = () => {
   return (
-    <div className="main">
-      <div className="categories">
-        <Categories />
+    <div className="map-main">
+      <NearMe />
+      <div className="main">
+        <div className="categories">
+          <Categories />
+        </div>
+
+        <div className="rightmain">
+          <div>
+            <OrderNow />
+          </div>
+          <div>
+            <Stores />
+          </div>
+          <div>
+            <Ratings />
+          </div>
+        </div>
       </div>
-
-      <div className="rightmain">
-        <div>
-          <OrderNow/>
-        </div>
-        <div>
-          <Stores />
-        </div>
-
-        <div>
-          <NearMe />
-        </div>
-        <div>
-          <Ratings />
-        </div>
-      </div>
-
     </div>
   );
 };
