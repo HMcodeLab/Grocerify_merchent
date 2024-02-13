@@ -13,7 +13,7 @@ const AllStores = () => {
       </div>
 
       <div className="img-featured">
-        <div className="img-featured-overlay">
+        <Link to={"/morestore"}i className="img-featured-overlay">
            <div className="overlay"> </div> 
               <div className="h1">WOODEN LIFE STORE</div>
           <div className="overlay-address">
@@ -26,7 +26,7 @@ const AllStores = () => {
               <span>&#9733;&#9733;&#9733;&#9733;&#9734;</span>
             </div>
           </div>
-        </div>
+        </Link>
 
         <div className="img-featured-overlay ">
         <div className="overlay"> </div>
