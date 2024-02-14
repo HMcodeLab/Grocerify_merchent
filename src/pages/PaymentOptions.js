@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const PaymentOptions = () => {
   return (
-    <div className="mt-4 ml-20 mr-20 mb-10 flex flex-col space-y-5 font-montserrat">
+    <div className="mt-4 ml-20 mr-20 mb-10 flex flex-col space-y-5 font-Montserrat">
       <div className="flex flex-row text-center">
         <Link to={"/"} className="font-semibold text-[#848484]">
           Your Account {" >"}
@@ -26,7 +26,7 @@ const PaymentOptions = () => {
         </div>
         <div className="text-[#848484]">
           <div>Address</div>
-          <div className="font-semibold leading-5 font-inter">
+          <div className="font-semibold leading-5 font-Inter">
             <p>Abhishek sharma</p>
             <p> 3/11 Durga Niwas , Sector 20 </p>
             <p>Chandigarh 173098</p>
@@ -41,7 +41,7 @@ const PaymentOptions = () => {
             <div>Payment Method</div>
             <div className="flex flex-row">
               <img src="../assests/icons/visa.svg" />
-              <p className="font-semibold font-inter pl-2 pt-1">Visa Ending in 116</p>
+              <p className="font-semibold font-Inter pl-2 pt-1">Visa Ending in 116</p>
             </div>
           </div>
           <div className="pl-64">
@@ -62,7 +62,7 @@ const PaymentOptions = () => {
         </div>
         <div className="text-[#848484]">
           <div>Address</div>
-          <div className="font-semibold leading-5 font-inter">
+          <div className="font-semibold leading-5 font-Inter">
             <p>Abhishek sharma</p>
             <p> 3/11 Durga Niwas , Sector 20 </p>
             <p>Chandigarh 173098</p>
@@ -89,7 +89,7 @@ const PaymentOptions = () => {
         </div>
       </div>
 
-      <div className="flex flex-row space-x-2 border rounded-md pl-4 text-[#848484] font-inter font-semibold">
+      <div className="flex flex-row space-x-2 border rounded-md pl-4 text-[#848484] font-Inter font-semibold">
         <p className=" text-[#E1E1E1] text-5xl pb-2">+</p>
         <p className="pt-4">Add a purchase preference</p>
       </div>
