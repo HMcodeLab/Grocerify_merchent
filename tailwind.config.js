@@ -4,7 +4,13 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'Gorditas': ['Gorditas'],
+        'Montserrat': ['Montserrat', 'sans-serif'],
+        'Inter': ['Inter', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }

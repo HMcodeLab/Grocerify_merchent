@@ -5,7 +5,7 @@ const ContactUs = () => {
   return (
     <div className="m-16 flex flex-col space-y-8 font-montserrat">
       <div className="flex flex-row text-center">
-        <Link to={"/"} className="font-semibold ml-20 pl-36">
+        <Link to={"/"} className="font-semibold ml-20 pl-36 text-[#333333]">
           Your Account {" >"}
         </Link>
         <p className="bg-light-green ml-2 text-[#55A813]">Contact Us</p>
@@ -31,10 +31,14 @@ const ContactUs = () => {
             <p className="font-semibold text-[#848484]">
               Instant chat and always available.
             </p>
-            <button className="text-center mt-6 font-semibold ml-24 shadow-md rounded-md pt-1 pb-1 pl-2 pr-2 hover:bg-[#58B310] hover:text-white transition-all duration-300 text-[#848484]">
-            <Link to={"/"}>
-              Start Chatting
-            </Link>
+            <button
+              style={{
+                boxShadow:
+                  "0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+              }}
+              className="text-center mt-6 font-semibold ml-24 shadow-md rounded-md pt-1 pb-1 pl-2 pr-2 hover:bg-[#58B310] hover:text-white transition-all duration-300 text-[#848484]"
+            >
+              <Link to={"/"}>Start Chatting</Link>
             </button>
           </div>
         </div>
@@ -48,7 +52,13 @@ const ContactUs = () => {
               We'll first get a few details about your issue and then someone
               will call you right away.
             </p>
-            <button className="text-center mt-11 font-semibold ml-24 shadow-md rounded-md p-1 w-2/5 hover:bg-[#58B310] hover:text-white transition-all duration-300 text-[#848484]">
+            <button
+              style={{
+                boxShadow:
+                  "0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
+              }}
+              className="text-center mt-11 font-semibold ml-24 shadow-md rounded-md p-1 w-2/5 hover:bg-[#58B310] hover:text-white transition-all duration-300 text-[#848484]"
+            >
               <Link to={"/"}>Call Me</Link>
             </button>
           </div>
@@ -65,7 +75,8 @@ const ContactUs = () => {
             src="../assests/icons/arcticons_parcel-tracker.svg"
             className="ml-6"
           />
-          <Link to={"/"}
+          <Link
+            to={"/"}
             className="text-[#333333] hover:text-red hover:underline transition-all"
             style={{ color: "#333333" }}
             onMouseOver={(e) => (e.target.style.color = "red")}
@@ -79,7 +90,8 @@ const ContactUs = () => {
             src="../assests/icons/ph_devices-thin.svg"
             className="ml-16 mt-2"
           />
-          <Link to={"/"}
+          <Link
+            to={"/"}
             className="text-[#333333] hover:text-red hover:underline transition-all"
             style={{ color: "#333333" }}
             onMouseOver={(e) => (e.target.style.color = "red")}
@@ -90,7 +102,8 @@ const ContactUs = () => {
         </div>
         <div className="items-baseline text-center justify-center item-center">
           <img src="../assests/icons/payment.svg" className="ml-12 mt-4" />
-          <Link to={"/"}
+          <Link
+            to={"/"}
             className="text-[#333333] hover:text-red hover:underline transition-all"
             style={{ color: "#333333" }}
             onMouseOver={(e) => (e.target.style.color = "red")}
