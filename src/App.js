@@ -7,7 +7,7 @@ import ContactUs from "./pages/ContactUs";
 import PaymentOptions from "./pages/PaymentOptions";
 import BilingDetails from "./pages/BilingDetails";
 import HotDeals from "./pages/HotDeals";
-
+import YourAccount from "./pages/YourAccount";
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
         <Route exact path={"/payment"} element={<PaymentOptions />}></Route>
         <Route exact path={"/biling"} element={<BilingDetails />}></Route>
         <Route exact path={"/hotdeals"} element={<HotDeals />}></Route>
+        <Route exact path={"/youraccount"} element={<YourAccount />}></Route>
       </Routes>
     </BrowserRouter>
   );
