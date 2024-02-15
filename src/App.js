@@ -6,6 +6,8 @@ import MoreStore from "./pages/MoreStore";
 import ContactUs from "./pages/ContactUs";
 import PaymentOptions from "./pages/PaymentOptions";
 import BilingDetails from "./pages/BilingDetails";
+import HotDeals from "./pages/HotDeals";
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
         <Route exact path={"/contactus"} element={<ContactUs />}></Route>
         <Route exact path={"/payment"} element={<PaymentOptions />}></Route>
         <Route exact path={"/biling"} element={<BilingDetails />}></Route>
+        <Route exact path={"/hotdeals"} element={<HotDeals />}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -57,7 +57,7 @@ const ContactUs = () => {
                 boxShadow:
                   "0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.06)",
               }}
-              className="text-center mt-11 font-semibold ml-24 shadow-md rounded-md p-1 w-2/5 hover:bg-[#58B310] hover:text-white transition-all duration-300 text-[#848484]"
+              className="text-center mt-20 font-semibold ml-24 shadow-md rounded-md p-1 w-2/5 hover:bg-[#58B310] hover:text-white transition-all duration-300 text-[#848484]"
             >
               <Link to={"/"}>Call Me</Link>
             </button>
