@@ -1,16 +1,14 @@
 import React from "react";
-import Categories from "../components/Categories";
-import WhatsNew from "../components/WhatsNew";
-// import "../styles/MoreStore.css";
+
 
 const MoreStore = () => {
   return (
-    <div className="main">
-      <div className="categories">
-        <Categories />
+    <div className="flex flex-row gap-x-8 pt-8 pb-8 pl-14 pr-14 font-Gorditas bg-[#F3F3F3]">
+      <div className="w-1/4">
+        CA
       </div>
 
-      <div className="rightmain space-y-4">
+      <div className="w-3/4 space-y-6">
         <div className="bg-[#EDF1E0] relative">
           <img
             src="../assests/images/ordernowleft.svg"
@@ -28,7 +26,7 @@ const MoreStore = () => {
         <div className="bg-[#FFFFFF]">
           <div className="text-xl pt-1 pb-1 pl-10 hover:bg-[#58B310] hover:text-[#FFFFFF]">
             {" "}
-            STORES IN <span className="text-[#222222]">1KM </span>{" "}
+            <p className=" font-Gorditas text-[#848484]">STORES IN <span className="text-[#222222]">1KM </span>{" "}</p>
           </div>
           <div className="grid grid-cols-2 gap-3 p-4">
             <div className="relative group">
@@ -36,7 +34,7 @@ const MoreStore = () => {
                 src="../assests/images/chandigarhstore.svg"
                 className="w-full group-hover:brightness-50 transition-all duration-300"
               />
-              <p className="text-[#FFFFFF] text-5xl text-center absolute top-32 left-0 w-full group-hover:text-[40px] transition-all duration-300">
+              <p className="text-[#FFFFFF] font-Gorditas text-5xl text-center absolute top-32 left-0 w-full group-hover:text-[40px] transition-all duration-300">
                 Chandigarh store
               </p>
               <div className="grid grid-cols-2 absolute pl-6 text-[#FFFFFF] text-sm font-Montserrat bottom-6 gap-x-28 opacity-0 group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
@@ -56,7 +54,7 @@ const MoreStore = () => {
                 src="../assests/images/ramgrocery.png"
                 className="w-full group-hover:brightness-50 transition-all duration-300"
               />
-              <p className="text-[#FFFFFF] text-5xl text-center absolute top-32 left-0 w-full group-hover:text-[40px] transition-all duration-300">
+              <p className="text-[#FFFFFF] font-Gorditas text-5xl text-center absolute top-32 left-0 w-full group-hover:text-[40px] transition-all duration-300">
               RAM GROCERY STORE
               </p>
               <div className="grid grid-cols-2 absolute pl-6 text-[#FFFFFF] text-sm font-Montserrat bottom-6 gap-x-28 opacity-0 group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
@@ -76,7 +74,7 @@ const MoreStore = () => {
                 src="../assests/images/woodenstore.svg"
                 className="w-full group-hover:brightness-50 transition-all duration-300"
               />
-              <p className="text-[#FFFFFF] text-5xl text-center absolute top-32 left-0 w-full group-hover:text-[40px] transition-all duration-300">
+              <p className="text-[#FFFFFF] font-Gorditas text-5xl text-center absolute top-32 left-0 w-full group-hover:text-[40px] transition-all duration-300">
               WOODEN LIFE STORE
               </p>
               <div className="grid grid-cols-2 absolute pl-6 text-[#FFFFFF] text-sm font-Montserrat bottom-6 gap-x-28 opacity-0 group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
@@ -96,7 +94,7 @@ const MoreStore = () => {
                 src="../assests/images/shoestore.svg"
                 className="w-full group-hover:brightness-50 transition-all duration-300"
               />
-              <p className="text-[#FFFFFF] text-5xl text-center absolute top-32 left-0 w-full group-hover:text-[40px] transition-all duration-300">
+              <p className="text-[#FFFFFF] font-Gorditas text-5xl text-center absolute top-32 left-0 w-full group-hover:text-[40px] transition-all duration-300">
               SHOSE store
               </p>
               <div className="grid grid-cols-2 absolute pl-6 text-[#FFFFFF] text-sm font-Montserrat bottom-6 gap-x-28 opacity-0 group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
@@ -116,7 +114,7 @@ const MoreStore = () => {
                 src="../assests/images/sonustore.png"
                 className="w-full group-hover:brightness-50 transition-all duration-300"
               />
-              <p className="text-[#FFFFFF] text-5xl text-center absolute top-32 left-0 w-full group-hover:text-[40px] transition-all duration-300">
+              <p className="text-[#FFFFFF] font-Gorditas text-5xl text-center absolute top-32 left-0 w-full group-hover:text-[40px] transition-all duration-300">
               Sonu General Store
               </p>
               <div className="grid grid-cols-2 absolute pl-6 text-[#FFFFFF] text-sm font-Montserrat bottom-6 gap-x-28 opacity-0 group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
@@ -136,7 +134,7 @@ const MoreStore = () => {
                 src="../assests/images/woodenstore.svg"
                 className="w-full group-hover:brightness-50 transition-all duration-300"
               />
-              <p className="text-[#FFFFFF] text-5xl text-center absolute top-32 left-0 w-full group-hover:text-[40px] transition-all duration-300">
+              <p className="text-[#FFFFFF] font-Gorditas text-5xl text-center absolute top-32 left-0 w-full group-hover:text-[40px] transition-all duration-300">
                 Chandigarh store
               </p>
               <div className="grid grid-cols-2 absolute pl-6 text-[#FFFFFF] text-sm font-Montserrat bottom-6 gap-x-28 opacity-0 group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
@@ -170,7 +168,7 @@ const MoreStore = () => {
         </div>
 
         <div className="bg-[#FFFFFF]">
-          <div className="text-xl pt-1 pb-1 pl-10 hover:bg-[#58B310] hover:text-[#FFFFFF]">
+          <div className="text-xl pt-1 pb-1 pl-10 font-Gorditas text-[#848484] hover:bg-[#58B310] hover:text-[#FFFFFF]">
             {" "}
             STORES IN <span className="text-[#222222]">2KM </span>{" "}
           </div>
@@ -272,7 +270,7 @@ const MoreStore = () => {
           </div>
         </div>
         <div className="bg-[#FFFFFF]">
-          <div className="text-xl pt-1 pb-1 pl-10 hover:bg-[#58B310] hover:text-[#FFFFFF]">
+          <div className="text-xl pt-1 pb-1 pl-10 font-Gorditas text-[#848484] hover:bg-[#58B310] hover:text-[#FFFFFF]">
             {" "}
             STORES IN <span className="text-[#222222]">10KM </span>{" "}
           </div>
