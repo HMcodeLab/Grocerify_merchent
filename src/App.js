@@ -9,6 +9,9 @@ import HotDeals from "./pages/HotDeals";
 import YourAccount from "./pages/YourAccount";
 import StoreFeatured from "./pages/StoreFeatured";
 import SellerDashboard from './pages/SellerDashboard';
+import SellerOrder from './pages/SellerOrder';
+import SellerDiscount from './pages/SellerDiscount';
+import Chat from './components/Chat';
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
         <Route exact path={"/hotdeals"} element={<HotDeals />}></Route>
         <Route exact path={"/youraccount"} element={<YourAccount />}></Route>
         <Route exact path={"/sellerdashboard"} element={<SellerDashboard />}></Route>
+        <Route exact path={"/sellerorder"} element={<SellerOrder />}></Route>
+        <Route exact path={"/sellerdiscount"} element={<SellerDiscount />}></Route>
+        <Route exact path={"/chat"} element={<Chat />}></Route>
 
       </Routes>
     </BrowserRouter>

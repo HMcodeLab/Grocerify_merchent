@@ -1,0 +1,7 @@
+.chatbotContainer{
+    @apply relative space-y-2 w-full h-[350px] pl-6 pr-6 pt-6 text-[#848484] overflow-auto;
+}
+
+.chatbotContainer::-webkit-scrollbar {
+    display: none;
+}
