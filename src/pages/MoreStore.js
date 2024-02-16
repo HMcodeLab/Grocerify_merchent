@@ -158,7 +158,7 @@ const MoreStore = () => {
             className="w-full group-hover:brightness-50 group-hover:blur-0 transition-all duration-300"
           />
           <div className="absolute bottom-10 right-10 w-1/2 text-right space-y-1 opacity-0 group-hover:opacity-100 group-hover:visible transition-all duration-300">
-            <p className="text-[44px] text-[#68BA27] leading-10">
+            <p className="text-[44px] text-[#FFFFFF] leading-10">
               NEW FASHION STORE FOR GIRLS
             </p>
             <p className="font-Montserrat text-[#FFFFFF] text-[22px]">
@@ -261,7 +261,7 @@ const MoreStore = () => {
             className="w-full group-hover:brightness-50 group-hover:blur-0 transition-all duration-300"
           />
           <div className="absolute bottom-10 right-10 w-1/2 text-right space-y-1 opacity-0 group-hover:opacity-100 group-hover:visible transition-all duration-300">
-            <p className="text-[44px] text-[#68BA27] leading-10">
+            <p className="text-[44px] text-[#FFFFFF] leading-10">
               NEW FASHION STORE FOR GIRLS
             </p>
             <p className="font-Montserrat text-[#FFFFFF] text-[22px]">

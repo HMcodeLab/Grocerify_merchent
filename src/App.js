@@ -8,6 +8,7 @@ import BilingDetails from "./pages/BilingDetails";
 import HotDeals from "./pages/HotDeals";
 import YourAccount from "./pages/YourAccount";
 import StoreFeatured from "./pages/StoreFeatured";
+import SellerDashboard from './pages/SellerDashboard';
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route exact path={"/biling"} element={<BilingDetails />}></Route>
         <Route exact path={"/hotdeals"} element={<HotDeals />}></Route>
         <Route exact path={"/youraccount"} element={<YourAccount />}></Route>
+        <Route exact path={"/sellerdashboard"} element={<SellerDashboard />}></Route>
+
       </Routes>
     </BrowserRouter>
   );
