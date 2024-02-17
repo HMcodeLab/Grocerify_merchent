@@ -15,7 +15,7 @@ const StoreFeatured = () => {
       return Math.max(0, Math.min(newIndex, totalSlides - 1));
     });
   };
-  
+
   const slideStyle = {
     transform: `translateY(-${index * 50}%)`,
     transition: "transform 1.5s ease",
@@ -30,156 +30,158 @@ const StoreFeatured = () => {
   };
 
   return (
-    <div className="flex flex-col space-y-10 pt-8 pb-6 pr-14 pl-14 bg-[#F3F3F3]">
-      {/* map */}
-      <div>
-        <div className="flex flex-row justify-between bg-[#222222] font-Gorditas text-[#FFFFFF] pt-1 pb-1 pl-4 pr-4 hover:bg-[#58B310]">
-          <p className="flex flex-row">
-            <span className="pr-6">
-              <img
-                src="../assests/images/storeicon.svg"
-                className="text-[#FFFFFF]"
-              />
-            </span>
-            Stores Near Me
-          </p>
-          <p className="flex flex-row">
-            Show More <span className="">&#9660;</span>
-          </p>
-        </div>
-
-        <div className="relative">
-          <img
-            src="../assests/images/map.png"
-            className="object-cover w-full h-[600px]"
-          />
-          <div className="absolute top-4 left-6 w-[400px] h-[570px] pt-3 pl-4 pr-4 space-y-2 text-[#FFFFFF] bg-[#222222] flex flex-col">
-            <p className="font-Gorditas text-4xl">Store</p>
-            <p className="font-Gorditas text-sm">
-              Search by store name or distance
-            </p>
-            <div className="flex flex-row justify-between gap-x-3">
-              <input className="rounded-lg bg-[#D9D9D9] w-2/3 text-[#222222] pl-4" />
-              <button className="w-1/3 pl-8 pr-8 pt-1 pb-1 text-[#FFFFFF] text-md rounded-lg bg-[#58B310] font-Montserrat hover:bg-[#D9D9D9] hover:text-[#222222]">
-                Search
-              </button>
-            </div>
-            <div className="font-Montserrat text-sm underline flex flex-row justify-between">
-              <a href="https://www.google.com/maps">Use My Location</a>
-              <a href="http://www.google.com/maps" className="">
-                Browse Directory
-              </a>
-            </div>
-            <hr />
-            <div className="flex flex-row justify-between font-Gorditas text-sm items-center">
-              <p>15 results naer “tukwila, wa, us” </p>
-              <p>
-                Filter By <span className="text-lg pl-1 cursor-pointer">+</span>
-              </p>
-            </div>
-            <hr className="pb-3" />
-
-            <div
-              style={{
-                overflow: "hidden",
-                height: "330px",
-                position: "relative", scrollBehavior: 'smooth'
-              }}
-              onWheel={handleWheel}
-            >
-              <div
-                style={{
-                  ...slideStyle,
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <div className="p-4 m-2 space-y-1 font-Montserrat bg-[#FFFFFF] text-[#333333] flex flex-col h-[330px] hover:bg-[#f3f3f3]">
-                  <img
-                    src="../assests/images/woodenstore.svg"
-                    className="w-full h-[190px] object-cover hover:scale-105 transition-all duration-300"
-                  />
-                  <div className="text-[#222222] flex flex-row gap-x-1">
-                    <p className="text-[#090707]">1.</p>
-                    <p className="font-Gorditas text-sm">
-                      Macy’s Redmond Furniture and mattress gallery
-                    </p>
-                    <p className="text-[#958585] text-xs w-1/6">12 km</p>
-                  </div>
-                  <p className="text-[#333333] text-sm font-semibold pl-3">
-                    Closed - Opens 10AM
-                  </p>
-                  <p className="text-[#333333] text-[12px] font-semibold pl-3">
-                    15340 N.e. 24th Street redmond, WA 98052
-                  </p>
-                  <div className="flex flex-row justify-between pl-3 pr-3 text-[#222222] font-Montserrat text-sm font-semibold underline">
-                    <p>98123-12354</p>
-                    <p>Store details</p>
-                    <a href="https://www.google.com/maps">Direction</a>
-                  </div>
-                </div>
-                <div className="p-4 m-2 space-y-1 font-Montserrat bg-[#FFFFFF] text-[#333333] flex flex-col h-[330px] hover:bg-[#f3f3f3]">
-                  <img
-                    src="../assests/images/woodenstore.svg"
-                    className="w-full h-[190px] object-cover hover:scale-105 transition-all duration-300"
-                  />
-                  <div className="text-[#222222] flex flex-row gap-x-1">
-                    <p className="text-[#090707]">1.</p>
-                    <p className="font-Gorditas text-sm">
-                      Macy’s Redmond Furniture and mattress gallery
-                    </p>
-                    <p className="text-[#958585] text-xs w-1/6">12 km</p>
-                  </div>
-                  <p className="text-[#333333] text-sm font-semibold pl-3">
-                    Closed - Opens 10AM
-                  </p>
-                  <p className="text-[#333333] text-[12px] font-semibold pl-3">
-                    15340 N.e. 24th Street redmond, WA 98052
-                  </p>
-                  <div className="flex flex-row justify-between pl-3 pr-3 text-[#222222] font-Montserrat text-sm font-semibold underline">
-                    <p>98123-12354</p>
-                    <p>Store details</p>
-                    <a href="https://www.google.com/maps">Direction</a>
-                  </div>
-                </div>
-                <div className="p-4 m-2 space-y-1 font-Montserrat bg-[#FFFFFF] text-[#333333] flex flex-col h-[330px] hover:bg-[#f3f3f3]">
-                  <img
-                    src="../assests/images/woodenstore.svg"
-                    className="w-full h-[190px] object-cover hover:scale-105 transition-all duration-300"
-                  />
-                  <div className="text-[#222222] flex flex-row gap-x-1">
-                    <p className="text-[#090707]">1.</p>
-                    <p className="font-Gorditas text-sm">
-                      Macy’s Redmond Furniture and mattress gallery
-                    </p>
-                    <p className="text-[#958585] text-xs w-1/6">12 km</p>
-                  </div>
-                  <p className="text-[#333333] text-sm font-semibold pl-3">
-                    Closed - Opens 10AM
-                  </p>
-                  <p className="text-[#333333] text-[12px] font-semibold pl-3">
-                    15340 N.e. 24th Street redmond, WA 98052
-                  </p>
-                  <div className="flex flex-row justify-between pl-3 pr-3 text-[#222222] font-Montserrat text-sm font-semibold underline">
-                    <p>98123-12354</p>
-                    <p>Store details</p>
-                    <a href="https://www.google.com/maps">Direction</a>
-                  </div>
-                </div>{" "}
-              </div>{" "}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="flex flex-row gap-x-8">
-        {/* categories, hot deals, sort by */}
-        <div className="w-1/4"> categories </div>
+    <div className="flex flex-row gap-x-1 pt-8 pb-6 bg-[#F3F3F3]">
+      <div className="w-1/4 h-auto"> categories </div>
 
         {/* right */}
-        <div className="w-3/4 space-y-6">
+      <div className="flex flex-col gap-x-8 w-3/4">
+
+{/* map */}
+        <div className=" space-y-6">
+          <div>
+            <div className="flex flex-row justify-between bg-[#222222] font-Gorditas text-[#FFFFFF] pt-1 pb-1 pl-4 pr-4 hover:bg-[#58B310]">
+              <p className="flex flex-row">
+                <span className="pr-6">
+                  <img
+                    src="../assests/images/storeicon.svg"
+                    className="text-[#FFFFFF]"
+                  />
+                </span>
+                Stores Near Me
+              </p>
+              <p className="flex flex-row">
+                Show More <span className="">&#9660;</span>
+              </p>
+            </div>
+
+            <div className="relative">
+              <img
+                src="../assests/images/map.png"
+                className="object-cover w-full h-[600px]"
+              />
+              <div className="absolute top-4 left-6 w-[400px] h-[570px] pt-3 pl-4 pr-4 space-y-2 text-[#FFFFFF] bg-[#222222] flex flex-col">
+                <p className="font-Gorditas text-4xl">Store</p>
+                <p className="font-Gorditas text-sm">
+                  Search by store name or distance
+                </p>
+                <div className="flex flex-row justify-between gap-x-3">
+                  <input className="rounded-lg bg-[#D9D9D9] w-2/3 text-[#222222] pl-4" />
+                  <button className="w-1/3 pl-8 pr-8 pt-1 pb-1 text-[#FFFFFF] text-md rounded-lg bg-[#58B310] font-Montserrat hover:bg-[#D9D9D9] hover:text-[#222222]">
+                    Search
+                  </button>
+                </div>
+                <div className="font-Montserrat text-sm underline flex flex-row justify-between">
+                  <a href="https://www.google.com/maps">Use My Location</a>
+                  <a href="http://www.google.com/maps" className="">
+                    Browse Directory
+                  </a>
+                </div>
+                <hr />
+                <div className="flex flex-row justify-between font-Gorditas text-sm items-center">
+                  <p>15 results naer “tukwila, wa, us” </p>
+                  <p>
+                    Filter By{" "}
+                    <span className="text-lg pl-1 cursor-pointer">+</span>
+                  </p>
+                </div>
+                <hr className="pb-3" />
+
+                <div
+                  style={{
+                    overflow: "hidden",
+                    height: "330px",
+                    position: "relative",
+                    scrollBehavior: "smooth",
+                  }}
+                  onWheel={handleWheel}
+                >
+                  <div
+                    style={{
+                      ...slideStyle,
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <div className="p-4 m-2 space-y-1 font-Montserrat bg-[#FFFFFF] text-[#333333] flex flex-col h-[330px] hover:bg-[#f3f3f3]">
+                      <img
+                        src="../assests/images/woodenstore.svg"
+                        className="w-full h-[190px] object-cover hover:scale-105 transition-all duration-300"
+                      />
+                      <div className="text-[#222222] flex flex-row gap-x-1">
+                        <p className="text-[#090707]">1.</p>
+                        <p className="font-Gorditas text-sm">
+                          Macy’s Redmond Furniture and mattress gallery
+                        </p>
+                        <p className="text-[#958585] text-xs w-1/6">12 km</p>
+                      </div>
+                      <p className="text-[#333333] text-sm font-semibold pl-3">
+                        Closed - Opens 10AM
+                      </p>
+                      <p className="text-[#333333] text-[12px] font-semibold pl-3">
+                        15340 N.e. 24th Street redmond, WA 98052
+                      </p>
+                      <div className="flex flex-row justify-between pl-3 pr-3 text-[#222222] font-Montserrat text-sm font-semibold underline">
+                        <p>98123-12354</p>
+                        <p>Store details</p>
+                        <a href="https://www.google.com/maps">Direction</a>
+                      </div>
+                    </div>
+                    <div className="p-4 m-2 space-y-1 font-Montserrat bg-[#FFFFFF] text-[#333333] flex flex-col h-[330px] hover:bg-[#f3f3f3]">
+                      <img
+                        src="../assests/images/woodenstore.svg"
+                        className="w-full h-[190px] object-cover hover:scale-105 transition-all duration-300"
+                      />
+                      <div className="text-[#222222] flex flex-row gap-x-1">
+                        <p className="text-[#090707]">1.</p>
+                        <p className="font-Gorditas text-sm">
+                          Macy’s Redmond Furniture and mattress gallery
+                        </p>
+                        <p className="text-[#958585] text-xs w-1/6">12 km</p>
+                      </div>
+                      <p className="text-[#333333] text-sm font-semibold pl-3">
+                        Closed - Opens 10AM
+                      </p>
+                      <p className="text-[#333333] text-[12px] font-semibold pl-3">
+                        15340 N.e. 24th Street redmond, WA 98052
+                      </p>
+                      <div className="flex flex-row justify-between pl-3 pr-3 text-[#222222] font-Montserrat text-sm font-semibold underline">
+                        <p>98123-12354</p>
+                        <p>Store details</p>
+                        <a href="https://www.google.com/maps">Direction</a>
+                      </div>
+                    </div>
+                    <div className="p-4 m-2 space-y-1 font-Montserrat bg-[#FFFFFF] text-[#333333] flex flex-col h-[330px] hover:bg-[#f3f3f3]">
+                      <img
+                        src="../assests/images/woodenstore.svg"
+                        className="w-full h-[190px] object-cover hover:scale-105 transition-all duration-300"
+                      />
+                      <div className="text-[#222222] flex flex-row gap-x-1">
+                        <p className="text-[#090707]">1.</p>
+                        <p className="font-Gorditas text-sm">
+                          Macy’s Redmond Furniture and mattress gallery
+                        </p>
+                        <p className="text-[#958585] text-xs w-1/6">12 km</p>
+                      </div>
+                      <p className="text-[#333333] text-sm font-semibold pl-3">
+                        Closed - Opens 10AM
+                      </p>
+                      <p className="text-[#333333] text-[12px] font-semibold pl-3">
+                        15340 N.e. 24th Street redmond, WA 98052
+                      </p>
+                      <div className="flex flex-row justify-between pl-3 pr-3 text-[#222222] font-Montserrat text-sm font-semibold underline">
+                        <p>98123-12354</p>
+                        <p>Store details</p>
+                        <a href="https://www.google.com/maps">Direction</a>
+                      </div>
+                    </div>{" "}
+                  </div>{" "}
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* order now */}
-          <div className="bg-[#EDF1E0] relative">
+          <div className="bg-[#EDF1E0] relative pr-10">
             <img
               src="../assests/images/ordernowleft.svg"
               className=" h-[450px]"
@@ -188,17 +190,17 @@ const StoreFeatured = () => {
               src="../assests/images/ordernowgp.svg"
               className="w-full h-[450px] absolute top-0"
             />
-            <button className="absolute font-Montserrat bottom-5 left-[460px] bg-[#58B310] text-[#FFFFFF] rounded-2xl pt-1 pb-1 pr-4 pl-4 hover:bg-[#FFFFFF] hover:text-[#58B310] hover:text-bold hover:transition-all hover:scale-105">
+            <button className="absolute font-Montserrat bottom-5 left-[480px] bg-[#58B310] text-[#FFFFFF] rounded-2xl pt-1 pb-1 pr-4 pl-4 hover:bg-[#FFFFFF] hover:text-[#58B310] hover:text-bold hover:transition-all hover:scale-105">
               ORDER NOW
             </button>
           </div>
 
           {/* all stores */}
-          <div className="bg-[#FFFFFF]">
+          <div className="bg-[#FFFFFF] pr-10">
             <div className="flex flex-row justify-between font-Gorditas text-[#848484] text-lg pt-1 pb-1 pl-10 pr-10 hover:bg-[#58B310] hover:text-[#FFFFFF]">
               <p>FEATURED STORE</p>
-              <p>
-                Show More <span className="cursor-pointer">&#9660;</span>
+              <p><Link to={"/morestore"}>
+                Show More <span className="cursor-pointer">&#9660;</span></Link>
               </p>
             </div>
 
@@ -250,7 +252,7 @@ const StoreFeatured = () => {
           </div>
 
           {/* whats new */}
-          <div className="relative group">
+          <div className="relative group pr-10">
             <img
               src="../assests/images/storeimg.svg"
               alt="what's new"
@@ -267,11 +269,11 @@ const StoreFeatured = () => {
           </div>
 
           {/* top rated store */}
-          <div className="bg-[#FFFFFF]">
+          <div className="bg-[#FFFFFF] pr-10">
             <div className="flex flex-row justify-between font-Gorditas text-[#848484] text-lg pt-1 pb-1 pl-10 pr-10 hover:bg-[#58B310] hover:text-[#FFFFFF]">
               <p>TOP RATED STORE</p>
-              <p>
-                Show More <span className="cursor-pointer">&#9660;</span>
+              <p> <Link to={"/morestore"}>
+                Show More <span className="cursor-pointer">&#9660;</span></Link>
               </p>
             </div>
             <div className="p-4">
@@ -386,7 +388,7 @@ const StoreFeatured = () => {
           </div>
 
           {/* ratings */}
-          <div className="bg-[#FFFFFF]">
+          <div className="bg-[#FFFFFF] pr-10">
             <div className="flex flex-row justify-between font-Gorditas text-[#848484] text-lg pt-1 pb-1 pl-10 pr-10 hover:bg-[#58B310] hover:text-[#FFFFFF]">
               <p>Rating</p>
               <p>
