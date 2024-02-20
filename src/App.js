@@ -10,8 +10,18 @@ import YourAccount from "./pages/YourAccount";
 import StoreFeatured from "./pages/StoreFeatured";
 import SellerDashboard from './pages/SellerDashboard';
 import SellerOrder from './pages/SellerOrder';
+import SellerInventory from './pages/SellerInventory';
 import SellerDiscount from './pages/SellerDiscount';
-import Chat from './components/Chat';
+import SellerProduct from './pages/SellerProduct';
+import SellerAnalytics from './pages/SellerAnalytics';
+import SellerAnalyticRevenue from './pages/SellerAnalyticRevenue';
+import SellerAnalyticOrder from './pages/SellerAnalyticOrder';
+import SellerAnalyticEarning from './pages/SellerAnalyticEarning';
+import SellerSettings from './pages/SellerSettings';
+import SellerSettingsProfile from './pages/SellerSettingsProfile';
+import SellerSettingsShop from './pages/SellerSettingsShop';
+import SellerProfile from './pages/SellerProfile';
+import ChatBot from './components/ChatBot';
 
 function App() {
   return (
@@ -26,8 +36,18 @@ function App() {
         <Route exact path={"/youraccount"} element={<YourAccount />}></Route>
         <Route exact path={"/sellerdashboard"} element={<SellerDashboard />}></Route>
         <Route exact path={"/sellerorder"} element={<SellerOrder />}></Route>
+        <Route exact path={"/sellerinventory"} element={<SellerInventory />}></Route>
         <Route exact path={"/sellerdiscount"} element={<SellerDiscount />}></Route>
-        <Route exact path={"/chat"} element={<Chat />}></Route>
+        <Route exact path={"/sellerproduct"} element={<SellerProduct />}></Route>
+        <Route exact path={"/selleranalytics"} element={<SellerAnalytics />}></Route>
+        <Route exact path={"/selleranalyticrevenue"} element={<SellerAnalyticRevenue />}></Route>
+        <Route exact path={"/selleranalyticorder"} element={<SellerAnalyticOrder />}></Route>
+        <Route exact path={"/selleranalyticearning"} element={<SellerAnalyticEarning />}></Route>
+        <Route exact path={"/sellersettings"} element={<SellerSettings />}></Route>
+        <Route exact path={"/sellersettingsprofile"} element={<SellerSettingsProfile />}></Route>
+        <Route exact path={"/sellersettingsshop"} element={<SellerSettingsShop />}></Route>
+        <Route exact path={"/sellerprofile"} element={<SellerProfile />}></Route>
+        <Route exact path={"/chats"} element={<ChatBot />}></Route>
 
       </Routes>
     </BrowserRouter>

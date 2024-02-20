@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const SideMenuSeller = () => {
   return (
-    <div className="w-1/5 h-full flex-flex-col bg-[#222222] space-y-12 pr-1 pt-8 pl-12 pb-2">
+    <div className="w-1/5 h-auto flex-flex-col bg-[#222222] space-y-12 pr-1 pt-8 pl-12 pb-60">
       <div>
         <img src="../assests/icons/grocerify.svg" className="w-[196px]" />
       </div>
@@ -48,7 +48,7 @@ const SideMenuSeller = () => {
           </div>
         </Link>
 
-        <Link to={"/sellerorder"}>
+        <Link to={"/sellerinventory"}>
           <div
             className="flex flex-row hover:bg-[#FFFFFF] pt-2 pb-2 pl-2 mb-2"
             style={{
@@ -86,7 +86,7 @@ const SideMenuSeller = () => {
           </div>
         </Link>
 
-        <Link to={"/sellerorder"}>
+        <Link to={"/sellerproduct"}>
           <div
             className="flex flex-row hover:bg-[#FFFFFF] pt-2 pb-2 pl-2 mb-2"
             style={{
@@ -105,7 +105,7 @@ const SideMenuSeller = () => {
           </div>
         </Link>
 
-        <Link to={"/sellerorder"}>
+        <Link to={"/selleranalytics"}>
           <div
             className="flex flex-row hover:bg-[#FFFFFF] pt-2 pb-2 pl-2 mb-2"
             style={{
@@ -124,7 +124,7 @@ const SideMenuSeller = () => {
           </div>
         </Link>
 
-        <Link to={"/sellerorder"}>
+        <Link to={"/sellersettings"}>
           <div
             className="flex flex-row hover:bg-[#FFFFFF] pt-2 pb-2 pl-2 mb-2"
             style={{

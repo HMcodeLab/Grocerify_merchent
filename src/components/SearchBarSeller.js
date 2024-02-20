@@ -1,4 +1,5 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
 
 const SearchBarSeller = () => {
   return (
@@ -13,12 +14,15 @@ const SearchBarSeller = () => {
               className="absolute top-[9px] left-3 w-[16px] h-auto"
             />
           </div>
-          <div className="flex flex-row w-[150px] justify-around ">
-            <div className="bg-[#58B310] rounded-full w-[35px] h-auto flex items-center justify-center">
+          <div className="flex flex-row w-[120px] justify-around ">
+            <div className="bg-[#58B310] rounded-full w-[35px] h-auto flex items-center justify-center ">
               <img src="../assests/icons/notification.svg" className="w-2/3 h-auto" />
             </div>
+
             <div className="bg-[#58B310] rounded-full w-[35px] h-auto flex items-center justify-center">
-              <img src="../assests/icons/user.svg" className="w-3/5 h-auto" />
+            <Link to={"/sellerprofile"}>
+              <img src="../assests/icons/user.svg" className="w-[20px] h-auto" />
+            </Link>
             </div>
           </div>
         </div>
