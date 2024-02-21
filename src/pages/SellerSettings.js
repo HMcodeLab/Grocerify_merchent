@@ -1,17 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
+import { Menu } from "react-feather";
 import { Link } from "react-router-dom";
 import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
 
 
 const SellerSettings = () => {
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+    const toggleSidebar = () => {
+        setSidebarOpen(!isSidebarOpen);
+      };
+
   return (
     <div className="flex flex-row h-auto">
       {/* side menu */}
-      <SideMenuSeller />
+      <button
+        onClick={toggleSidebar}
+        className="absolute text-[#58B310] p-2 ml-2 mt-6 rounded-md"
+        style={{ height: "30px" }}
+      >
+        
+        <Menu size={30} />
+      </button>
+      <SideMenuSeller isOpen={isSidebarOpen} />
 
       {/* Main content */}
-      <div className="w-4/5 flex flex-col pl-20 pr-16 pt-8 pb-40 space-y-10">
+      <div
+        className={`flex flex-col pl-20 pr-16 pt-8 pb-10 space-y-10 ${
+          isSidebarOpen ? "w-4/5" : "w-full"
+        }`}
+      >
         {/* Search bar */}
         <SearchBarSeller />
 
