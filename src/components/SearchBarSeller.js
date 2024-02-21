@@ -28,7 +28,6 @@ const SearchBarSeller = () => {
   const isSettingsPage = location.pathname === "/sellersettings";
   const isSettingsProfilePage = location.pathname === "/sellersettingsprofile";
   const isSettingsShopPage = location.pathname === "/sellersettingsshop";
-  const isDashboardPage = location.pathname === "/sellerdashboard";
   const isOrderPage = location.pathname === "/sellerorder";
   const isInventoryPage = location.pathname === "/sellerinventory";
   const isDiscountPage = location.pathname === "/sellerdiscount";
@@ -53,7 +52,7 @@ const SearchBarSeller = () => {
           />
         </div>
         <div className="flex flex-row w-[130px] justify-around ">
-          {isAllowedPage && (
+          {(isSettingsProfilePage || isSettingsShopPage || isProfilePage) && (
             <div className="bg-[#58B310] rounded-full w-[35px] h-auto flex items-center justify-center">
               <img
                 src="../assests/icons/edit.svg"
