@@ -4,7 +4,6 @@ import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
 
 
-// edit icon in search bar
 // edit on same page to update data
 
 
