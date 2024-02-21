@@ -8,7 +8,7 @@ import SearchBarSeller from "../components/SearchBarSeller";
 
 
 const SellerSettingsProfile = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [isSidebarOpen, setSidebarOpen] = useState("");
   const toggleSidebar = () => {
       setSidebarOpen(!isSidebarOpen);
     };

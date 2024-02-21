@@ -4,15 +4,19 @@ import { Link } from "react-router-dom";
 import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
 
-
 // graph data
 
-
 const SellerAnalytics = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
-    const toggleSidebar = () => {
-        setSidebarOpen(!isSidebarOpen);
-      };
+  const [isSidebarOpen, setSidebarOpen] = useState("");
+  const [showGraph, setShowGraph] = useState(true);
+
+  const toggleView = () => {
+    setShowGraph(!showGraph);
+  };
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
 
   return (
     <div className="flex flex-row h-auto">
@@ -22,10 +26,9 @@ const SellerAnalytics = () => {
         className="absolute text-[#58B310] p-2 ml-2 mt-6 rounded-md"
         style={{ height: "30px" }}
       >
-        
         <Menu size={30} />
       </button>
-      <SideMenuSeller isOpen={isSidebarOpen} />
+      <SideMenuSeller isOpen={isSidebarOpen} onToggle={toggleSidebar} />
 
       {/* Main content */}
       <div
@@ -106,11 +109,56 @@ const SellerAnalytics = () => {
         </div>
 
         {/* Data */}
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between gap-6">
           <div className="flex flex-col gap-6">
-            <div>
-              <img src="../assests/images/graph1.png" />
+            <div className="flex flex-row  gap-6">
+            <button
+                onClick={toggleView}
+                className={`text-[#FFFFFF] bg-[#333333] font-Montserrat rounded-md pl-8 pr-8 pt-2 pb-2 shadow-md ${
+                  showGraph ? "" : ""
+                }`}
+              >
+                {showGraph ? "Table" : "Graph"}
+              </button>
             </div>
+
+            {showGraph ? (
+              <div className="w-[700px]">
+                <img src="../assests/images/graph1.png" className="w-[700px]" />
+              </div>
+            ) : (
+              <div className="flex flex-col space-y-4 w-[700px]">
+                <div className="flex flex-row justify-between bg-[#333333] text-[#FFFFFF] font-Montserrat pt-1 pb-1 pl-4">
+                  <p className="w-2/6">Products</p>
+                  <p className="w-1/6">Category</p>
+                  <p className="w-1/6">Price</p>
+                  <p className="w-1/6">Status</p>
+                </div>
+                <div className="flex flex-row justify-between text-[#333333] text-[14px] h-[82px] shadow-md pt-4 pb-2 pl-4">
+                  <div className="w-2/6 font-Gorditas flex flex-row">
+                    <img src="../assests/images/facewash.svg" />
+                    Innis free Face wash 25 gm
+                  </div>
+                  <div className="w-1/6 font-Gorditas">Beauty</div>
+                  <div className="w-1/6 font-Gorditas">$199</div>
+                  <div className="w-1/6 font-Gorditas text-red-600">
+                    Pending
+                  </div>
+                </div>
+                <div className="flex flex-row justify-between text-[#333333] text-[14px] h-[82px] shadow-md pt-4 pb-2 pl-4">
+                  <div className="w-2/6 font-Gorditas flex flex-row">
+                    <img src="../assests/images/facewash.svg" />
+                    Innis free Face wash 25 gm
+                  </div>
+                  <div className="w-1/6 font-Gorditas">Beauty</div>
+                  <div className="w-1/6 font-Gorditas">$199</div>
+                  <div className="w-1/6 font-Gorditas text-green-600">
+                    Success
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="flex flex-row justify-between pl-2 pr-4 h-[128px]">
               <div className="flex flex-col text-[#333333] text-Inter gap-2 justify-between p-4">
                 <div className="text-[16px] font-semibold">Top Month</div>
@@ -129,20 +177,25 @@ const SellerAnalytics = () => {
               <div className="flex flex-col text-[#333333] text-Inter gap-2 justify-between p-4">
                 <div className="text-[16px] font-semibold">Top buyer</div>
                 <div className="flex flex-col gap-1  items-left">
-                  <img src="../assests/icons/analyticuser.svg" className="h-[24px] w-[24px]" />
+                  <img
+                    src="../assests/icons/analyticuser.svg"
+                    className="h-[24px] w-[24px]"
+                  />
                   <p className="text-[12px] font-bold">Maggie Johnson</p>
                   <p className="text-[10px]">Oasis Organic Inc.</p>
                 </div>
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-4">
-            <div className="text-[#333333] font-Montserrat-600 text-[20px]">Top Products</div>
+          <div className="flex flex-col gap-4 pt-14">
+            <div className="text-[#333333] font-Montserrat-600 text-[20px]">
+              Top Products
+            </div>
             <div className="flex flex-col gap-2">
-            <img src="../assests/images/Bar.svg" />
-            <img src="../assests/images/Bar.svg" />
-            <img src="../assests/images/Bar.svg" />
-            <img src="../assests/images/Bar.svg" />
+              <img src="../assests/images/Bar.svg" />
+              <img src="../assests/images/Bar.svg" />
+              <img src="../assests/images/Bar.svg" />
+              <img src="../assests/images/Bar.svg" />
             </div>
           </div>
         </div>

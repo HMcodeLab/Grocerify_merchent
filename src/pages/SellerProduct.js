@@ -8,7 +8,7 @@ import SearchBarSeller from "../components/SearchBarSeller";
 
 
 const SellerProduct = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [isSidebarOpen, setSidebarOpen] = useState("");
     const toggleSidebar = () => {
         setSidebarOpen(!isSidebarOpen);
       };
@@ -24,7 +24,7 @@ const SellerProduct = () => {
         
         <Menu size={30} />
       </button>
-      <SideMenuSeller isOpen={isSidebarOpen} />
+      <SideMenuSeller isOpen={isSidebarOpen} onToggle={toggleSidebar} />
 
       {/* Main content */}
       <div

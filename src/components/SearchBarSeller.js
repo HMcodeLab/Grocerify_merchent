@@ -5,7 +5,6 @@ const SearchBarSeller = () => {
   // Get the current location using the useLocation hook
   const location = useLocation();
 
-  // Define the route for the settings page
   const allowedPages = [
     "/sellersettingsprofile",
     "/sellersettingsshop",
@@ -23,7 +22,6 @@ const SearchBarSeller = () => {
     "/chats",
   ];
 
-  // Check if the current route matches the settings page route
   const isAllowedPage = allowedPages.includes(location.pathname);
   const isSettingsPage = location.pathname === "/sellersettings";
   const isSettingsProfilePage = location.pathname === "/sellersettingsprofile";

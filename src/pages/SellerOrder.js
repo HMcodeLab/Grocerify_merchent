@@ -1,16 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu } from "react-feather";
 import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
 
 // card details
-// order status
+// order status - data, status color
 
 const SellerOrder = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const toggleSidebar = () => {
-      setSidebarOpen(!isSidebarOpen);
+  const [isSidebarOpen, setSidebarOpen] = useState("");
+  const [currentDate, setCurrentDate] = useState("");
+
+  useEffect(() => {
+    const today = new Date();
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     };
+    setCurrentDate(today.toLocaleDateString(undefined, options));
+  }, []);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
 
   return (
     <div className="flex flex-row h-auto">
@@ -20,10 +33,9 @@ const SellerOrder = () => {
         className="absolute text-[#58B310] p-2 ml-2 mt-6 rounded-md"
         style={{ height: "30px" }}
       >
-        
         <Menu size={30} />
       </button>
-      <SideMenuSeller isOpen={isSidebarOpen} />
+      <SideMenuSeller isOpen={isSidebarOpen} onToggle={toggleSidebar} />
 
       {/* Main content */}
       <div
@@ -37,7 +49,7 @@ const SellerOrder = () => {
         {/* description */}
         <div className="text-[#333333] space-y-1">
           <p className="text-3xl font-Gorditas ">Hello Seller</p>
-          <p className="font-Gorditas ">Today is Monday 23rd January 2024</p>
+          <p className="font-Gorditas ">{`Today is ${currentDate}`}</p>
         </div>
 
         {/* data cards */}

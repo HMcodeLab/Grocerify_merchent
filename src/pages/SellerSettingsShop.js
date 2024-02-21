@@ -9,7 +9,7 @@ import SearchBarSeller from "../components/SearchBarSeller";
 
 
 const SellerSettingsShop = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [isSidebarOpen, setSidebarOpen] = useState("");
   const toggleSidebar = () => {
       setSidebarOpen(!isSidebarOpen);
     };

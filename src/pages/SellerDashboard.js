@@ -1,35 +1,67 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu } from "react-feather";
 import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
+import DueTableSeller from "../components/DueTableSeller";
+import ActiveTableSeller from "../components/ActiveTableSeller";
+import DeliveredTableSeller from "../components/DeliveredTableSeller";
+import OnTheWayTableSeller from "../components/OnTheWayTableSeller";
 
-
-// cards navigation - sales, visitors
-// table navigation- due, active ...
-
+// cards data, navigation - sales, visitors
+// pending, success status colors
 
 const SellerDashboard = () => {
-    const [isSidebarOpen, setSidebarOpen] = useState(false);
-    const toggleSidebar = () => {
-        setSidebarOpen(!isSidebarOpen);
-      };
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [activeButton, setActiveButton] = useState("due");
+  const [currentDate, setCurrentDate] = useState("");
+
+  useEffect(() => {
+    const today = new Date();
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    setCurrentDate(today.toLocaleDateString(undefined, options));
+  }, []);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
+
+  const renderTable = () => {
+    switch (activeButton) {
+      case "due":
+        return <DueTableSeller />;
+      case "active":
+        return <ActiveTableSeller />;
+      case "delivered":
+        return <DeliveredTableSeller />;
+      case "onTheWay":
+        return <OnTheWayTableSeller />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="flex flex-row h-auto">
       {/* side menu */}
       <button
-        onClick={toggleSidebar}
+        onClick={() => {
+          toggleSidebar();
+        }}
         className="absolute text-[#58B310] p-2 ml-2 mt-6 rounded-md"
         style={{ height: "30px" }}
       >
-        
         <Menu size={30} />
       </button>
-      <SideMenuSeller isOpen={isSidebarOpen} />
+      <SideMenuSeller isOpen={isSidebarOpen} onToggle={toggleSidebar} />
 
       {/* Main content */}
       <div
-        className={`flex flex-col pl-20 pr-16 pt-8 pb-10 space-y-10 ${
+        className={`flex flex-col pl-20 pr-16 pt-8 pb-32 space-y-10 ${
           isSidebarOpen ? "w-4/5" : "w-full"
         }`}
       >
@@ -39,81 +71,122 @@ const SellerDashboard = () => {
         {/* description */}
         <div className="font-Gorditas text-[#333333] space-y-1">
           <p className="text-3xl font-Gorditas">Hello Seller</p>
-          <p className="font-Gorditas">Today is Monday 23rd January 2024</p>
+          <p className="font-Gorditas">{`Today is ${currentDate}`}</p>
         </div>
 
         {/* data cards */}
         <div className="grid grid-cols-4 gap-14">
-            <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
-                <div className="font-Montserrat space-y-1">
-                    <p className="text-[#333333] text-xl">Total Sales</p>
-                    <p className="text-[#58B310] text-xl">$2478</p>
-                    <p className="text-[#FFB800] text-xs font-semibold pt-1">27% last week</p>
-                </div>
-                <div>
-                    <img src="../assests/icons/Sales.svg" />
-                </div>
+          <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
+            <div className="font-Montserrat space-y-1">
+              <p className="text-[#333333] text-xl">Total Sales</p>
+              <p className="text-[#58B310] text-xl">$2478</p>
+              <p className="text-[#FFB800] text-xs font-semibold pt-1">
+                27% last week
+              </p>
             </div>
-            <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
-                <div className="font-Montserrat space-y-1">
-                    <p className="text-[#333333] text-xl">Visitors</p>
-                    <p className="text-[#58B310] text-xl">$2478</p>
-                    <p className="text-[#FFB800] text-xs font-semibold pt-1">27% last week</p>
-                </div>
-                <div>
-                    <img src="../assests/icons/visitors.svg" />
-                </div>
+            <div>
+              <img src="../assests/icons/Sales.svg" />
             </div>
-            <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
-                <div className="font-Montserrat space-y-1">
-                    <p className="text-[#333333] text-xl">New Orders</p>
-                    <p className="text-[#58B310] text-xl">$2478</p>
-                    <p className="text-[#FFB800] text-xs font-semibold pt-1">27% last week</p>
-                </div>
-                <div>
-                    <img src="../assests/icons/received.svg" />
-                </div>
+          </div>
+          <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
+            <div className="font-Montserrat space-y-1">
+              <p className="text-[#333333] text-xl">Visitors</p>
+              <p className="text-[#58B310] text-xl">$2478</p>
+              <p className="text-[#FFB800] text-xs font-semibold pt-1">
+                27% last week
+              </p>
             </div>
-            <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
-                <div className="font-Montserrat space-y-1">
-                    <p className="text-[#333333] text-xl">Customers</p>
-                    <p className="text-[#58B310] text-xl">$2478</p>
-                    <p className="text-[#FFB800] text-xs font-semibold pt-1">27% last week</p>
-                </div>
-                <div>
-                    <img src="../assests/icons/target.svg" />
-                </div>
+            <div>
+              <img src="../assests/icons/visitors.svg" />
             </div>
-            <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
-                <div className="font-Montserrat space-y-1">
-                    <p className="text-[#333333] text-xl">Total Earning</p>
-                    <p className="text-[#58B310] text-xl">$2478</p>
-                    <p className="text-[#FFB800] text-xs font-semibold pt-1">27% last week</p>
-                </div>
-                <div>
-                    <img src="../assests/icons/Salary.svg" />
-                </div>
+          </div>
+          <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
+            <div className="font-Montserrat space-y-1">
+              <p className="text-[#333333] text-xl">New Orders</p>
+              <p className="text-[#58B310] text-xl">$2478</p>
+              <p className="text-[#FFB800] text-xs font-semibold pt-1">
+                27% last week
+              </p>
             </div>
-            <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
-                <div className="font-Montserrat space-y-1">
-                    <p className="text-[#333333] text-xl">Delivered Order</p>
-                    <p className="text-[#58B310] text-xl">$2478</p>
-                    <p className="text-[#FFB800] text-xs font-semibold pt-1">27% last week</p>
-                </div>
-                <div>
-                    <img src="../assests/icons/Courier.svg" />
-                </div>
+            <div>
+              <img src="../assests/icons/received.svg" />
             </div>
+          </div>
+          <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
+            <div className="font-Montserrat space-y-1">
+              <p className="text-[#333333] text-xl">Customers</p>
+              <p className="text-[#58B310] text-xl">$2478</p>
+              <p className="text-[#FFB800] text-xs font-semibold pt-1">
+                27% last week
+              </p>
+            </div>
+            <div>
+              <img src="../assests/icons/target.svg" />
+            </div>
+          </div>
+          <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
+            <div className="font-Montserrat space-y-1">
+              <p className="text-[#333333] text-xl">Total Earning</p>
+              <p className="text-[#58B310] text-xl">$2478</p>
+              <p className="text-[#FFB800] text-xs font-semibold pt-1">
+                27% last week
+              </p>
+            </div>
+            <div>
+              <img src="../assests/icons/Salary.svg" />
+            </div>
+          </div>
+          <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
+            <div className="font-Montserrat space-y-1">
+              <p className="text-[#333333] text-xl">Delivered Order</p>
+              <p className="text-[#58B310] text-xl">$2478</p>
+              <p className="text-[#FFB800] text-xs font-semibold pt-1">
+                27% last week
+              </p>
+            </div>
+            <div>
+              <img src="../assests/icons/Courier.svg" />
+            </div>
+          </div>
         </div>
 
         {/* Products */}
         <div className="flex flex-row gap-4 font-Montserrat pt-4">
-            <button className=" text-[#000000] pt-1 pb-1 pl-8 pr-8 rounded-lg font-bold hover:text-[#FFFFFF] hover:bg-[#58B310]">Due</button>
-            <button className=" text-[#000000] pt-1 pb-1 pl-8 pr-8 rounded-lg font-bold hover:text-[#FFFFFF] hover:bg-[#58B310]">Active</button>
-            <button className=" text-[#000000] pt-1 pb-1 pl-8 pr-8 rounded-lg font-bold hover:text-[#FFFFFF] hover:bg-[#58B310]">Delivered</button>
-            <button className=" text-[#000000] pt-1 pb-1 pl-8 pr-8 rounded-lg font-bold hover:text-[#FFFFFF] hover:bg-[#58B310]">On the way</button>
+          <button
+            className={`text-[#000000] pt-1 pb-1 pl-8 pr-8 rounded-lg font-bold hover:text-[#FFFFFF] hover:bg-[#58B310] ${
+              activeButton === "due" ? "bg-[#58B310] text-[#FFFFFF]" : ""
+            }`}
+            onClick={() => setActiveButton("due")}
+          >
+            Due
+          </button>
+          <button
+            className={`text-[#000000] pt-1 pb-1 pl-8 pr-8 rounded-lg font-bold hover:text-[#FFFFFF] hover:bg-[#58B310] ${
+              activeButton === "active" ? "bg-[#58B310] text-[#FFFFFF]" : ""
+            }`}
+            onClick={() => setActiveButton("active")}
+          >
+            Active
+          </button>
+          <button
+            className={`text-[#000000] pt-1 pb-1 pl-8 pr-8 rounded-lg font-bold hover:text-[#FFFFFF] hover:bg-[#58B310] ${
+              activeButton === "delivered" ? "bg-[#58B310] text-[#FFFFFF]" : ""
+            }`}
+            onClick={() => setActiveButton("delivered")}
+          >
+            Delivered
+          </button>
+          <button
+            className={`text-[#000000] pt-1 pb-1 pl-8 pr-8 rounded-lg font-bold hover:text-[#FFFFFF] hover:bg-[#58B310] ${
+              activeButton === "onTheWay" ? "bg-[#58B310] text-[#FFFFFF]" : ""
+            }`}
+            onClick={() => setActiveButton("onTheWay")}
+          >
+            On the way
+          </button>
         </div>
-        <div className="flex flex-col space-y-4">
+        {renderTable()}
+        {/* <div className="flex flex-col space-y-4">
             <div className="flex flex-row justify-between bg-[#333333] text-[#FFFFFF] font-Montserrat pt-1 pb-1 pl-4">
                 <p className="w-2/6">Products</p>
                 <p className="w-1/6">Category</p>
@@ -138,7 +211,7 @@ const SellerDashboard = () => {
                 <div className="w-1/6 font-Gorditas">$199</div>
                 <div className="w-1/6 font-Gorditas">Pending</div>
             </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import BilingDetails from "./pages/BilingDetails";
 import HotDeals from "./pages/HotDeals";
 import YourAccount from "./pages/YourAccount";
 import StoreFeatured from "./pages/StoreFeatured";
+import { SellerSideMenuProvider } from './components/SellerSideMenuContext';
 import SellerDashboard from './pages/SellerDashboard';
 import SellerOrder from './pages/SellerOrder';
 import SellerInventory from './pages/SellerInventory';
@@ -26,6 +27,7 @@ import ChatBot from './components/ChatBot';
 function App() {
   return (
     <BrowserRouter>
+    <SellerSideMenuProvider>
       <Routes>
         <Route exact path={"/stores"} element={<StoreFeatured />}></Route>
         <Route exact path={"/morestore"} element={<MoreStore />}></Route>
@@ -50,6 +52,7 @@ function App() {
         <Route exact path={"/chats"} element={<ChatBot />}></Route>
 
       </Routes>
+      </SellerSideMenuProvider>
     </BrowserRouter>
   );
 }

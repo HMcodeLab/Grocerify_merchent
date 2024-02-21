@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const SideMenuSeller = ({ isOpen }) => {
+const SideMenuSeller = ({ isOpen, onToggle }) => {
   return (
     <div
       className={`w-1/5 h-auto flex flex-col bg-[#222222] space-y-12 pr-1 pt-8 pl-12 pb-60 ${
