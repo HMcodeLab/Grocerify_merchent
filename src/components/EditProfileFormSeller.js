@@ -4,6 +4,8 @@ import "../styles/editprofileseller.css";
 
 const EditProfileFormSeller = ({ onClose }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [profileImage, setProfileImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -11,6 +13,24 @@ const EditProfileFormSeller = ({ onClose }) => {
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+  };
+
+  const handleFileChange = (e) => {
+    // Handle file change and update the state
+    const file = e.target.files[0];
+
+    // Set the image preview for visual verification
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setImagePreview(null);
+    }
+
+    setProfileImage(file);
   };
 
   const handleSubmit = async (e) => {
@@ -180,14 +200,22 @@ const EditProfileFormSeller = ({ onClose }) => {
           </div>
 
           {/* edit image */}
-          <div className="pt- relative">
+          <div className="relative">
             <img src="../assests/images/sellerpic.png" className="" />
-            <div className="bg-white w-[60px] h-[60px] absolute top-36 right-6 rounded-full shadow-md cursor-pointer">
+            <label htmlFor="profileImage" className="bg-white w-[60px] h-[60px] absolute top-36 right-6 rounded-full shadow-md cursor-pointer transform transition-transform duration-300 hover:scale-110">
               <img
                 src="../assests/icons/camera.svg"
                 className="absolute top-4 left-4 w-auto h-auto"
               />
-            </div>
+              <input
+                type="file"
+                id="profileImage"
+                name="profileImage"
+                accept="image/*"
+                onChange={handleFileChange}
+                className="hidden"
+              />
+            </label>
           </div>
         </div>
 

@@ -38,7 +38,7 @@ const SellerSettingsShop = () => {
 
       {/* Main content */}
       <div
-        className={`flex flex-col pl-24 pr-20 pt-8 pb-10 space-y-10 ${
+        className={`flex flex-col pl-24 pr-20 pt-8 pb-20 space-y-10 ${
           isSidebarOpen ? "w-4/5" : "w-full"
         }`}
       >
@@ -50,21 +50,23 @@ const SellerSettingsShop = () => {
           <p className="text-[24px] font-Gorditas">Shop Details</p>
           <p className="flex flex-row items-center gap-1 font-Plus Jakarta Sans text-[#909090] pb-1 pt-1">
             Here you can view and edit your details.
-            <span className="hover:bg-[#58B310] rounded-full w-[35px] h-[35px] flex items-center justify-center cursor-pointer transform transition-transform duration-300 hover:scale-110"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            onClick={openEditModal}>
+            <span
+              className="hover:bg-[#58B310] rounded-full w-[35px] h-[35px] flex items-center justify-center cursor-pointer transform transition-transform duration-300 hover:scale-110"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              onClick={openEditModal}
+            >
               {isHovered ? (
                 <img
-                src="../assests/icons/edit.svg"
-                className="w-[20px] h-auto"
-              />
-                ) : (
+                  src="../assests/icons/edit.svg"
+                  className="w-[20px] h-auto"
+                />
+              ) : (
                 <img
                   src="../assests/icons/editgreen.svg"
                   className="w-[20px] h-auto"
                 />
-                )}
+              )}
             </span>
           </p>
         </div>
@@ -84,11 +86,12 @@ const SellerSettingsShop = () => {
           />
           <div className="flex flex-col p-2 w-[500px] gap-1">
             <p className="font-Gorditas font-bold text-[14px] text-[#333333]">
-              Edit Profile Image
+              Your Profile Image
             </p>
             <p className="text-[#B1BCD2] text-[14px] font-Plus Jakarta Sans leading-4">
-              Browse your Gallery or take a Picture from the phone Camera to
-              upload
+              A Grocery Store Cashier with eight years of customer service
+              experience, specializing in managing customer sales transactions
+              and POS systems
             </p>
           </div>
         </div>
@@ -176,7 +179,7 @@ const SellerSettingsShop = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-6 shadow-md rounded-xl pl-6 pr-6 pt-3 pb-3">
+          {/* <div className="flex flex-col gap-6 shadow-md rounded-xl pl-6 pr-6 pt-3 pb-3">
             <div className="font-Montserrat-700 font-bold text-[24px] text-[#333333]">
               Shop Photos
             </div>
@@ -193,12 +196,12 @@ const SellerSettingsShop = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       {isEditModalOpen && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50 ">
-          <div className=" bg-white bg-opacity-90 rounded-md">
+          <div className=" bg-white bg-opacity-90 rounded-md w-[550px]">
             <EditShopFormSeller onClose={closeEditModal} />
           </div>
         </div>
