@@ -19,6 +19,7 @@ const SearchBarSeller = () => {
     "/selleranalyticorder",
     "/selleranalyticearning",
     "/sellerprofile",
+    "/sellernotification",
     "/chats",
   ];
 
@@ -35,6 +36,7 @@ const SearchBarSeller = () => {
   const isAnalyticsOrderPage = location.pathname === "/selleranalyticorder";
   const isAnalyticsEarningPage = location.pathname === "/selleranalyticearning";
   const isProfilePage = location.pathname === "/sellerprofile";
+  const isNotificationPage = location.pathname === "/sellernotification";
 
   return (
     <div className="flex flex-col gap-4">
@@ -60,10 +62,11 @@ const SearchBarSeller = () => {
           )}
 
           <div className="bg-[#58B310] rounded-full w-[35px] h-auto flex items-center justify-center ">
+            <Link to={"/sellernotification"}>
             <img
               src="../assests/icons/notification.svg"
-              className="w-2/3 h-auto"
-            />
+              className="w-[24px] h-auto"
+            /></Link>
           </div>
 
           <div className="bg-[#58B310] rounded-full w-[35px] h-auto flex items-center justify-center">
@@ -116,6 +119,9 @@ const SearchBarSeller = () => {
           )}
           {isProfilePage && (
             <p className="text-[#55A813] font-Montserrat"><Link to={"/sellerdashboard"} className="text-[#333333]">Dashboard {" > "}</Link>Profile</p>
+          )}
+          {isNotificationPage && (
+            <p className="text-[#55A813] font-Montserrat"><Link to={"/sellerdashboard"} className="text-[#333333]">Dashboard {" > "}</Link>Notification</p>
           )}
         </div>
       )}

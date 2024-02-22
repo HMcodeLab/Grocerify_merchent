@@ -30,7 +30,7 @@ const SellerProfile = () => {
 
       {/* Main content */}
       <div
-        className={`flex flex-col pl-20 pr-16 pt-8 pb-10 space-y-10 ${
+        className={`flex flex-col pl-20 pr-16 pt-8 pb-40 space-y-10 ${
           isSidebarOpen ? "w-4/5" : "w-full"
         }`}
       >
@@ -38,11 +38,11 @@ const SellerProfile = () => {
         <SearchBarSeller />
 
         {/* description */}
-        <div className="font-Gorditas text-[#333333] space-y-1">
+        <div className="font-Gorditas text-[#333333] space-y-1 pl-2">
           <p className="text-3xl font-Gorditas">Merchant Profile</p>
         </div>
 
-        <div className='flex flex-row justify-between'>
+        <div className='flex flex-row justify-between pl-4'>
 
             <div className='flex flex-col font-Plus Jakarta Sans gap-6 pl-8'>
                 <div className='flex flex-row gap-3'>
