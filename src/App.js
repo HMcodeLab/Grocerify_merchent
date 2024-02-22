@@ -22,6 +22,7 @@ import SellerSettings from './pages/SellerSettings';
 import SellerSettingsProfile from './pages/SellerSettingsProfile';
 import SellerSettingsShop from './pages/SellerSettingsShop';
 import SellerProfile from './pages/SellerProfile';
+// import EditProfileFormSeller from './components/EditProfileFormSeller';
 import SellerNotification from './pages/SellerNotification';
 import ChatBot from './components/ChatBot';
 
@@ -50,6 +51,7 @@ function App() {
         <Route exact path={"/sellersettingsprofile"} element={<SellerSettingsProfile />}></Route>
         <Route exact path={"/sellersettingsshop"} element={<SellerSettingsShop />}></Route>
         <Route exact path={"/sellerprofile"} element={<SellerProfile />}></Route>
+        {/* <Route exact path={"/editprofileformseller"} element={<EditProfileFormSeller />}></Route> */}
         <Route exact path={"/sellernotification"} element={<SellerNotification />}></Route>
         <Route exact path={"/chats"} element={<ChatBot />}></Route>
 

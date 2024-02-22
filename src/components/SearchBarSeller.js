@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const SearchBarSeller = () => {
+
   // Get the current location using the useLocation hook
   const location = useLocation();
 
@@ -52,14 +53,14 @@ const SearchBarSeller = () => {
           />
         </div>
         <div className="flex flex-row w-[130px] justify-around ">
-          {(isSettingsProfilePage || isSettingsShopPage || isProfilePage) && (
+          {/* {(isSettingsShopPage) && (
             <div className="bg-[#58B310] rounded-full w-[35px] h-auto flex items-center justify-center">
               <img
                 src="../assests/icons/edit.svg"
                 className="w-[20px] h-auto"
               />
             </div>
-          )}
+          )} */}
 
           <div className="bg-[#58B310] rounded-full w-[35px] h-auto flex items-center justify-center ">
             <Link to={"/sellernotification"}>
@@ -78,6 +79,7 @@ const SearchBarSeller = () => {
             </Link>
           </div>
         </div>
+        
       </div>
 
       {isAllowedPage && (

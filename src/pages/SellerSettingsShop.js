@@ -2,34 +2,43 @@ import React, { useState } from "react";
 import { Menu } from "react-feather";
 import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
-
+import EditShopFormSeller from "../components/EditShopFormSeller";
 
 // add edit icon in search bar for shop details only
 // edit on same page to update data
 
-
 const SellerSettingsShop = () => {
   const [isSidebarOpen, setSidebarOpen] = useState("");
+  const [isEditModalOpen, setEditModalOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
   const toggleSidebar = () => {
-      setSidebarOpen(!isSidebarOpen);
-    };
+    setSidebarOpen(!isSidebarOpen);
+  };
+
+  const openEditModal = () => {
+    setEditModalOpen(true);
+  };
+
+  const closeEditModal = () => {
+    setEditModalOpen(false);
+  };
 
   return (
     <div className="flex flex-row h-auto">
       {/* side menu */}
-       <button
+      <button
         onClick={toggleSidebar}
         className="absolute text-[#58B310] p-2 ml-2 mt-6 rounded-md"
         style={{ height: "30px" }}
       >
-        
         <Menu size={30} />
       </button>
       <SideMenuSeller isOpen={isSidebarOpen} />
 
       {/* Main content */}
       <div
-        className={`flex flex-col pl-20 pr-16 pt-8 pb-10 space-y-10 ${
+        className={`flex flex-col pl-24 pr-20 pt-8 pb-10 space-y-10 ${
           isSidebarOpen ? "w-4/5" : "w-full"
         }`}
       >
@@ -37,25 +46,41 @@ const SellerSettingsShop = () => {
         <SearchBarSeller />
 
         {/* description */}
-        <div className="font-Gorditas text-[#333333] space-y-1">
+        <div className="font-Gorditas text-[#333333] pl-2">
           <p className="text-[24px] font-Gorditas">Shop Details</p>
-          <p className="font-Plus Jakarta Sans text-[#909090] ">
+          <p className="flex flex-row items-center gap-1 font-Plus Jakarta Sans text-[#909090] pb-1 pt-1">
             Here you can view and edit your details.
+            <span className="hover:bg-[#58B310] rounded-full w-[35px] h-[35px] flex items-center justify-center cursor-pointer transform transition-transform duration-300 hover:scale-110"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            onClick={openEditModal}>
+              {isHovered ? (
+                <img
+                src="../assests/icons/edit.svg"
+                className="w-[20px] h-auto"
+              />
+                ) : (
+                <img
+                  src="../assests/icons/editgreen.svg"
+                  className="w-[20px] h-auto"
+                />
+                )}
+            </span>
           </p>
         </div>
 
         {/* images */}
-        <div>
+        <div className="flex w-full pl-2">
           <img
             src="../assests/images/shopdetails.png"
-            className="w-[688px] h-[287px] rounded-lg"
+            className="w-3/4 h-auto rounded-lg"
           />
         </div>
 
-        <div className="flex flex-row gap-10">
+        <div className="flex flex-row gap-6 w-3/4 pl-2">
           <img
             src="../assests/images/shopdetails2.png"
-            className="w-[158px] h-[113px] rounded-lg"
+            className="w-[200px] h-[150px] rounded-lg"
           />
           <div className="flex flex-col p-2 w-[500px] gap-1">
             <p className="font-Gorditas font-bold text-[14px] text-[#333333]">
@@ -69,7 +94,7 @@ const SellerSettingsShop = () => {
         </div>
 
         {/* details */}
-        <div className="flex flex-col gap-8 w-[700px]">
+        <div className="flex flex-col gap-8 w-3/4 pl-2">
           <div className="flex flex-col gap-6 shadow-md rounded-xl pl-6 pr-6 pt-3 pb-3">
             <div className="flex flex-row justify-between items-center">
               <div className="flex flex-row justify-between gap-6">
@@ -96,10 +121,10 @@ const SellerSettingsShop = () => {
                 <img src="../assests/icons/location2.svg" />
                 <div className="flex flex-col font-Plus Jakarta Sans">
                   <p className="text-[18px] text-[#333333] font-semibold">
-                  32-B cannought Place
+                    32-B cannought Place
                   </p>
                   <p className="text-[#979797] font-Plus Jakarta Sans text-[14px]">
-                  Address
+                    Address
                   </p>
                 </div>
               </div>
@@ -109,10 +134,10 @@ const SellerSettingsShop = () => {
                 <img src="../assests/icons/location3.svg" />
                 <div className="flex flex-col font-Plus Jakarta Sans">
                   <p className="text-[18px] text-[#333333] font-semibold">
-                  New Delhi
+                    New Delhi
                   </p>
                   <p className="text-[#979797] font-Plus Jakarta Sans text-[14px]">
-                  State
+                    State
                   </p>
                 </div>
               </div>
@@ -122,10 +147,10 @@ const SellerSettingsShop = () => {
                 <img src="../assests/icons/location3.svg" />
                 <div className="flex flex-col font-Plus Jakarta Sans">
                   <p className="text-[18px] text-[#333333] font-semibold">
-                  Central Delhi
+                    Central Delhi
                   </p>
                   <p className="text-[#979797] font-Plus Jakarta Sans text-[14px]">
-                  City
+                    City
                   </p>
                 </div>
               </div>
@@ -134,17 +159,17 @@ const SellerSettingsShop = () => {
 
           <div className="flex flex-col gap-6 shadow-md rounded-xl pl-6 pr-6 pt-3 pb-3">
             <div className="font-Montserrat-700 font-bold text-[24px] text-[#333333]">
-            Service Details
+              Service Details
             </div>
             <div className="flex flex-row justify-between items-center">
               <div className="flex flex-row justify-between gap-6">
                 <img src="../assests/icons/service.svg" />
                 <div className="flex flex-col font-Plus Jakarta Sans">
                   <p className="text-[18px] text-[#333333] font-semibold">
-                  Delivery, Dining, WIFI etc.,
+                    Delivery, Dining, WIFI etc.,
                   </p>
                   <p className="text-[#979797] font-Plus Jakarta Sans text-[14px]">
-                  Shop Services
+                    Shop Services
                   </p>
                 </div>
               </div>
@@ -153,25 +178,31 @@ const SellerSettingsShop = () => {
 
           <div className="flex flex-col gap-6 shadow-md rounded-xl pl-6 pr-6 pt-3 pb-3">
             <div className="font-Montserrat-700 font-bold text-[24px] text-[#333333]">
-            Shop Photos
+              Shop Photos
             </div>
             <div className="flex flex-row justify-between items-center">
               <div className="flex flex-row justify-between gap-6">
                 <img src="../assests/icons/service.svg" />
                 <div className="flex flex-col font-Plus Jakarta Sans">
                   <p className="text-[18px] text-[#333333] font-semibold">
-                  Add Media/Photos
+                    Add Media/Photos
                   </p>
                   <p className="text-[#979797] font-Plus Jakarta Sans text-[14px]">
-                  Add Media/Photos
+                    Add Media/Photos
                   </p>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
       </div>
+      {isEditModalOpen && (
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50 ">
+          <div className=" bg-white bg-opacity-90 rounded-md">
+            <EditShopFormSeller onClose={closeEditModal} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
