@@ -11,6 +11,9 @@ import StoreFeatured from "./pages/StoreFeatured";
 import { SellerSideMenuProvider } from './components/SellerSideMenuContext';
 
 import SellerLogin from './pages/SellerLogin';
+import ForgetPassword from './pages/ForgetPassword';
+import ResendOtp from './pages/ResendOtp';
+import SellerShopRegistration from './pages/SellerShopRegistration';
 import SellerDashboard from './pages/SellerDashboard';
 import SellerOrder from './pages/SellerOrder';
 import SellerInventory from './pages/SellerInventory';
@@ -42,6 +45,9 @@ function App() {
         <Route exact path={"/youraccount"} element={<YourAccount />}></Route>
 
         <Route exact path={"/"} element={<SellerLogin />}></Route>
+        <Route exact path={"/forgetpassword"} element={<ForgetPassword />}></Route>
+        <Route exact path={"/resendotp"} element={<ResendOtp />}></Route>
+        <Route exact path={"/sellershopregistration"} element={<SellerShopRegistration />}></Route>
         <Route exact path={"/sellerdashboard"} element={<SellerDashboard />}></Route>
         <Route exact path={"/sellerorder"} element={<SellerOrder />}></Route>
         <Route exact path={"/sellerinventory"} element={<SellerInventory />}></Route>
