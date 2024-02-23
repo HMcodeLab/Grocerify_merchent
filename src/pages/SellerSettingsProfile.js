@@ -3,7 +3,6 @@ import { Menu } from "react-feather";
 import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
 
-
 // edit on same page to update data
 
 
@@ -82,12 +81,12 @@ const SellerSettingsProfile = () => {
             </div>
           </div>
 
-          <div className="flex flex-col gap-6 shadow-md rounded-xl pl-6 pr-6 pt-3 pb-3">
+          {/* <div className="flex flex-col gap-6 shadow-md rounded-xl pl-6 pr-6 pt-3 pb-3">
             <div className='flex flex-row justify-between'>
                 <p className='text-[#A5A5A5] text-[20px] font-Roboto'>Guided By</p>
                 <button className='text-[#FFFFFF] text-[15px] font-Roboto bg-[#58B310] rounded-lg w-[140px]'>Validate</button>
             </div>
-          </div>
+          </div> */}
 
         </div>
       </div>

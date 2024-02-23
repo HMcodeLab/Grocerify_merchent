@@ -3,12 +3,33 @@ import { Menu } from "react-feather";
 import { Link } from "react-router-dom";
 import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
+import SellerRateUs from "../components/SellerRateUs";
+import SellerEarnRefer from "../components/SellerEarnRefer";
 
 
 const SellerSettings = () => {
   const [isSidebarOpen, setSidebarOpen] = useState("");
+  const [isRateUsModalOpen, setRateUsModalOpen] = useState(false);
+  const [isEarnReferModalOpen, setEarnReferModalOpen] = useState(false);
+
     const toggleSidebar = () => {
         setSidebarOpen(!isSidebarOpen);
+      };
+
+      const openRateUsModal = () => {
+        setRateUsModalOpen(true);
+      };
+    
+      const closeRateUsModal = () => {
+        setRateUsModalOpen(false);
+      };
+    
+      const openEarnReferModal = () => {
+        setEarnReferModalOpen(true);
+      };
+    
+      const closeEarnReferModal = () => {
+        setEarnReferModalOpen(false);
       };
 
   return (
@@ -79,7 +100,7 @@ const SellerSettings = () => {
                       Shop Details
                     </p>
                     <p className="text-[#979797] font-Plus Jakarta Sans text-[14px]">
-                      Shop Address, Shop Categories, etc.,
+                      Shop Address, Shop Categories, etc.
                     </p>
                   </div>
                 </div>
@@ -91,6 +112,8 @@ const SellerSettings = () => {
                 </div>
               </div>
             </Link>
+
+            <Link to={"/sellersettingswallet"}>
             <div className="flex flex-row justify-between items-center">
               <div className="flex flex-row justify-between gap-6">
                 <img src="../assests/icons/Walletdetails.svg" />
@@ -99,7 +122,7 @@ const SellerSettings = () => {
                     My Wallet
                   </p>
                   <p className="text-[#979797] font-Plus Jakarta Sans text-[14px]">
-                    Shop Address, Shop Categories, etc.,
+                  Name, E-Mail, phone number & address
                   </p>
                 </div>
               </div>
@@ -110,10 +133,11 @@ const SellerSettings = () => {
                 />
               </div>
             </div>
+            </Link>
           </div>
 
           <div className="flex flex-col gap-6 shadow-md rounded-xl pl-6 pr-6 pt-3 pb-3">
-            <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-row justify-between items-center cursor-pointer"  onClick={openEarnReferModal}>
               <div className="flex flex-row justify-between gap-6">
                 <img src="../assests/icons/earnrefer.svg" />
                 <div className="flex flex-col font-Plus Jakarta Sans">
@@ -135,7 +159,7 @@ const SellerSettings = () => {
           </div>
 
           <div className="flex flex-col gap-6 shadow-md rounded-xl pl-6 pr-6 pt-3 pb-3">
-            <div className="flex flex-row justify-between items-center">
+            <div className="flex flex-row justify-between items-center cursor-pointer" onClick={openRateUsModal}>
               <div className="flex flex-row justify-between gap-6">
                 <img src="../assests/icons/rateus.svg" />
                 <div className="flex flex-col font-Plus Jakarta Sans">
@@ -195,6 +219,22 @@ const SellerSettings = () => {
           </div>
         </div>
       </div>
+      {isEarnReferModalOpen && (
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50 ">
+          <div className=" bg-white bg-opacity-90 rounded-md">
+            <SellerEarnRefer onClose={closeEarnReferModal} />
+            {/* <SellerRateUs onClose={closeRateUsModal} /> */}
+          </div>
+        </div>
+      )}
+      {isRateUsModalOpen && (
+        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50 ">
+          <div className=" bg-white bg-opacity-90 rounded-md">
+            {/* <SellerEarnRefer onClose={closeEarnReferModal} /> */}
+            <SellerRateUs onClose={closeRateUsModal} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

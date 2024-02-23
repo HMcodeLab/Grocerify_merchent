@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Line } from 'react-chartjs-2';
+import Chart from 'chart.js/auto';
 import { Menu } from "react-feather";
 import { Link } from "react-router-dom";
 import SideMenuSeller from "../components/SideMenuSeller";
@@ -17,6 +19,53 @@ const SellerAnalytics = () => {
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
+
+  const chartData = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    datasets: [
+      {
+        label: 'Total Sales',
+        data: [65, 59, 80, 81, 56, 55, 40],
+        borderColor: '#333333',
+        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+      },
+    ],
+  };
+
+  const chartOptions = {
+    maintainAspectRatio: false,
+    responsive: true,
+    scales: {
+      xAxes: [
+        {
+          type: 'category',
+          grid: {
+            display: false,
+          },
+        },
+      ],
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+          },
+          grid: {
+            display: false,
+          },
+        },
+      ],
+    },
+  };
+  
+  useEffect(() => {
+    if (showGraph) {
+      // Destroy the existing chart before creating a new one
+      const chartCanvas = document.getElementById("myChart");
+      const chartInstance = chartCanvas && chartCanvas._chart;
+      chartInstance && chartInstance.destroy();
+    }
+  }, [showGraph]);
+  
 
   return (
     <div className="flex flex-row h-auto">
@@ -110,7 +159,7 @@ const SellerAnalytics = () => {
 
         {/* Data */}
         <div className="flex flex-row justify-between gap-6">
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-10">
             <div className="flex flex-row  gap-6">
             <button
                 onClick={toggleView}
@@ -124,7 +173,7 @@ const SellerAnalytics = () => {
 
             {showGraph ? (
               <div className="w-[700px]">
-                <img src="../assests/images/graph1.png" className="w-[700px]" />
+                 {showGraph && <Line data={chartData} options={chartOptions} />}
               </div>
             ) : (
               <div className="flex flex-col space-y-4 w-[700px]">
@@ -159,7 +208,7 @@ const SellerAnalytics = () => {
               </div>
             )}
 
-            <div className="flex flex-row justify-between pl-2 pr-4 h-[128px]">
+            <div className="flex flex-row justify-between pl-2 pr-4 pt-10 h-[128px]">
               <div className="flex flex-col text-[#333333] text-Inter gap-2 justify-between p-4">
                 <div className="text-[16px] font-semibold">Top Month</div>
                 <div className="flex flex-col">

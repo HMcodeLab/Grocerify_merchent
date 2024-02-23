@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Line } from "react-chartjs-2";
 import { Menu } from "react-feather";
 import { Link } from "react-router-dom";
 import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
 
 // graph data
-
 
 const SellerAnalyticOrder = () => {
   const [isSidebarOpen, setSidebarOpen] = useState("");
@@ -15,9 +15,56 @@ const SellerAnalyticOrder = () => {
     setShowGraph(!showGraph);
   };
 
-    const toggleSidebar = () => {
-        setSidebarOpen(!isSidebarOpen);
-      };
+  const toggleSidebar = () => {
+    setSidebarOpen(!isSidebarOpen);
+  };
+
+  const chartData = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [
+      {
+        label: "Total Sales",
+        data: [65, 59, 80, 81, 56, 55, 40],
+        borderColor: "#333333",
+        backgroundColor: "rgba(255, 255, 255, 0.2)",
+      },
+    ],
+  };
+
+  const chartOptions = {
+    maintainAspectRatio: false,
+    responsive: true,
+    scales: {
+      xAxes: [
+        {
+          type: 'category',
+          grid: {
+            display: false,
+          },
+        },
+      ],
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+          },
+          grid: {
+            display: false,
+          },
+        },
+      ],
+    },
+  };
+  
+  useEffect(() => {
+    if (showGraph) {
+      // Destroy the existing chart before creating a new one
+      const chartCanvas = document.getElementById("myChart");
+      const chartInstance = chartCanvas && chartCanvas._chart;
+      chartInstance && chartInstance.destroy();
+    }
+  }, [showGraph]);
+  
 
   return (
     <div className="flex flex-row h-auto">
@@ -27,7 +74,6 @@ const SellerAnalyticOrder = () => {
         className="absolute text-[#58B310] p-2 ml-2 mt-6 rounded-md"
         style={{ height: "30px" }}
       >
-        
         <Menu size={30} />
       </button>
       <SideMenuSeller isOpen={isSidebarOpen} />
@@ -78,7 +124,7 @@ const SellerAnalyticOrder = () => {
               </div>
             </div>
           </Link>
-          
+
           <div className="flex flex-col justify-between shadow-md rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
             <div className="flex flex-row justify-between font-Montserrat ">
               <div className="text-[#333333] font-Montserrat ">
@@ -116,9 +162,9 @@ const SellerAnalyticOrder = () => {
 
         {/* Data */}
         <div className="flex flex-row justify-between gap-6">
-          <div className="flex flex-col gap-6">
-          <div className="flex flex-row  gap-6">
-            <button
+          <div className="flex flex-col gap-10">
+            <div className="flex flex-row  gap-6">
+              <button
                 onClick={toggleView}
                 className={`text-[#FFFFFF] bg-[#333333] font-Montserrat rounded-md pl-8 pr-8 pt-2 pb-2 shadow-md ${
                   showGraph ? "" : ""
@@ -129,10 +175,10 @@ const SellerAnalyticOrder = () => {
             </div>
 
             {showGraph ? (
-            <div className="w-[700px]">
-              <img src="../assests/images/graph3.png" className="w-[700px]" />
-            </div>
-             ) : (
+              <div className="w-[700px]">
+                {showGraph && <Line data={chartData} options={chartOptions} />}
+              </div>
+            ) : (
               <div className="flex flex-col space-y-4 w-[700px]">
                 <div className="flex flex-row justify-between bg-[#333333] text-[#FFFFFF] font-Montserrat pt-1 pb-1 pl-4">
                   <p className="w-2/6">Products</p>
@@ -164,7 +210,7 @@ const SellerAnalyticOrder = () => {
                 </div>
               </div>
             )}
-            <div className="flex flex-row justify-between pl-2 pr-4 h-[128px]">
+            <div className="flex flex-row justify-between pl-2 pr-4 pt-10 h-[128px]">
               <div className="flex flex-col text-[#333333] text-Inter gap-2 justify-between p-4">
                 <div className="text-[16px] font-semibold">Top Month</div>
                 <div className="flex flex-col">

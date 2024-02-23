@@ -9,6 +9,7 @@ const SearchBarSeller = () => {
   const allowedPages = [
     "/sellersettingsprofile",
     "/sellersettingsshop",
+    "/sellersettingswallet",
     "/sellersettings",
     "/sellerdashboard",
     "/sellerorder",
@@ -28,6 +29,7 @@ const SearchBarSeller = () => {
   const isSettingsPage = location.pathname === "/sellersettings";
   const isSettingsProfilePage = location.pathname === "/sellersettingsprofile";
   const isSettingsShopPage = location.pathname === "/sellersettingsshop";
+  const isSettingsWalletPage = location.pathname === "/sellersettingswallet";
   const isOrderPage = location.pathname === "/sellerorder";
   const isInventoryPage = location.pathname === "/sellerinventory";
   const isDiscountPage = location.pathname === "/sellerdiscount";
@@ -53,14 +55,6 @@ const SearchBarSeller = () => {
           />
         </div>
         <div className="flex flex-row w-[130px] justify-around ">
-          {/* {(isSettingsShopPage) && (
-            <div className="bg-[#58B310] rounded-full w-[35px] h-auto flex items-center justify-center">
-              <img
-                src="../assests/icons/edit.svg"
-                className="w-[20px] h-auto"
-              />
-            </div>
-          )} */}
 
           <div className="bg-[#58B310] rounded-full w-[35px] h-auto flex items-center justify-center ">
             <Link to={"/sellernotification"}>
@@ -118,6 +112,10 @@ const SearchBarSeller = () => {
           {isSettingsShopPage && (
             <p className="text-[#55A813] font-Montserrat"><Link to={"/sellerdashboard"} className="text-[#333333]">Dashboard {" > "}</Link>
             <Link to={"/sellersettings"} className="text-[#333333]">Settings {" > "}</Link>Shop Details</p>
+          )}
+          {isSettingsWalletPage && (
+            <p className="text-[#55A813] font-Montserrat"><Link to={"/sellerdashboard"} className="text-[#333333]">Dashboard {" > "}</Link>
+            <Link to={"/sellersettings"} className="text-[#333333]">Settings {" > "}</Link>My Wallet</p>
           )}
           {isProfilePage && (
             <p className="text-[#55A813] font-Montserrat"><Link to={"/sellerdashboard"} className="text-[#333333]">Dashboard {" > "}</Link>Profile</p>

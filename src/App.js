@@ -9,6 +9,8 @@ import HotDeals from "./pages/HotDeals";
 import YourAccount from "./pages/YourAccount";
 import StoreFeatured from "./pages/StoreFeatured";
 import { SellerSideMenuProvider } from './components/SellerSideMenuContext';
+
+import SellerLogin from './pages/SellerLogin';
 import SellerDashboard from './pages/SellerDashboard';
 import SellerOrder from './pages/SellerOrder';
 import SellerInventory from './pages/SellerInventory';
@@ -21,8 +23,8 @@ import SellerAnalyticEarning from './pages/SellerAnalyticEarning';
 import SellerSettings from './pages/SellerSettings';
 import SellerSettingsProfile from './pages/SellerSettingsProfile';
 import SellerSettingsShop from './pages/SellerSettingsShop';
+import SellerSettingsWallet from './pages/SellerSettingsWallet';
 import SellerProfile from './pages/SellerProfile';
-// import EditProfileFormSeller from './components/EditProfileFormSeller';
 import SellerNotification from './pages/SellerNotification';
 import ChatBot from './components/ChatBot';
 
@@ -38,6 +40,8 @@ function App() {
         <Route exact path={"/biling"} element={<BilingDetails />}></Route>
         <Route exact path={"/hotdeals"} element={<HotDeals />}></Route>
         <Route exact path={"/youraccount"} element={<YourAccount />}></Route>
+
+        <Route exact path={"/"} element={<SellerLogin />}></Route>
         <Route exact path={"/sellerdashboard"} element={<SellerDashboard />}></Route>
         <Route exact path={"/sellerorder"} element={<SellerOrder />}></Route>
         <Route exact path={"/sellerinventory"} element={<SellerInventory />}></Route>
@@ -50,8 +54,8 @@ function App() {
         <Route exact path={"/sellersettings"} element={<SellerSettings />}></Route>
         <Route exact path={"/sellersettingsprofile"} element={<SellerSettingsProfile />}></Route>
         <Route exact path={"/sellersettingsshop"} element={<SellerSettingsShop />}></Route>
+        <Route exact path={"/sellersettingswallet"} element={<SellerSettingsWallet />}></Route>
         <Route exact path={"/sellerprofile"} element={<SellerProfile />}></Route>
-        {/* <Route exact path={"/editprofileformseller"} element={<EditProfileFormSeller />}></Route> */}
         <Route exact path={"/sellernotification"} element={<SellerNotification />}></Route>
         <Route exact path={"/chats"} element={<ChatBot />}></Route>
 
