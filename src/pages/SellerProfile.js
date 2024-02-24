@@ -4,15 +4,26 @@ import { Menu } from "react-feather";
 import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
 import EditProfileFormSeller from "../components/EditProfileFormSeller";
-
+import { getSeller } from "../helper/helper";
 // manipulate data
 // upload profile pic
 
 const SellerProfile = () => {
+  let email ='sahilkumar142002@gmail.com'
   const [isSidebarOpen, setSidebarOpen] = useState("");
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [sellerData, setSellerData] = useState(null);
+
+  async function getData() {
+    const sellerData = await getSeller({email})
+    setSellerData(sellerData.data.data)
+  }
+  
+  useEffect(() => {
+    getData()
+  }, [])
+  
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -25,33 +36,6 @@ const SellerProfile = () => {
   const closeEditModal = () => {
     setEditModalOpen(false);
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const email = "vivekr4400@gmail.com"; // replace with your actual email
-        const mobile = 8009860560; // replace with your actual mobile number
-        
-        const response = await fetch(`https://dc9b-2405-201-5009-31a8-6d5b-7c26-d299-6568.ngrok-free.app/api/seller?email=${email}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-     
-        const data = await response.json();
-        console.log(data)
-        setSellerData(data.data);
-      } catch (error) {
-        console.error("Error fetching seller data:", error.message);
-      }
-    };
-  
-    fetchData();
-  }, []);
-
-  console.log(sellerData)
-
   return (
     <div className="flex flex-row h-auto">
       {/* side menu */}
@@ -124,7 +108,7 @@ const SellerProfile = () => {
                 />
                 <div className="flex flex-col">
                   <p className="text-[#333333] font-semibold text-[18px]">
-                    06 November 1998
+                    {sellerData?.OwnerDOB}
                   </p>
                   <p className="text-[#979797] text-[14px]">Birth Date</p>
                 </div>
@@ -148,7 +132,7 @@ const SellerProfile = () => {
                 />
                 <div className="flex flex-col">
                   <p className="text-[#333333] font-semibold text-[18px]">
-                    4545 5776 6778
+                    {sellerData?.Aadhar}
                   </p>
                   <p className="text-[#979797] text-[14px]">Adhar Number</p>
                 </div>
@@ -160,7 +144,7 @@ const SellerProfile = () => {
                 />
                 <div className="flex flex-col">
                   <p className="text-[#333333] font-semibold text-[18px]">
-                    4545 5776 6778
+                    {sellerData?.PanCard}
                   </p>
                   <p className="text-[#979797] text-[14px]">PAN Card</p>
                 </div>
@@ -180,7 +164,7 @@ const SellerProfile = () => {
             </div>
 
             <div className="pr-32 relative">
-              <img src="../assests/images/sellerpic.png" className="" />
+              <img src={sellerData?.OwnerProfile} className="w-[220px] h-auto rounded-full" />
               <div
                 className="bg-white w-[60px] h-[60px] absolute top-40 left-36 rounded-full shadow-md cursor-pointer hover:bg-[#58B310] transform transition-transform duration-300 hover:scale-110"
                 onMouseEnter={() => setIsHovered(true)}

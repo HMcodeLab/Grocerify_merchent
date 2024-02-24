@@ -1,28 +1,29 @@
-import React from "react";
-
+import React, {useEffect} from "react";
+import useFetch from "../hooks/fetch.hook";
 const StoreProduct = () => {
+  let shopID = '65d7338168bd195c22bc4bd0'
+  let [{ isLoading, apiData, serverError }] = useFetch(`productsbystore?shop=${shopID}`)
+
+  console.log(apiData);
   return (
     <div className="flex flex-row ">
       <div className="w-[320px]">sidebar</div>
       <div className="flex flex-col gap-4 pt-4 pb-6 pl-8 pr-8 bg-[#F3F3F3] w-full">
         <div className="flex flex-col gap-2 w-full">
           <div className="flex flex-row gap-2 w-full">
-            <img src="../assests/images/foood.png" className="w-3/5 h-auto" />
+            <img src={apiData?.shop.product_primary_image_url} className="w-3/5 h-auto" />
             <div className="flex flex-col gap-2 w-1/5 h-auto">
-              <img src="../assests/images/storeimg.png" className="" />
-              <img src="../assests/images/storeimg2.png" className="" />
+              <img src={apiData?.shop.shopImages[0]} className="h-[50%]" />
+              <img src={apiData?.shop.shopImages[1]} className="h-[50%]" />
             </div>
-            <img src="../assests/images/storeimg3.png" className="w-1/5" />
+            <img src={apiData?.shop.shopImages[2]} className="w-1/5" />
           </div>
           <div className="flex flex-col">
             <p className="text-[#000000] text-[40px] font-Gorditas">
-              WOODEN LIFE STORE{" "}
+              {apiData?.shop?.shopName}
             </p>
             <p className="text-[#222222] text-[20px] font-Montserrat w-[400px]">
-              Shop No, 2284/3, Mariwala Town
-            </p>
-            <p className="text-[#222222] text-[20px] font-Montserrat w-[400px]">
-              Sector 7, Chandigarh
+            {apiData?.shop?.ShopAddress}
             </p>
           </div>
           <div className="flex flex-row gap-2">
@@ -30,7 +31,7 @@ const StoreProduct = () => {
               Open now -
             </p>
             <p className="text-[#222222] text-[14px] font-Montserrat">
-              9:30 am - 11pm(Today)
+            {apiData?.shop.openingHours.from} - {apiData?.shop.openingHours.to} (Today)
             </p>
           </div>
           <div className="flex flex-row gap-2">
@@ -96,153 +97,31 @@ const StoreProduct = () => {
             </div>
           </div>
         </div>
-
         {/* products */}
         <div className="bg-[#FFFFFF] grid grid-cols-4 gap-10 p-8">
-          {/* <div className="relative group"> */}
-          <div className="flex flex-col gap-2 p-4 hover:bg-[#F3F3F3] transform transition-transform duration-300 ease-in-out hover:scale-105">
-            <img src="../assests/images/watch.png" className="w-full h-auto" />
-            <div className="flex flex-col text-[#848484]">
-              <div className="flex flex-row justify-between items-center">
-                <p className="font-Gorditas">Samsung </p>
-                <span className="text-xl text-center text-[#FFB800]">
-                  &#9733;&#9733;&#9733;&#9733;&#9734;
-                </span>
+        {/* <div className="relative group"> */}
+        {apiData?.shop?.products?.map((data, id)=>{
+          return(
+            <div key={id} className="flex flex-col gap-2 p-4 hover:bg-[#F3F3F3] transform transition-transform duration-300 ease-in-out hover:scale-105">
+              <img src={data.product_primary_image_url} className="w-[100%] h-[300px] object-contain" />
+              <div className="flex flex-col text-[#848484]">
+                <div className="flex flex-row justify-between items-center">
+                  <p className="font-Gorditas">{data.brand}</p>
+                  <span className="text-xl text-center text-[#FFB800]">
+                    &#9733;&#9733;&#9733;&#9733;&#9734;
+                  </span>
+                </div>
+                <p className="font-Montserrat font-semibold text-[14px]">
+                {`${data.products_title.slice(0,16)}...`}
+                </p>
+                <p className="font-Montserrat font-semibold text-[14px]">
+                  Rs.{data.variants1_mrp_price - data["variants1_discount%"]/100*data.variants1_mrp_price}
+                </p>
               </div>
-              <p className="font-Montserrat font-semibold text-[14px]">
-                Galaxy Tab S9 FE+
-              </p>
-              <p className="font-Montserrat font-semibold text-[14px]">
-                ₹10,000
-              </p>
             </div>
-          </div>
-          {/* <div className="absolute bg-[#58B310] top-2/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-90 transition-opacity duration-300">
-              <img src="../assests/icons/user.svg" />
-            </div>
-          </div> */}
-
-          <div className="flex flex-col gap-2 p-4 hover:bg-[#F3F3F3] transform transition-transform duration-300 ease-in-out hover:scale-105">
-            <img src="../assests/images/watch.png" className="w-full h-auto" />
-            <div className="flex flex-col text-[#848484]">
-              <div className="flex flex-row justify-between items-center">
-                <p className="font-Gorditas">Samsung </p>
-                <span className="text-xl text-center text-[#FFB800]">
-                  &#9733;&#9733;&#9733;&#9733;&#9734;
-                </span>
-              </div>
-              <p className="font-Montserrat font-semibold text-[14px]">
-                Galaxy Tab S9 FE+
-              </p>
-              <p className="font-Montserrat font-semibold text-[14px]">
-                ₹10,000
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 p-4 hover:bg-[#F3F3F3] transform transition-transform duration-300 ease-in-out hover:scale-105">
-            <img src="../assests/images/watch.png" className="w-full h-auto" />
-            <div className="flex flex-col text-[#848484]">
-              <div className="flex flex-row justify-between items-center">
-                <p className="font-Gorditas">Samsung </p>
-                <span className="text-xl text-center text-[#FFB800]">
-                  &#9733;&#9733;&#9733;&#9733;&#9734;
-                </span>
-              </div>
-              <p className="font-Montserrat font-semibold text-[14px]">
-                Galaxy Tab S9 FE+
-              </p>
-              <p className="font-Montserrat font-semibold text-[14px]">
-                ₹10,000
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 p-4 hover:bg-[#F3F3F3] transform transition-transform duration-300 ease-in-out hover:scale-105">
-            <img src="../assests/images/watch.png" className="w-full h-auto" />
-            <div className="flex flex-col text-[#848484]">
-              <div className="flex flex-row justify-between items-center">
-                <p className="font-Gorditas">Samsung </p>
-                <span className="text-xl text-center text-[#FFB800]">
-                  &#9733;&#9733;&#9733;&#9733;&#9734;
-                </span>
-              </div>
-              <p className="font-Montserrat font-semibold text-[14px]">
-                Galaxy Tab S9 FE+
-              </p>
-              <p className="font-Montserrat font-semibold text-[14px]">
-                ₹10,000
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 p-4 hover:bg-[#F3F3F3] transform transition-transform duration-300 ease-in-out hover:scale-105">
-            <img src="../assests/images/watch.png" className="w-full h-auto" />
-            <div className="flex flex-col text-[#848484]">
-              <div className="flex flex-row justify-between items-center">
-                <p className="font-Gorditas">Samsung </p>
-                <span className="text-xl text-center text-[#FFB800]">
-                  &#9733;&#9733;&#9733;&#9733;&#9734;
-                </span>
-              </div>
-              <p className="font-Montserrat font-semibold text-[14px]">
-                Galaxy Tab S9 FE+
-              </p>
-              <p className="font-Montserrat font-semibold text-[14px]">
-                ₹10,000
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 p-4 hover:bg-[#F3F3F3] transform transition-transform duration-300 ease-in-out hover:scale-105">
-            <img src="../assests/images/watch.png" className="w-full h-auto" />
-            <div className="flex flex-col text-[#848484]">
-              <div className="flex flex-row justify-between items-center">
-                <p className="font-Gorditas">Samsung </p>
-                <span className="text-xl text-center text-[#FFB800]">
-                  &#9733;&#9733;&#9733;&#9733;&#9734;
-                </span>
-              </div>
-              <p className="font-Montserrat font-semibold text-[14px]">
-                Galaxy Tab S9 FE+
-              </p>
-              <p className="font-Montserrat font-semibold text-[14px]">
-                ₹10,000
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 p-4 hover:bg-[#F3F3F3] transform transition-transform duration-300 ease-in-out hover:scale-105">
-            <img src="../assests/images/watch.png" className="w-full h-auto" />
-            <div className="flex flex-col text-[#848484]">
-              <div className="flex flex-row justify-between items-center">
-                <p className="font-Gorditas">Samsung </p>
-                <span className="text-xl text-center text-[#FFB800]">
-                  &#9733;&#9733;&#9733;&#9733;&#9734;
-                </span>
-              </div>
-              <p className="font-Montserrat font-semibold text-[14px]">
-                Galaxy Tab S9 FE+
-              </p>
-              <p className="font-Montserrat font-semibold text-[14px]">
-                ₹10,000
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-2 p-4 hover:bg-[#F3F3F3] transform transition-transform duration-300 ease-in-out hover:scale-105">
-            <img src="../assests/images/watch.png" className="w-full h-auto" />
-            <div className="flex flex-col text-[#848484]">
-              <div className="flex flex-row justify-between items-center">
-                <p className="font-Gorditas">Samsung </p>
-                <span className="text-xl text-center text-[#FFB800]">
-                  &#9733;&#9733;&#9733;&#9733;&#9734;
-                </span>
-              </div>
-              <p className="font-Montserrat font-semibold text-[14px]">
-                Galaxy Tab S9 FE+
-              </p>
-              <p className="font-Montserrat font-semibold text-[14px]">
-                ₹10,000
-              </p>
-            </div>
-          </div>
+          )
+        })}
         </div>
-
         {/* ratings */}
         <div className="bg-[#FFFFFF] flex flex-col gap-2">
           <div className="flex flex-row justify-between font-Gorditas text-[#848484] text-lg pt-1 pb-1 pl-10 pr-10 hover:bg-[#58B310] hover:text-[#FFFFFF]">

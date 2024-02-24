@@ -1,17 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Menu } from "react-feather";
 import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
-
+import { getSeller } from "../helper/helper";
 // edit on same page to update data
 
 
 const SellerSettingsProfile = () => {
   const [isSidebarOpen, setSidebarOpen] = useState("");
+  const [sellerData, setSellerData] = useState(null);
+  let email ='sahilkumar142002@gmail.com'
   const toggleSidebar = () => {
       setSidebarOpen(!isSidebarOpen);
     };
+  
+  useEffect(() => {
+    getData()
+  }, [])
+  
+  
+  async function getData() {
+    const sellerData = await getSeller({email})
+    setSellerData(sellerData.data.data)
+  }
 
+  console.log(sellerData);
+  
   return (
     <div className="flex flex-row h-[800px]">
       {/* side menu */}
@@ -50,7 +64,7 @@ const SellerSettingsProfile = () => {
               <div className="flex flex-row justify-between gap-6">
                 <img src="../assests/icons/profiledetails.svg" />
                 <div className="flex flex-col font-Plus Jakarta Sans">
-                  <p className="text-[18px] text-[#333333] font-semibold">Rahul Grewal</p>
+                  <p className="text-[18px] text-[#333333] font-semibold">{sellerData?.OwnerName}</p>
                   <p className="text-[#979797] font-Plus Jakarta Sans text-[14px]">
                   Owner Name
                   </p>
@@ -61,7 +75,7 @@ const SellerSettingsProfile = () => {
               <div className="flex flex-row justify-between gap-6">
                 <img src="../assests/icons/call-calling.svg" />
                 <div className="flex flex-col font-Plus Jakarta Sans">
-                  <p className="text-[18px] text-[#333333] font-semibold">XXX XXXX 239</p>
+                  <p className="text-[18px] text-[#333333] font-semibold">{sellerData?.OwnerMobile}</p>
                   <p className="text-[#979797] font-Plus Jakarta Sans text-[14px]">
                   Phone Number
                   </p>
@@ -72,7 +86,7 @@ const SellerSettingsProfile = () => {
               <div className="flex flex-row justify-between gap-6">
                 <img src="../assests/icons/sms-tracking.svg" />
                 <div className="flex flex-col font-Plus Jakarta Sans">
-                  <p className="text-[18px] text-[#333333] font-semibold">rahulgrewal786@b...</p>
+                  <p className="text-[18px] text-[#333333] font-semibold">{sellerData?.OwnerEmail}</p>
                   <p className="text-[#979797] font-Plus Jakarta Sans text-[14px]">
                   E-Mail Address
                   </p>
