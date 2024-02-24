@@ -21,13 +21,30 @@ const SellerRateUs = ({ onClose }) => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="flex flex-row gap-4 text-2xl font-Gorditas items-center text-[#333333]">
+      <div className="flex flex-row gap-4 text-2xl items-center text-[#333333]">
         {" "}
         <Link to="/sellersettings" className="text-3xl" onClick={onClose}>
           {" "}
           {" < "}{" "}
         </Link>
-        RATE US
+        <p className="font-Gorditas">RATE US</p>
+      </div>
+      <div className=" flex flex-col justify-center items-center gap-4 pl-4">
+        <p className="flex text-[#333333] font-Montserrat text-lg font-semibold">
+          Your opinion matters to us!
+        </p>
+        <p className="flex items-center text-center text-[#909090] w-[270px] leading-5">
+          For Marketing and Branding charges Each Coins Values One Rupee{" "}
+        </p>
+      </div>
+      <div className="flex items-center justify-center">
+        <span className="text-3xl text-center text-[#FFB800]">
+          &#9733;&#9733;&#9733;&#9733;&#9734;
+        </span>
+      </div>
+      <div className="flex flex-col gap-4 justify-center items-center">
+        <button className="bg-[#58B310] text-[#FFFFFF] font-Montserrat text-[18px] w-[130px] rounded-md pt-2 pb-2">Submit</button>
+        <p className="text-[#008080] font-Montserrat">No Thanks</p>
       </div>
     </div>
   );
