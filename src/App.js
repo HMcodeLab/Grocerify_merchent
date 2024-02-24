@@ -2,6 +2,7 @@ import './App.css';
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MoreStore from "./pages/MoreStore";
+import StoreProduct from './pages/StoreProduct';
 import ContactUs from "./pages/ContactUs";
 import PaymentOptions from "./pages/PaymentOptions";
 import BilingDetails from "./pages/BilingDetails";
@@ -38,6 +39,7 @@ function App() {
       <Routes>
         <Route exact path={"/stores"} element={<StoreFeatured />}></Route>
         <Route exact path={"/morestore"} element={<MoreStore />}></Route>
+        <Route exact path={"/storeproduct"} element={<StoreProduct />}></Route>
         <Route exact path={"/contactus"} element={<ContactUs />}></Route>
         <Route exact path={"/payment"} element={<PaymentOptions />}></Route>
         <Route exact path={"/biling"} element={<BilingDetails />}></Route>

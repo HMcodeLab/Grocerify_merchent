@@ -208,7 +208,7 @@ const StoreFeatured = () => {
 
               <div className="grid grid-cols-2 gap-3 p-4">
                 <div className="relative group">
-                  <Link to={"/morestore"}>
+                  <Link to={"/storeproduct"}>
                     <img
                       src="../assests/images/chandigarhstore.svg"
                       className="w-full group-hover:brightness-50 transition-all duration-300"

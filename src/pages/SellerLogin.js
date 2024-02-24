@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "../styles/sellerlogin.module.css";
 
@@ -12,14 +12,11 @@ const SellerLogin = () => {
   });
 
   const handleForgotPassword = () => {
-    
     console.log("Forgot Password clicked!");
-    // For example, you might navigate to a reset password page:
-    // history.push("/reset-password");
   };
 
   const handleLogin = () => {
-    // const storeCount = getStoreCount(user); 
+    // const storeCount = getStoreCount(user);
     const storeCount = 1;
 
     if (storeCount === 0) {
@@ -66,7 +63,7 @@ const SellerLogin = () => {
                 <div className="flex flex-col gap-6">
                   {/* Email input */}
                   <div>
-                    <p>Enter your email address</p>
+                    <p className="">Enter your email address</p>
                     <input
                       type="text"
                       placeholder="Enter Your Email"
@@ -92,7 +89,8 @@ const SellerLogin = () => {
                   </div>
                   {/* Forgot password link */}
                   <div className="flex flex-row justify-between">
-                    <Link to={"/forgetpassword"}
+                    <Link
+                      to={"/forgetpassword"}
                       className="text-[12px] font-Montserrat cursor-pointer"
                       onClick={handleForgotPassword}
                     >
@@ -130,7 +128,10 @@ const SellerLogin = () => {
                   </div>
                   {/* Resent OTP */}
                   <div className="flex flex-row justify-between">
-                    <Link to={"/resendotp"} className="text-[12px] font-Montserrat cursor-pointer">
+                    <Link
+                      to={"/resendotp"}
+                      className="text-[12px] font-Montserrat cursor-pointer"
+                    >
                       Resend OTP
                     </Link>
                   </div>
@@ -138,7 +139,10 @@ const SellerLogin = () => {
               )}
 
               <div className="flex justify-center">
-                <button  onClick={handleLogin} className="text-[#FFFFFF] font-bold text-[18px] shadow-xl font-Inter bg-[#58B310] rounded-lg pl-6 pr-6 pt-1 pb-1 hover:scale-105 transition-transform duration-300 ease-in-out">
+                <button
+                  onClick={handleLogin}
+                  className="text-[#FFFFFF] font-bold text-[18px] shadow-xl font-Inter bg-[#58B310] rounded-lg pl-6 pr-6 pt-1 pb-1 hover:scale-105 transition-transform duration-300 ease-in-out"
+                >
                   Login
                 </button>
               </div>
