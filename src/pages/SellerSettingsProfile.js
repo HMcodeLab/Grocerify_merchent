@@ -3,6 +3,7 @@ import { Menu } from "react-feather";
 import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
 import { getSeller } from "../helper/helper";
+
 // edit on same page to update data
 
 

@@ -24,6 +24,7 @@ const SellerProfile = () => {
     getData()
   }, [])
   
+  console.log(sellerData?.Shop);
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);

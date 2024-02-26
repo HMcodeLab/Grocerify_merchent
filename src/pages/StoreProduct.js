@@ -5,6 +5,9 @@ const StoreProduct = () => {
   let [{ isLoading, apiData, serverError }] = useFetch(`productsbystore?shop=${shopID}`)
 
   console.log(apiData);
+  if (isLoading) {
+    return
+  }
   return (
     <div className="flex flex-row ">
       <div className="w-[320px]">sidebar</div>

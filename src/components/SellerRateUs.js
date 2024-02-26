@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const SellerRateUs = ({ onClose }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [selectedRating, setSelectedRating] = useState(0);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -10,6 +11,30 @@ const SellerRateUs = ({ onClose }) => {
 
   const handleMouseLeave = () => {
     setIsHovered(false);
+  };
+
+  const handleStarClick = (rating) => {
+    setSelectedRating(rating);
+  };
+
+  const renderStars = () => {
+    const stars = [];
+
+    for (let i = 1; i <= 5; i++) {
+      stars.push(
+        <span
+          key={i}
+          className={`text-3xl cursor-pointer ${
+            selectedRating >= i ? "text-[#FFB800]" : "text-[#D2D2D2]"
+          }`}
+          onClick={() => handleStarClick(i)}
+        >
+          &#9733;
+        </span>
+      );
+    }
+
+    return stars;
   };
 
   return (
@@ -38,13 +63,25 @@ const SellerRateUs = ({ onClose }) => {
         </p>
       </div>
       <div className="flex items-center justify-center">
-        <span className="text-3xl text-center text-[#FFB800]">
+        {renderStars()}
+        {/* <span className="text-3xl text-center text-[#FFB800]">
           &#9733;&#9733;&#9733;&#9733;&#9734;
-        </span>
+        </span> */}
       </div>
       <div className="flex flex-col gap-4 justify-center items-center">
-        <button className="bg-[#58B310] text-[#FFFFFF] font-Montserrat text-[18px] w-[130px] rounded-md pt-2 pb-2">Submit</button>
-        <p className="text-[#008080] font-Montserrat">No Thanks</p>
+        <button
+          className="bg-[#58B310] text-[#FFFFFF] font-Montserrat text-[18px] w-[130px] rounded-md pt-2 pb-2"
+          onClick={onClose}
+        >
+          Submit
+        </button>
+        <Link
+          to={"/sellersettings"}
+          onClick={onClose}
+          className="text-[#008080] font-Montserrat"
+        >
+          No Thanks
+        </Link>
       </div>
     </div>
   );

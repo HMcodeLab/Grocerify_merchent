@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu } from "react-feather";
 import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
 import EditShopFormSeller from "../components/EditShopFormSeller";
+import { getSeller } from "../helper/helper";
 
 // add edit icon in search bar for shop details only
 // edit on same page to update data
@@ -11,6 +12,18 @@ const SellerSettingsShop = () => {
   const [isSidebarOpen, setSidebarOpen] = useState("");
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [sellerData, setSellerData] = useState(null);
+  let email ='sahilkumar142002@gmail.com';
+
+  useEffect(() => {
+    getData()
+  }, [])
+  
+  
+  async function getData() {
+    const sellerData = await getSeller({email})
+    setSellerData(sellerData.data.data)
+  }
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -23,6 +36,8 @@ const SellerSettingsShop = () => {
   const closeEditModal = () => {
     setEditModalOpen(false);
   };
+
+  console.log(sellerData);
 
   return (
     <div className="flex flex-row h-auto">
@@ -104,7 +119,7 @@ const SellerSettingsShop = () => {
                 <img src="../assests/icons/shopdetails.svg" />
                 <div className="flex flex-col font-Plus Jakarta Sans">
                   <p className="text-[18px] text-[#333333] font-semibold">
-                    The Grocrify
+                  {sellerData?.Shop?.shopName}
                   </p>
                   <p className="text-[#979797] font-Plus Jakarta Sans text-[14px]">
                     Shop Name
