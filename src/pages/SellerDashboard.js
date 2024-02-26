@@ -6,6 +6,7 @@ import DueTableSeller from "../components/DueTableSeller";
 import ActiveTableSeller from "../components/ActiveTableSeller";
 import DeliveredTableSeller from "../components/DeliveredTableSeller";
 import OnTheWayTableSeller from "../components/OnTheWayTableSeller";
+import { Toaster } from "react-hot-toast";
 
 // cards data, navigation - sales, visitors
 // pending, success status colors
@@ -46,6 +47,8 @@ const SellerDashboard = () => {
   };
 
   return (
+    <>
+      <Toaster position="top-right" />
     <div className="flex flex-row h-auto">
       {/* side menu */}
       <button
@@ -214,6 +217,7 @@ const SellerDashboard = () => {
         </div> */}
       </div>
     </div>
+    </>
   );
 };
 
