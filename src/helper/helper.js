@@ -12,3 +12,14 @@ export async function getSeller({ email }){
         return { error : "User not found!"}
     }
 }
+
+export async function sellerLoginWithEmail({email, password}){
+    try {
+        if(email){
+            const { data } = await axios.post('/api/sellerloginwithemail', {email, password})
+            return ({ data });
+        }
+    } catch (error) {
+        return ({ error : "Password doesn't Match...!"})
+    }
+}

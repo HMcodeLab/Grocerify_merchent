@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { validateEmail } from "../helper/Validations";
+import { sellerLoginWithEmail } from "../helper/helper";
+import toast, { Toaster } from 'react-hot-toast';
 import styles from "../styles/sellerlogin.module.css";
 
 const SellerLogin = () => {
@@ -15,19 +18,33 @@ const SellerLogin = () => {
     console.log("Forgot Password clicked!");
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     // const storeCount = getStoreCount(user);
-    const storeCount = 1;
-
-    if (storeCount === 0) {
-      navigate("/sellershopregistration");
-    } else {
-      navigate("/sellerdashboard");
+    if (!user.email || !validateEmail(user.email) && !user.password) {
+      toast.error('Invalid Email and Password!');
+    } else if (!user.email || !validateEmail(user.email)) {
+      toast.error('Invalid Email!');
+    } else if (!user.password) {
+      toast.error('Password is required :(');
+    } else{
+        let data = await sellerLoginWithEmail({email: user.email, password:user.password})
+        if (data?.data) {
+          localStorage.setItem('token', data.data.token);
+          if (data.data.shop) {
+            navigate("/sellerdashboard");
+          } else {
+            navigate("/sellershopregistration");
+          }
+          toast.success('Login Successful');
+        } else{
+          toast.error('Invalid Password!');
+        }
     }
   };
 
   return (
     <>
+      <Toaster position="top-right"/>
       <div className={styles.register_container}>
         <div className={styles.register_box_main}>
           {/* Main heading */}
