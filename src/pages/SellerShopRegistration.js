@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import styles from "../styles/shopregister.module.css";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
-// import { BASE_URL_PRODUCTS } from "../../Api/api";
+import { useNavigate } from "react-router-dom";
 import CircularProgress from "@mui/joy/CircularProgress";
+import { BASE_URL } from "../api/api";
 
 const ShopRegistration = () => {
   /* ed-o-neil-AvvdZlhDowA-unsplash 1 */
-
+  const navigate=useNavigate()
   const [btnLoader, setBtnLoader] = useState(false);
   const [shopDetails, setShopDetails] = useState({
     shopName: "",
@@ -81,12 +82,13 @@ const ShopRegistration = () => {
       setBtnLoader(false);
     } else {
       try {
-        const res = await axios.post(`/api/addshop`, {
+        const res = await axios.post(`${BASE_URL}/api/addshop`, {
           ...shopDetails,
         });
-        const response = res.json();
-        console.log(response);
+        
+        console.log(res);
         toast.success("Shop Registered Successfully");
+        navigate('/sellerDashboard')
         setBtnLoader(false);
       } catch (error) {
         console.log(error);

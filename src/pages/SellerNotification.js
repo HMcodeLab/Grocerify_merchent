@@ -3,6 +3,9 @@ import { Menu } from "react-feather";
 import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
 
+// functionality
+
+
 const SellerNotification = () => {
   const [isSidebarOpen, setSidebarOpen] = useState("");
   const toggleSidebar = () => {

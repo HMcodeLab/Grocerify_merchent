@@ -1,5 +1,7 @@
 import axios from 'axios';
-axios.defaults.baseURL = process.env.REACT_APP_SERVER_DOMAIN || 'http://localhost:8080';
+import { BASE_URL } from '../api/api';;
+
+axios.defaults.baseURL = BASE_URL;
 
 /** get User details */
 export async function getSeller({ email }){

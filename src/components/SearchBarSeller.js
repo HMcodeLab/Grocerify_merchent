@@ -47,7 +47,7 @@ const SearchBarSeller = () => {
         <div className="relative font-Montserrat w-2/5 p-1 flex items-center justify-center">
           <input
             placeholder="Search"
-            className="bg-[#D9D9D94D] rounded-xl pl-8 pt-[1px] pb-[1px] w-full flex items-center"
+            className="bg-[#D9D9D94D] rounded-xl pl-8 pt-[1px] pb-[1px] w-full flex items-center outline-none"
           />
           <img
             src="../assests/icons/search.svg"

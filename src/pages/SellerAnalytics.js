@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
 
-// graph data
+// card, graph data
 
 const SellerAnalytics = () => {
   const [isSidebarOpen, setSidebarOpen] = useState("");

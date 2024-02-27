@@ -78,9 +78,9 @@ const SellerInventory = () => {
             <button className="text-[14px] text-[#FFFFFF] font-Montserrat bg-[#58B310] w-[210px] h-[44px] rounded-lg">
               Sample Store Inventory
             </button>
-            <button className="text-[14px] text-[#FFFFFF] font-Montserrat bg-[#58B310] w-[210px] h-[44px] rounded-lg">
+            {/* <button className="text-[14px] text-[#FFFFFF] font-Montserrat bg-[#58B310] w-[210px] h-[44px] rounded-lg">
               Upload Store Inventory
-            </button>
+            </button> */}
           </div>
         </div>
 

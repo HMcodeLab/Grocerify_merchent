@@ -9,6 +9,7 @@ import OnTheWayTableSeller from "../components/OnTheWayTableSeller";
 import { Toaster } from "react-hot-toast";
 
 // cards data, navigation - sales, visitors
+// table data
 // pending, success status colors
 
 const SellerDashboard = () => {

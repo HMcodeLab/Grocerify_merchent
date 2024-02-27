@@ -5,8 +5,9 @@ import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
 import EditProfileFormSeller from "../components/EditProfileFormSeller";
 import { getSeller } from "../helper/helper";
-// manipulate data
-// upload profile pic
+
+
+// edit profile functionality
 
 const SellerProfile = () => {
   let email ='sahilkumar142002@gmail.com'
@@ -76,6 +77,18 @@ const SellerProfile = () => {
                   {sellerData?.Shop?.OwnerName}
                   </p>
                   <p className="text-[#979797] text-[14px]">Owner Name</p>
+                </div>
+              </div>
+              <div className="flex flex-row gap-3">
+                <img
+                  src="../assests/icons/storename.svg"
+                  className="w-[32px] h-auto"
+                />
+                <div className="flex flex-col">
+                  <p className="text-[#333333] font-semibold text-[18px]">
+                  {sellerData?.Shop?.shopName}
+                  </p>
+                  <p className="text-[#979797] text-[14px]">Store Name</p>
                 </div>
               </div>
               <div className="flex flex-row gap-3">
@@ -150,18 +163,17 @@ const SellerProfile = () => {
                   <p className="text-[#979797] text-[14px]">PAN Card</p>
                 </div>
               </div>
-              <div className="flex flex-row gap-3">
+              <Link to="/" className="flex flex-row gap-3 items-center">
                 <img
-                  src="../assests/icons/storename.svg"
-                  className="w-[32px] h-auto"
+                  src="../assests/icons/profiledetails.svg"
+                  className="w-[40px] h-auto"
                 />
                 <div className="flex flex-col">
                   <p className="text-[#333333] font-semibold text-[18px]">
-                  {sellerData?.Shop?.shopName}
+                  Logout
                   </p>
-                  <p className="text-[#979797] text-[14px]">Store Name</p>
                 </div>
-              </div>
+              </Link>
             </div>
 
             <div className="pr-32 relative">

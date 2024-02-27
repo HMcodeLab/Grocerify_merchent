@@ -89,25 +89,25 @@ const SellerSettingsShop = () => {
         {/* images */}
         <div className="flex w-full pl-2">
           <img
-            src="../assests/images/shopdetails.png"
-            className="w-3/4 h-auto rounded-lg"
+            src={sellerData?.Shop?.shop_primary_image_url}
+            className="w-[900px] h-[400px] rounded-lg"
           />
         </div>
 
         <div className="flex flex-row gap-6 w-3/4 pl-2">
           <img
-            src="../assests/images/shopdetails2.png"
+            src={sellerData?.Shop.shopImages[0]}
             className="w-[200px] h-[150px] rounded-lg"
           />
           <div className="flex flex-col p-2 w-[500px] gap-1">
-            <p className="font-Gorditas font-bold text-[14px] text-[#333333]">
-              Your Profile Image
+            <p className="font-Gorditas font-bold text-[18px] text-[#333333]">
+              Shop Profile Image
             </p>
-            <p className="text-[#B1BCD2] text-[14px] font-Plus Jakarta Sans leading-4">
+            {/* <p className="text-[#B1BCD2] text-[14px] font-Plus Jakarta Sans leading-4">
               A Grocery Store Cashier with eight years of customer service
               experience, specializing in managing customer sales transactions
               and POS systems
-            </p>
+            </p> */}
           </div>
         </div>
 
@@ -139,7 +139,7 @@ const SellerSettingsShop = () => {
                 <img src="../assests/icons/location2.svg" />
                 <div className="flex flex-col font-Plus Jakarta Sans">
                   <p className="text-[18px] text-[#333333] font-semibold">
-                    32-B cannought Place
+                  {sellerData?.Shop?.ShopAddress}
                   </p>
                   <p className="text-[#979797] font-Plus Jakarta Sans text-[14px]">
                     Address
@@ -152,10 +152,10 @@ const SellerSettingsShop = () => {
                 <img src="../assests/icons/location3.svg" />
                 <div className="flex flex-col font-Plus Jakarta Sans">
                   <p className="text-[18px] text-[#333333] font-semibold">
-                    New Delhi
+                  {sellerData?.Shop?.BusinessLicenceNumber}
                   </p>
                   <p className="text-[#979797] font-Plus Jakarta Sans text-[14px]">
-                    State
+                  Business Licence Number
                   </p>
                 </div>
               </div>
@@ -165,10 +165,10 @@ const SellerSettingsShop = () => {
                 <img src="../assests/icons/location3.svg" />
                 <div className="flex flex-col font-Plus Jakarta Sans">
                   <p className="text-[18px] text-[#333333] font-semibold">
-                    Central Delhi
+                  {sellerData?.Shop?.BusinessRegistrationNumber}
                   </p>
                   <p className="text-[#979797] font-Plus Jakarta Sans text-[14px]">
-                    City
+                  Business Registration Number
                   </p>
                 </div>
               </div>
@@ -184,7 +184,7 @@ const SellerSettingsShop = () => {
                 <img src="../assests/icons/service.svg" />
                 <div className="flex flex-col font-Plus Jakarta Sans">
                   <p className="text-[18px] text-[#333333] font-semibold">
-                    Delivery, Dining, WIFI etc.,
+                  {sellerData?.Shop?.TypeOfProductSold}
                   </p>
                   <p className="text-[#979797] font-Plus Jakarta Sans text-[14px]">
                     Shop Services
@@ -194,24 +194,6 @@ const SellerSettingsShop = () => {
             </div>
           </div>
 
-          {/* <div className="flex flex-col gap-6 shadow-md rounded-xl pl-6 pr-6 pt-3 pb-3">
-            <div className="font-Montserrat-700 font-bold text-[24px] text-[#333333]">
-              Shop Photos
-            </div>
-            <div className="flex flex-row justify-between items-center">
-              <div className="flex flex-row justify-between gap-6">
-                <img src="../assests/icons/service.svg" />
-                <div className="flex flex-col font-Plus Jakarta Sans">
-                  <p className="text-[18px] text-[#333333] font-semibold">
-                    Add Media/Photos
-                  </p>
-                  <p className="text-[#979797] font-Plus Jakarta Sans text-[14px]">
-                    Add Media/Photos
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
       {isEditModalOpen && (
