@@ -4,12 +4,12 @@ import styles from "../styles/shopregister.module.css";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import CircularProgress from "@mui/joy/CircularProgress";
+// import CircularProgress from "@mui/joy/CircularProgress";
 import { BASE_URL } from "../api/api";
 
 const ShopRegistration = () => {
   /* ed-o-neil-AvvdZlhDowA-unsplash 1 */
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const [btnLoader, setBtnLoader] = useState(false);
   const [shopDetails, setShopDetails] = useState({
     shopName: "",
@@ -85,7 +85,7 @@ const ShopRegistration = () => {
         const res = await axios.post(`${BASE_URL}/api/addshop`, {
           ...shopDetails,
         });
-        
+
         console.log(res);
         toast.success("Shop Registered Successfully");
         navigate('/sellerDashboard')
@@ -111,268 +111,269 @@ const ShopRegistration = () => {
               <h2>SHOP REGISTRATION FORM</h2>
             </div>
             <div className="">
-            <div className={styles.scrollable_form}>
-              <span className={styles.inputs}>
-                <div>
-                  <span>
-                    <p>Shop Name</p>
-                    <input
-                      type="text"
-                      name="shopName"
-                      value={shopDetails.shopName}
-                      onChange={handleChange}
-                    />
-                  </span>
-                  <span>
-                    <p>Owner/Manager Name</p>
-                    <input
-                      type="text"
-                      name="OwnerName"
-                      value={shopDetails.OwnerName}
-                      onChange={handleChange}
-                    />
-                  </span>
-                  <span>
-                    <p>Owner/Manager Contact Number</p>
-                    <input
-                      type="text"
-                      name="OwnerNumber"
-                      value={shopDetails.OwnerNumber}
-                      onChange={handleChange}
-                    />
-                  </span>
-                  <span>
-                    <p>Owner/manager Email Address</p>
-                    <input
-                      type="text"
-                      name="OwnerEmail"
-                      value={shopDetails.OwnerEmail}
-                      onChange={handleChange}
-                    />
-                  </span>
-
-                  <span>
-                    <p>Owner/manager Physical Address</p>
-                    <input
-                      type="text"
-                      name="OwnerAdd"
-                      value={shopDetails.OwnerAdd}
-                      onChange={handleChange}
-                    />
-                  </span>
-                </div>
-                <div>
-                  <h4> Business Registration Form </h4>
-
-                  <span>
-                    <p>Business Licence/Permit Number</p>
-                    <input
-                      type="text"
-                      name="BusinessLicenceNumber"
-                      value={shopDetails.BusinessLicenceNumber}
-                      onChange={handleChange}
-                    />
-                  </span>
-                  <span>
-                    <p>Business Registration Number</p>
-                    <input
-                      type="text"
-                      name="BusinessRegistrationNumber"
-                      value={shopDetails.BusinessRegistrationNumber}
-                      onChange={handleChange}
-                    />
-                  </span>
-                  <span>
-                    <p>Tax Identification Number</p>
-                    <input
-                      type="text"
-                      name="TaxIdentificationNumber"
-                      value={shopDetails.TaxIdentificationNumber}
-                      onChange={handleChange}
-                    />
-                  </span>
-                </div>
-                <div>
-                  <h4>Product Information </h4>
-                  <span>
-                    <p>Types OF Product Sold</p>
-                    <input
-                      type="text"
-                      name="TypeOfProductSold"
-                      value={shopDetails.TypeOfProductSold}
-                      onChange={handleChange}
-                    />
-                  </span>
-                  <span>
-                    <p>Opening Hours</p>
-                    <input
-                      type="text"
-                      name="openingHours"
-                      value={shopDetails.openingHours}
-                      onChange={handleChange}
-                    />
-                  </span>
-                  <span>
-                    <p>Working Days</p>
-                    <input
-                      type="text"
-                      name="workingDays"
-                      value={shopDetails.workingDays}
-                      onChange={handleChange}
-                    />
-                  </span>
-                </div>
-                <div className={styles.deliery_info}>
-                  <p>Delivery Information(If Applicable)</p>
-                  <div className={styles.checkbox_div}>
-                    <span style={{ position: "relative", display:"flex",gap:"8px" }}>
-                      <input type="checkbox"value={"Monday"} />
-                         <p>Monday</p>
-                    </span>
-                    <span style={{ position: "relative", display:"flex",gap:"8px" }}>
-                      <input type="checkbox"value={"Tuesday"} />
-                      <p>Tuesday</p>
-                    </span>
-                    <span style={{ position: "relative", display:"flex",gap:"8px" }}>
-                      <input type="checkbox"value={"Wednesday"} />
-                      <p>Wednesday</p>
-                    </span>
-                    <span style={{ position: "relative", display:"flex",gap:"8px" }}>
-                      <input type="checkbox"value={"Thursday"} />
-                      <p>Thursday</p>
-                    </span>
-                    <span style={{ position: "relative", display:"flex",gap:"8px" }}>
-                      <input type="checkbox"value={"Friday"} />
-                      <p>Friday</p>
-                    </span>
-                    <span style={{ position: "relative", display:"flex",gap:"8px" }}>
-                      <input type="checkbox"value={"Saturday"} />
-                      <p>Saturday</p>
-                    </span>
-                    <span style={{ position: "relative", display:"flex",gap:"8px" }}>
-                      <input type="checkbox"value={"Sunday"} />
-                      <p>Sunday</p>
-                    </span>
-                  </div>
-                </div>
-                <div className={styles.delivery_service}>
-                  <p>Do you provide delivery services</p>
-
-                  <div className={styles.d_service}>
+              <div className={styles.scrollable_form}>
+                <span className={styles.inputs}>
+                  <div>
                     <span>
-                      <input type="radio" name="" id="" />
-                      <h5>Yes</h5>
+                      <p>Shop Name</p>
+                      <input
+                        type="text"
+                        name="shopName"
+                        value={shopDetails.shopName}
+                        onChange={handleChange}
+                      />
                     </span>
                     <span>
-                      <input type="radio" name="" id="" />
-                      <h5>No</h5>
+                      <p>Owner/Manager Name</p>
+                      <input
+                        type="text"
+                        name="OwnerName"
+                        value={shopDetails.OwnerName}
+                        onChange={handleChange}
+                      />
+                    </span>
+                    <span>
+                      <p>Owner/Manager Contact Number</p>
+                      <input
+                        type="text"
+                        name="OwnerNumber"
+                        value={shopDetails.OwnerNumber}
+                        onChange={handleChange}
+                      />
+                    </span>
+                    <span>
+                      <p>Owner/manager Email Address</p>
+                      <input
+                        type="text"
+                        name="OwnerEmail"
+                        value={shopDetails.OwnerEmail}
+                        onChange={handleChange}
+                      />
+                    </span>
+
+                    <span>
+                      <p>Owner/manager Physical Address</p>
+                      <input
+                        type="text"
+                        name="OwnerAdd"
+                        value={shopDetails.OwnerAdd}
+                        onChange={handleChange}
+                      />
                     </span>
                   </div>
-                </div>
-                <span>
-                  <p>Delivery Areas</p>
-                  <input
-                    type="text"
-                    name="deliveryArea"
-                    value={shopDetails.deliveryArea}
-                    onChange={handleChange}
-                  />
-                </span>
+                  <div>
+                    <h4> Business Registration Form </h4>
 
-                <span>
-                  <p>Delivery Charges</p>
-                  <input
-                    type="text"
-                    name="deliveryCharges"
-                    value={shopDetails.deliveryCharges}
-                    onChange={handleChange}
-                  />
-                </span>
-                <div className={styles.payment_method}>
-                  <p>Payment Methods Accepted</p>
-                  <span style={{ position: "relative", display:"flex",gap:"8px" }}>
-                    <input type="checkbox"value={"Cash"} />
-                    <p>Cash</p>
-                  </span>
-                  <span style={{ position: "relative", display:"flex",gap:"8px" }}>
-                    <input type="checkbox"value={"Online Payment"} />
-                    <p>Online Payment</p>
-                  </span>
-                  <span style={{ position: "relative", display:"flex",gap:"8px" }}>
-                    <input type="checkbox"value={"Credit/Debit Card"} />
-                    <p>Credit/Debit Card</p>
-                  </span>
-                </div>
+                    <span>
+                      <p>Business Licence/Permit Number</p>
+                      <input
+                        type="text"
+                        name="BusinessLicenceNumber"
+                        value={shopDetails.BusinessLicenceNumber}
+                        onChange={handleChange}
+                      />
+                    </span>
+                    <span>
+                      <p>Business Registration Number</p>
+                      <input
+                        type="text"
+                        name="BusinessRegistrationNumber"
+                        value={shopDetails.BusinessRegistrationNumber}
+                        onChange={handleChange}
+                      />
+                    </span>
+                    <span>
+                      <p>Tax Identification Number</p>
+                      <input
+                        type="text"
+                        name="TaxIdentificationNumber"
+                        value={shopDetails.TaxIdentificationNumber}
+                        onChange={handleChange}
+                      />
+                    </span>
+                  </div>
+                  <div>
+                    <h4>Product Information </h4>
+                    <span>
+                      <p>Types OF Product Sold</p>
+                      <input
+                        type="text"
+                        name="TypeOfProductSold"
+                        value={shopDetails.TypeOfProductSold}
+                        onChange={handleChange}
+                      />
+                    </span>
+                    <span>
+                      <p>Opening Hours</p>
+                      <input
+                        type="text"
+                        name="openingHours"
+                        value={shopDetails.openingHours}
+                        onChange={handleChange}
+                      />
+                    </span>
+                    <span>
+                      <p>Working Days</p>
+                      <input
+                        type="text"
+                        name="workingDays"
+                        value={shopDetails.workingDays}
+                        onChange={handleChange}
+                      />
+                    </span>
+                  </div>
+                  <div className={styles.deliery_info}>
+                    <p>Delivery Information(If Applicable)</p>
+                    <div className={styles.checkbox_div}>
+                      <span style={{ position: "relative", display: "flex", gap: "8px" }}>
+                        <input type="checkbox" value={"Monday"} />
+                        <p>Monday</p>
+                      </span>
+                      <span style={{ position: "relative", display: "flex", gap: "8px" }}>
+                        <input type="checkbox" value={"Tuesday"} />
+                        <p>Tuesday</p>
+                      </span>
+                      <span style={{ position: "relative", display: "flex", gap: "8px" }}>
+                        <input type="checkbox" value={"Wednesday"} />
+                        <p>Wednesday</p>
+                      </span>
+                      <span style={{ position: "relative", display: "flex", gap: "8px" }}>
+                        <input type="checkbox" value={"Thursday"} />
+                        <p>Thursday</p>
+                      </span>
+                      <span style={{ position: "relative", display: "flex", gap: "8px" }}>
+                        <input type="checkbox" value={"Friday"} />
+                        <p>Friday</p>
+                      </span>
+                      <span style={{ position: "relative", display: "flex", gap: "8px" }}>
+                        <input type="checkbox" value={"Saturday"} />
+                        <p>Saturday</p>
+                      </span>
+                      <span style={{ position: "relative", display: "flex", gap: "8px" }}>
+                        <input type="checkbox" value={"Sunday"} />
+                        <p>Sunday</p>
+                      </span>
+                    </div>
+                  </div>
+                  <div className={styles.delivery_service}>
+                    <p>Do you provide delivery services</p>
 
-                <div>
+                    <div className={styles.d_service}>
+                      <span>
+                        <input type="radio" name="" id="" />
+                        <h5>Yes</h5>
+                      </span>
+                      <span>
+                        <input type="radio" name="" id="" />
+                        <h5>No</h5>
+                      </span>
+                    </div>
+                  </div>
                   <span>
-                    <p>Shop Logo or Image Option (Upload Option)</p>
+                    <p>Delivery Areas</p>
                     <input
                       type="text"
-                      name="shopImage"
-                      value={shopDetails.shopImage}
+                      name="deliveryArea"
+                      value={shopDetails.deliveryArea}
                       onChange={handleChange}
                     />
                   </span>
-                </div>
 
-                <span>
                   <span>
-                    <p>Terms and Condition</p>
-                    <textarea
+                    <p>Delivery Charges</p>
+                    <input
                       type="text"
-                      name="termsAndCondition"
-                      rows={5}
-                      cols={50}
-                      value={shopDetails.termsAndCondition}
+                      name="deliveryCharges"
+                      value={shopDetails.deliveryCharges}
                       onChange={handleChange}
                     />
                   </span>
+                  <div className={styles.payment_method}>
+                    <p>Payment Methods Accepted</p>
+                    <span style={{ position: "relative", display: "flex", gap: "8px" }}>
+                      <input type="checkbox" value={"Cash"} />
+                      <p>Cash</p>
+                    </span>
+                    <span style={{ position: "relative", display: "flex", gap: "8px" }}>
+                      <input type="checkbox" value={"Online Payment"} />
+                      <p>Online Payment</p>
+                    </span>
+                    <span style={{ position: "relative", display: "flex", gap: "8px" }}>
+                      <input type="checkbox" value={"Credit/Debit Card"} />
+                      <p>Credit/Debit Card</p>
+                    </span>
+                  </div>
+
+                  <div>
+                    <span>
+                      <p>Shop Logo or Image Option (Upload Option)</p>
+                      <input
+                        type="text"
+                        name="shopImage"
+                        value={shopDetails.shopImage}
+                        onChange={handleChange}
+                      />
+                    </span>
+                  </div>
+
                   <span>
-                    <p>Privacy Policy</p>
-                    <textarea
-                      type="text"
-                      name="privacyPolicy"
-                      rows={5}
-                      cols={50}
-                      value={shopDetails.privacyPolicy}
-                      onChange={handleChange}
-                    />
-                  </span>
-                  <span>
-                    <p>Refund Policy</p>
-                    <textarea
-                      type="text"
-                      name="refundPolicy"
-                      rows={5}
-                      cols={50}
-                      value={shopDetails.refundPolicy}
-                      onChange={handleChange}
-                    />
-                  </span>
-                  <span>
-                    <p>Return Policy</p>
-                    <textarea
-                      type="text"
-                      name="returnPolicy"
-                      rows={5}
-                      cols={50}
-                      value={shopDetails.returnPolicy}
-                      onChange={handleChange}
-                    />
+                    <span>
+                      <p>Terms and Condition</p>
+                      <textarea
+                        type="text"
+                        name="termsAndCondition"
+                        rows={5}
+                        cols={50}
+                        value={shopDetails.termsAndCondition}
+                        onChange={handleChange}
+                      />
+                    </span>
+                    <span>
+                      <p>Privacy Policy</p>
+                      <textarea
+                        type="text"
+                        name="privacyPolicy"
+                        rows={5}
+                        cols={50}
+                        value={shopDetails.privacyPolicy}
+                        onChange={handleChange}
+                      />
+                    </span>
+                    <span>
+                      <p>Refund Policy</p>
+                      <textarea
+                        type="text"
+                        name="refundPolicy"
+                        rows={5}
+                        cols={50}
+                        value={shopDetails.refundPolicy}
+                        onChange={handleChange}
+                      />
+                    </span>
+                    <span>
+                      <p>Return Policy</p>
+                      <textarea
+                        type="text"
+                        name="returnPolicy"
+                        rows={5}
+                        cols={50}
+                        value={shopDetails.returnPolicy}
+                        onChange={handleChange}
+                      />
+                    </span>
                   </span>
                 </span>
-              </span>
-              <div className={styles.submit}>
-                <button onClick={handleSubmit}>
-                  {btnLoader ? (
-                    <CircularProgress size="sm" color="success" />
-                  ) : (
-                    "Register Shop"
-                  )}
-                </button>
-              </div>
-            </div></div>
+                <div className={styles.submit}>
+                  <button onClick={handleSubmit}>
+                    {btnLoader ? (
+                      // <CircularProgress size="sm" color="success" />
+                      <p>Loading...</p>
+                    ) : (
+                      "Register Shop"
+                    )}
+                  </button>
+                </div>
+              </div></div>
           </div>
         </div>
       </div>

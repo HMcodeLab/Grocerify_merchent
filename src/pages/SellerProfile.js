@@ -1,31 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "react-feather";
 import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
 import EditProfileFormSeller from "../components/EditProfileFormSeller";
-import { getSeller } from "../helper/helper";
+
+import { GlobalInfo } from "../App";
 
 
 // edit profile functionality
 
 const SellerProfile = () => {
-  let email ='sahilkumar142002@gmail.com'
+  const { sellerDetails } = useContext(GlobalInfo)
+  console.log(sellerDetails)
+  // let email = 'sahilkumar142002@gmail.com'
   const [isSidebarOpen, setSidebarOpen] = useState("");
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [sellerData, setSellerData] = useState(null);
 
-  async function getData() {
-    const sellerData = await getSeller({email})
-    setSellerData(sellerData.data.data)
-  }
-  
-  useEffect(() => {
-    getData()
-  }, [])
-  
-  console.log(sellerData?.Shop);
+
+
+
+  // console.log(sellerDetails?.Shop);
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -52,9 +48,8 @@ const SellerProfile = () => {
 
       {/* Main content */}
       <div
-        className={`flex flex-col pl-20 pr-16 pt-8 pb-40 space-y-10 ${
-          isSidebarOpen ? "w-4/5" : "w-full"
-        }`}
+        className={`flex flex-col pl-20 pr-16 pt-8 pb-40 space-y-10 ${isSidebarOpen ? "w-4/5" : "w-full"
+          }`}
       >
         {/* Search bar */}
         <SearchBarSeller />
@@ -64,7 +59,7 @@ const SellerProfile = () => {
           <p className="text-3xl font-Gorditas">Merchant Profile</p>
         </div>
 
-        {sellerData && (
+        {sellerDetails && (
           <div className="flex flex-row justify-between pl-4">
             <div className="flex flex-col font-Plus Jakarta Sans gap-6 pl-8">
               <div className="flex flex-row gap-3">
@@ -74,7 +69,7 @@ const SellerProfile = () => {
                 />
                 <div className="flex flex-col">
                   <p className="text-[#333333] font-semibold text-[18px]">
-                  {sellerData?.Shop?.OwnerName}
+                    {sellerDetails?.Shop?.OwnerName}
                   </p>
                   <p className="text-[#979797] text-[14px]">Owner Name</p>
                 </div>
@@ -86,7 +81,7 @@ const SellerProfile = () => {
                 />
                 <div className="flex flex-col">
                   <p className="text-[#333333] font-semibold text-[18px]">
-                  {sellerData?.Shop?.shopName}
+                    {sellerDetails?.Shop?.shopName}
                   </p>
                   <p className="text-[#979797] text-[14px]">Store Name</p>
                 </div>
@@ -98,7 +93,7 @@ const SellerProfile = () => {
                 />
                 <div className="flex flex-col">
                   <p className="text-[#333333] font-semibold text-[18px]">
-                  {sellerData?.Shop?.OwnerNumber}
+                    {sellerDetails?.Shop?.OwnerNumber}
                   </p>
                   <p className="text-[#979797] text-[14px]">Phone Number</p>
                 </div>
@@ -110,7 +105,7 @@ const SellerProfile = () => {
                 />
                 <div className="flex flex-col">
                   <p className="text-[#333333] font-semibold text-[18px]">
-                  {sellerData?.Shop?.OwnerEmail}
+                    {sellerDetails?.Shop?.OwnerEmail}
                   </p>
                   <p className="text-[#979797] text-[14px]">E-Mail Address</p>
                 </div>
@@ -122,7 +117,7 @@ const SellerProfile = () => {
                 />
                 <div className="flex flex-col">
                   <p className="text-[#333333] font-semibold text-[18px]">
-                    {sellerData?.OwnerDOB}
+                    {sellerDetails?.OwnerDOB}
                   </p>
                   <p className="text-[#979797] text-[14px]">Birth Date</p>
                 </div>
@@ -134,7 +129,7 @@ const SellerProfile = () => {
                 />
                 <div className="flex flex-col">
                   <p className="text-[#333333] font-semibold text-[18px]">
-                  {sellerData?.Shop?.OwnerAddress}
+                    {sellerDetails?.Shop?.OwnerAddress}
                   </p>
                   <p className="text-[#979797] text-[14px]">Address</p>
                 </div>
@@ -146,7 +141,7 @@ const SellerProfile = () => {
                 />
                 <div className="flex flex-col">
                   <p className="text-[#333333] font-semibold text-[18px]">
-                    {sellerData?.Aadhar}
+                    {sellerDetails?.Aadhar}
                   </p>
                   <p className="text-[#979797] text-[14px]">Adhar Number</p>
                 </div>
@@ -158,7 +153,7 @@ const SellerProfile = () => {
                 />
                 <div className="flex flex-col">
                   <p className="text-[#333333] font-semibold text-[18px]">
-                    {sellerData?.PanCard}
+                    {sellerDetails?.PanCard}
                   </p>
                   <p className="text-[#979797] text-[14px]">PAN Card</p>
                 </div>
@@ -170,14 +165,14 @@ const SellerProfile = () => {
                 />
                 <div className="flex flex-col">
                   <p className="text-[#333333] font-semibold text-[18px]">
-                  Logout
+                    Logout
                   </p>
                 </div>
               </Link>
             </div>
 
             <div className="pr-32 relative">
-              <img src={sellerData?.OwnerProfile} className="w-[220px] h-auto rounded-full" />
+              <img src={sellerDetails?.OwnerProfile} className="w-[220px] h-auto rounded-full" />
               <div
                 className="bg-white w-[60px] h-[60px] absolute top-40 left-36 rounded-full shadow-md cursor-pointer hover:bg-[#58B310] transform transition-transform duration-300 hover:scale-110"
                 onMouseEnter={() => setIsHovered(true)}
