@@ -1,1 +1,1 @@
-export const BASE_URL = "http://api.hopingminds.co.in/";
+export const BASE_URL = "https://gr-backend-temp.onrender.com/";
