@@ -82,7 +82,7 @@ const ShopRegistration = () => {
       setBtnLoader(false);
     } else {
       try {
-        const res = await axios.post(`${BASE_URL}/api/addshop`, {
+        const res = await axios.post(`${BASE_URL}api/addshop`, {
           ...shopDetails,
         });
 
