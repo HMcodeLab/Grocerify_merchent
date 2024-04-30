@@ -19,6 +19,18 @@ export async function getOrderByShop() {
         return { error: "Orders not found!" }
     }
 }
+export async function acceptOrder(id) {
+    try {
+        const data = await axios.post(`api/acceptshoporder`, { "orderID": id }, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+        },)
+        return data;
+    } catch (error) {
+        return { error: "Not Not accepted" }
+    }
+}
 export async function getSeller({ email }) {
     try {
         const { data } = await axios.get(`api/seller`, {

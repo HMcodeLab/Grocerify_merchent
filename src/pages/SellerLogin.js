@@ -91,21 +91,19 @@ const SellerLogin = () => {
 						{/* Switch button for email or mobile number */}
 						<div className={styles.switch_btn}>
 							<button
-								className={`${styles.switch_Btn} ${
-									switchBtn === 1
+								className={`${styles.switch_Btn} ${switchBtn === 1
 										? styles.active + ' ' + styles.greenBg
 										: styles.inactive
-								}`}
+									}`}
 								onClick={() => setSwitchBtn(1)}
 							>
 								E-Mail
 							</button>
 							<button
-								className={`${styles.switch_Btn} ${
-									switchBtn === 2
+								className={`${styles.switch_Btn} ${switchBtn === 2
 										? styles.active + ' ' + styles.greenBg
 										: styles.inactive
-								}`}
+									}`}
 								onClick={() => setSwitchBtn(2)}
 							>
 								Mobile Number
