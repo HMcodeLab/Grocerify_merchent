@@ -4,6 +4,7 @@ import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
 import { DeclineOrder, acceptOrder, formatDate, getOrderByShop } from "../helper/helper";
 import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 // functionality
 
@@ -11,6 +12,7 @@ import toast, { Toaster } from "react-hot-toast";
 const SellerNotification = () => {
   const [isSidebarOpen, setSidebarOpen] = useState("");
   const [orders, setOrders] = useState([]);
+  const navigate = useNavigate()
 
 
 
@@ -40,6 +42,7 @@ const SellerNotification = () => {
     console.log(data)
     if (data.status === 201) {
       toast.success("Order Accepted")
+      window.location.reload()
     }
     else {
       toast.error("An Unknown Error Occured . Contact to developer")
@@ -51,7 +54,8 @@ const SellerNotification = () => {
     const data = await DeclineOrder(id)
     // console.log(data)
     if (data.status === 201) {
-      toast.success("Order Declined . Refresh to see the Result")
+      toast.success("Order Declined")
+      window.location.reload()
     }
     else {
       toast.error("An Unknown Error Occured . Contact to developer")
