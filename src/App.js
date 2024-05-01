@@ -52,13 +52,13 @@ function App() {
 
   const getSellerDetails = async () => {
     const token = localStorage.getItem('token')
-    console.log(token)
+    // console.log(token)
     if (token) {
       const decoded = jwtDecode(token);
-      console.log(decoded.email)
+      // console.log(decoded.email)
       try {
         const res = await axios.get(`${BASE_URL}api/seller?email=${decoded.email}`)
-        console.log(res.data.data)
+        // console.log(res.data.data)
         setSellerDetails(res.data.data)
 
       } catch (error) {

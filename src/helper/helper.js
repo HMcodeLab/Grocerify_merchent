@@ -31,6 +31,19 @@ export async function acceptOrder(id) {
         return { error: "Not Not accepted" }
     }
 }
+
+export async function DeclineOrder(id) {
+    try {
+        const data = await axios.post(`api/cancelshoporder`, { "orderID": id }, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+        },)
+        return data;
+    } catch (error) {
+        return { error: "Error While Declining" }
+    }
+}
 export async function getSeller({ email }) {
     try {
         const { data } = await axios.get(`api/seller`, {
@@ -85,4 +98,12 @@ export async function verifySellerLoginMobileOTP({ mobile, otp }) {
     } catch (error) {
         return Promise.reject({ error: "Wrong OTP!" })
     }
+}
+
+export function formatDate(dateString) {
+    const date = new Date(dateString);
+    const year = date.getFullYear().toString().slice(2); // Get last two digits of the year
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Add leading zero if month is single digit
+    const day = date.getDate().toString().padStart(2, '0'); // Add leading zero if day is single digit
+    return `${month}/${day}/${year}`;
 }

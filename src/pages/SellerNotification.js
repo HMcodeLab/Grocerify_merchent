@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Menu } from "react-feather";
 import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
-import { acceptOrder, getOrderByShop } from "../helper/helper";
+import { DeclineOrder, acceptOrder, formatDate, getOrderByShop } from "../helper/helper";
 import toast, { Toaster } from "react-hot-toast";
 
 // functionality
@@ -22,7 +22,7 @@ const SellerNotification = () => {
   const getOrdersByShop = async () => {
 
     const orders = await getOrderByShop();
-    console.log(orders?.data)
+    console.log(orders?.data?.orders)
     setOrders(orders?.data?.orders)
 
 
@@ -46,6 +46,20 @@ const SellerNotification = () => {
     }
 
   }
+  const declineOrder = async (id) => {
+
+    const data = await DeclineOrder(id)
+    // console.log(data)
+    if (data.status === 201) {
+      toast.success("Order Declined . Refresh to see the Result")
+    }
+    else {
+      toast.error("An Unknown Error Occured . Contact to developer")
+    }
+
+  }
+
+
 
   return (
     <>
@@ -67,7 +81,7 @@ const SellerNotification = () => {
             }`}
         >
           {/* Search bar */}
-          <SearchBarSeller />
+          {/* <SearchBarSeller /> */}
 
           {/* description */}
           <div className="text-[#848484] pl-4">
@@ -79,7 +93,7 @@ const SellerNotification = () => {
 
             {orders.filter((value, index) => value.status === "ordered").map((val, ind) => {
               return (
-                <div className="flex flex-col shadow-md gap-6 p-8 rounded-md">
+                <div className="flex flex-col shadow-md gap-6 p-8 rounded-md" key={ind}>
                   <div className="flex flex-row justify-between pb-4">
                     <p className="text-[#333333] text-[20px] font-Montserrat font-semibold">
                       {val.order_id}
@@ -88,39 +102,35 @@ const SellerNotification = () => {
                       <button className="text-[#FFFFFF] text-[20px] font-Montserrat bg-[#58B310] rounded-md pl-10 pr-10" onClick={() => acceptOrders(val._id)}>
                         Accept
                       </button>
-                      <button className="text-[#FFFFFF] text-[20px] font-Montserrat bg-[#888888] rounded-md pl-10 pr-10">
+                      <button className="text-[#FFFFFF] text-[20px] font-Montserrat bg-[#888888] rounded-md pl-10 pr-10"
+                        onClick={() => declineOrder(val._id)}>
                         Decline
                       </button>
                     </div>
                   </div>
                   <div className="flex flex-col gap-2 text-[#333333] font-Montserrat font-thin">
-                    <div className="flex flex-row justify-between ">
-                      <p>2 X Veg Fried Rice</p>
-                      <p>₹250</p>
-                    </div>
+
+
                     <div className="flex flex-row justify-between">
-                      <p>2 X Veg Fried Rice</p>
-                      <p>₹250</p>
-                    </div>
-                    <div className="flex flex-row justify-between">
-                      <p>2 X Veg Fried Rice</p>
-                      <p>₹250</p>
+                      <p>{val.product.products_title}</p>
+                      {val.product?.stores && <p>₹{val?.product.stores[0].variants1_mrp_price}</p>}
                     </div>
                     <hr />
                     <div className="flex flex-row justify-between">
                       <p>Total Summary</p>
-                      <p>₹1050</p>
+                      <p>₹{val.order_price}</p>
                     </div>
                   </div>
                   <div className="flex flex-row justify-between">
                     <div className="flex flex-row">
                       <p>Deliver To   : </p>
                       <div className="flex flex-col">
-                        <p>33/123 Durga Niwas , Sector 22 ,Chandigarh</p>
-                        <p>141008,PB,India</p>
+
+                        <p>{val?.shipping_address?.full_name},{val.shipping_address?.address_line_1},{val.shipping_address?.address_line_2}</p>
+                        <p>{val.shipping_address?.landmark},{val.shipping_address?.state},{val.shipping_address?.country}</p>
                       </div>
                     </div>
-                    <div>13 May 2023  at 4:56 pm</div>
+                    <div>{formatDate(val?.ordered_on)}</div>
                   </div>
                 </div>
               )

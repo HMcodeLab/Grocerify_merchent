@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 const SideMenuSeller = ({ isOpen, onToggle }) => {
   return (
     <div
-      className={`w-1/5 h-auto flex flex-col bg-[#222222] space-y-12 pr-1 pt-8 pl-12 pb-60 ${
-        isOpen ? "" : "hidden"
-      }`}
+      className={`w-1/5 h-auto flex flex-col bg-[#222222] space-y-12 pr-1 pt-8 pl-12 pb-60 ${isOpen ? "" : "hidden"
+        }`}
     >
       <div className="pl-4">
         <img src="../assests/icons/grocerify.svg" className="w-[196px]" />
@@ -109,7 +108,7 @@ const SideMenuSeller = ({ isOpen, onToggle }) => {
           </div>
         </Link>
 
-        <Link to={"/selleranalytics"}>
+        {/* <Link to={"/selleranalytics"}>
           <div
             className="flex flex-row hover:bg-[#FFFFFF] pt-2 pb-2 pl-2 mb-2"
             style={{
@@ -126,9 +125,9 @@ const SideMenuSeller = ({ isOpen, onToggle }) => {
             </span>{" "}
             <p className="pl-1">Analytics</p>
           </div>
-        </Link>
+        </Link> */}
 
-        <Link to={"/sellersettings"}>
+        {/* <Link to={"/sellersettings"}>
           <div
             className="flex flex-row hover:bg-[#FFFFFF] pt-2 pb-2 pl-2 mb-2"
             style={{
@@ -144,9 +143,9 @@ const SideMenuSeller = ({ isOpen, onToggle }) => {
             </span>
             <p className="pl-1">Setting</p>
           </div>
-        </Link>
+        </Link> */}
 
-        <Link to={"/sellershopregistration"}>
+        {/* <Link to={"/sellershopregistration"}>
           <div
             className="flex flex-row items-center hover:bg-[#FFFFFF] pt-2 pb-2 pl-2 mb-2"
             style={{
@@ -162,7 +161,7 @@ const SideMenuSeller = ({ isOpen, onToggle }) => {
             </span>
             <p className="pl-1">ADD STORE</p>
           </div>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
