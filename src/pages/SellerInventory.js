@@ -150,7 +150,7 @@ const SellerInventory = () => {
               }
             </div>}
           </div>
-          {selectedProduct?._id && <div className="h-auto w-[100%] shadow-md p-5">
+          {selectedProduct?._id ? <div className="h-auto w-[100%] shadow-md p-5">
             <ul className="flex flex-col gap-2">
               <li>id : {selectedProduct?._id}</li>
               <li>Title : {selectedProduct?.products_title}</li>
@@ -174,7 +174,7 @@ const SellerInventory = () => {
               <button className="text-red-600 border border-red-600 hover:bg-red-600 hover:text-white px-8 py-2" onClick={cancelSelected}> Cancel</button>
             </div>
 
-          </div>}
+          </div> : <img src={'/assests/images/inventorybanner.png '} alt="Inventory Usage Details" />}
 
 
         </div>
