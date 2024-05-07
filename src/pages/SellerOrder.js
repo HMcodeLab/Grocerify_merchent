@@ -136,7 +136,7 @@ const SellerOrder = () => {
             <p className="text-[12px] w-1/6">Status</p>
           </div>
           {
-            orders.map((val, ind) => {
+            orders?.map((val, ind) => {
               return (
                 <div className="flex flex-row justify-between text-[#333333] text-[14px] h-[82px] shadow-md pl-2" key={ind} >
                   <div className="w-2/6 font-Gorditas flex flex-row items-center">

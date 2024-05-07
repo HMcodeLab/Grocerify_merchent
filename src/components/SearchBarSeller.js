@@ -43,16 +43,16 @@ const SearchBarSeller = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-row justify-between">
-        <div className="relative font-Montserrat w-2/5 p-1 flex items-center justify-center">
-          <input
+      <div className="flex flex-row justify-between  h-9">
+        <div className="relative font-Montserrat w-2/5  flex items-center justify-center">
+          {/* <input
             placeholder="Search"
             className="bg-[#D9D9D94D] rounded-xl pl-8 pt-[1px] pb-[1px] w-full flex items-center outline-none"
-          />
-          <img
+          /> */}
+          {/* <img
             src="../assests/icons/search.svg"
             className="absolute top-[9px] left-3 w-[16px] h-auto"
-          />
+          /> */}
         </div>
         <div className="flex flex-row w-[130px] justify-around ">
 

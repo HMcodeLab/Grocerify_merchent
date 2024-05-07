@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { HiUsers } from "react-icons/hi2";
 const SideMenuSeller = ({ isOpen, onToggle }) => {
   return (
     <div
@@ -105,6 +105,22 @@ const SideMenuSeller = ({ isOpen, onToggle }) => {
               />
             </span>
             <p className="pl-1">Product</p>
+          </div>
+        </Link>
+
+        <Link to={"/customers"}>
+          <div
+            className="flex flex-row items-center hover:bg-[#FFFFFF] pt-2 pb-2 pl-2 mb-2"
+            style={{
+              borderTopLeftRadius: "10px",
+              borderBottomLeftRadius: "10px",
+            }}
+          >
+            {" "}
+            <span>
+            <HiUsers />
+            </span>
+            <p className="pl-1">Customers</p>
           </div>
         </Link>
 

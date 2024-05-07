@@ -35,6 +35,8 @@ import SellerNotification from './pages/SellerNotification';
 import ChatBot from './components/ChatBot';
 import AddProduct from './pages/add_product';
 import axios from 'axios';
+import Customers from './pages/Customers';
+import GetOrderDetails from './pages/getOrderdetails';
 
 
 export const GlobalInfo = createContext()
@@ -84,11 +86,11 @@ function App() {
             <Route exact path={"/hotdeals"} element={<HotDeals />}></Route>
             <Route exact path={"/youraccount"} element={<YourAccount />}></Route>
 
-            <Route exact path={"/"} element={<SellerLogin />}></Route>
             <Route exact path={"/forgetpassword"} element={<ForgetPassword />}></Route>
             <Route exact path={"/otp"} element={<Otp />}></Route>
             <Route exact path={"/sellershopregistration"} element={<SellerShopRegistration />}></Route>
             <Route exact path={"/sellerdashboard"} element={<SellerDashboard />}></Route>
+            <Route exact path={"/"} element={<SellerDashboard />}></Route>
             <Route exact path={"/sellerorder"} element={<SellerOrder />}></Route>
             <Route exact path={"/sellerinventory"} element={<SellerInventory />}></Route>
             <Route exact path={"/sellerdiscount"} element={<SellerDiscount />}></Route>
@@ -105,6 +107,8 @@ function App() {
             <Route exact path={"/sellernotification"} element={<SellerNotification />}></Route>
             <Route exact path={"/chats"} element={<ChatBot />}></Route>
             <Route exact path={"/add_product"} element={<AddProduct />}></Route>
+            <Route exact path={"/customers"} element={<Customers />}></Route>
+            <Route exact path={"/getorderdetails"} element={<GetOrderDetails/>}></Route>
 
           </Routes>
         </SellerSideMenuProvider>

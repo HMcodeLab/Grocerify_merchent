@@ -4,7 +4,7 @@ import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
 import { DeclineOrder, acceptOrder, formatDate, getOrderByShop } from "../helper/helper";
 import toast, { Toaster } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // functionality
 
@@ -13,6 +13,7 @@ const SellerNotification = () => {
   const [isSidebarOpen, setSidebarOpen] = useState("");
   const [orders, setOrders] = useState([]);
   const navigate = useNavigate()
+  const {pathname}=useLocation()
 
 
 
@@ -40,26 +41,32 @@ const SellerNotification = () => {
     console.log('accepted')
     const data = await acceptOrder(id)
     // console.log(data)
-    if (data.status === 201) {
-      toast.success("Order Accepted")
-      window.location.reload()
+    if(pathname=='/sellernotification'){
+      if (data.status === 201) {
+        toast.success("Order Accepted")
+        window.location.reload()
+      }
+      else {
+        toast.error("An Unknown Error Occured . Contact to developer")
+      }
     }
-    else {
-      toast.error("An Unknown Error Occured . Contact to developer")
-    }
+    
 
   }
   const declineOrder = async (id) => {
 
     const data = await DeclineOrder(id)
     // console.log(data)
-    if (data.status === 201) {
+    if(pathname=='/sellernotification'){
+      console.log(pathname);
+          if (data.status === 201) {
       toast.success("Order Declined")
       window.location.reload()
     }
     else {
       toast.error("An Unknown Error Occured . Contact to developer")
     }
+  }
 
   }
 
@@ -67,7 +74,7 @@ const SellerNotification = () => {
 
   return (
     <>
-      <Toaster />
+      {/* <Toaster /> */}
       <div className="flex flex-row h-auto">
         {/* side menu */}
         <button
@@ -95,7 +102,7 @@ const SellerNotification = () => {
           {/* Order list */}
           <div className="flex flex-col gap-8 pl-4 pr-4">
 
-            {orders.filter((value, index) => value?.status === "ordered").map((val, ind) => {
+            {orders.filter((value, index) => value?.status === "ordered").length ? orders.filter((value, index) => value?.status === "ordered").map((val, ind) => {
               return (
                 <div className="flex flex-col shadow-md gap-6 p-8 rounded-md" key={ind}>
                   <div className="flex flex-row justify-between pb-4">
@@ -138,7 +145,10 @@ const SellerNotification = () => {
                   </div>
                 </div>
               )
-            })}
+            }):
+            <div className="text-center">No new notifications</div>
+          
+          }
 
           </div>
         </div>

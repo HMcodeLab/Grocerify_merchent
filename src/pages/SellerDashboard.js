@@ -9,6 +9,7 @@ import OnTheWayTableSeller from "../components/OnTheWayTableSeller";
 import { Toaster } from "react-hot-toast";
 import { GlobalInfo } from "../App";
 import { getOrderByShop } from "../helper/helper";
+import SellerLogin from "./SellerLogin";
 
 // cards data, navigation - sales, visitors
 // table data
@@ -17,7 +18,6 @@ import { getOrderByShop } from "../helper/helper";
 const SellerDashboard = () => {
 
   const { sellerDetails } = useContext(GlobalInfo)
-  console.log(sellerDetails)
   const [orders, setOrders] = useState([]);
   const [totalSales, setTotalSales] = useState();
   const [todayOrders, setTodayOrders] = useState(0);
@@ -84,13 +84,15 @@ const SellerDashboard = () => {
   const renderTable = () => {
     switch (activeButton) {
       case "due":
-        return <DueTableSeller data={orders.filter((val) => val.status === 'ordered')} />;
+        return <DueTableSeller getOrdersByShop={getOrdersByShop}  data={orders.filter((val) => val.status === 'ordered')} />;
       case "active":
-        return <DueTableSeller data={orders.filter((val) => val.status === 'cancelled')} />;
+        return <DueTableSeller getOrdersByShop={getOrdersByShop} data={orders.filter((val) => val.status === 'cancelled')} />;
       case "delivered":
-        return <DueTableSeller data={orders.filter((val) => val.status === 'delivered')} />;
+        return <DueTableSeller getOrdersByShop={getOrdersByShop} data={orders.filter((val) => val.status === 'delivered')} />;
       case "onTheWay":
-        return <DueTableSeller data={orders.filter((val) => val.status === 'shipped')} />;
+        return <DueTableSeller getOrdersByShop={getOrdersByShop} data={orders.filter((val) => val.status === 'shipped')} />;
+      case "all":
+        return <DueTableSeller getOrdersByShop={getOrdersByShop} data={orders} />;
       default:
         return null;
     }
@@ -104,6 +106,7 @@ const SellerDashboard = () => {
   return (
     <>
       <Toaster position="top-right" />
+      {localStorage.getItem('token') ? 
       <div className="flex flex-row h-auto">
         {/* side menu */}
         <button
@@ -133,73 +136,73 @@ const SellerDashboard = () => {
 
           {/* data cards */}
           <div className="grid grid-cols-4 gap-14">
-            <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
-              <div className="font-Montserrat space-y-1">
+            <div className="flex flex-row justify-between shadow-lg rounded-lg  pt-4 pb-6 pl-4 pr-2 h-[20vh]">
+              <div className="font-Montserrat space-y-1 ">
                 <p className="text-[#333333] text-xl">Total Sales</p>
                 <p className="text-[#58B310] text-xl">Rs. {totalSales}</p>
-                <p className="text-[#FFB800] text-xs font-semibold pt-1">
+                {/* <p className="text-[#FFB800] text-xs font-semibold pt-1">
                   27% last week
-                </p>
+                </p> */}
               </div>
               <div>
                 <img src="../assests/icons/Sales.svg" />
               </div>
             </div>
-            <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
+            <div className="flex flex-row justify-between shadow-lg rounded-lg  pt-4 pb-6 pl-4 pr-2 h-[20vh]">
               <div className="font-Montserrat space-y-1">
                 <p className="text-[#333333] text-xl">Visitors</p>
                 <p className="text-[#58B310] text-xl">{sellerDetails.Shop?.visitors}</p>
-                <p className="text-[#FFB800] text-xs font-semibold pt-1">
+                {/* <p className="text-[#FFB800] text-xs font-semibold pt-1">
                   27% last week
-                </p>
+                </p> */}
               </div>
               <div>
                 <img src="../assests/icons/visitors.svg" />
               </div>
             </div>
-            <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
+            <div className="flex flex-row justify-between shadow-lg rounded-lg  pt-4 pb-6 pl-4 pr-2 h-[20vh]">
               <div className="font-Montserrat space-y-1">
                 <p className="text-[#333333] text-xl">New Orders</p>
                 <p className="text-[#58B310] text-xl">{todayOrders}</p>
-                <p className="text-[#FFB800] text-xs font-semibold pt-1">
+                {/* <p className="text-[#FFB800] text-xs font-semibold pt-1">
                   27% last week
-                </p>
+                </p> */}
               </div>
               <div>
                 <img src="../assests/icons/received.svg" />
               </div>
             </div>
-            <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
+            <div className="flex flex-row justify-between shadow-lg rounded-lg  pt-4 pb-6 pl-4 pr-2 h-[20vh]">
               <div className="font-Montserrat space-y-1">
                 <p className="text-[#333333] text-xl">Customers</p>
                 <p className="text-[#58B310] text-xl">{totalCustomers?.length}</p>
-                <p className="text-[#FFB800] text-xs font-semibold pt-1">
+                {/* <p className="text-[#FFB800] text-xs font-semibold pt-1">
                   27% last week
-                </p>
+                </p> */}
               </div>
               <div>
                 <img src="../assests/icons/target.svg" />
               </div>
             </div>
-            {/* <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
+            {/* <div className="flex flex-row justify-between shadow-lg rounded-lg  pt-4 pb-6 pl-4 pr-2 h-[20vh]">
               <div className="font-Montserrat space-y-1">
                 <p className="text-[#333333] text-xl">Total Earning</p>
                 <p className="text-[#58B310] text-xl">$2478</p>
-                <p className="text-[#FFB800] text-xs font-semibold pt-1">
-                  27% last week
-                </p>
+                // <p className="text-[#FFB800] text-xs font-semibold pt-1">
+                //   27% last week
+                // </p>
               </div>
               <div>
                 <img src="../assests/icons/Salary.svg" />
               </div>
             </div> */}
-            {/* <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
+            {/* <div className="flex flex-row justify-between shadow-lg rounded-lg  pt-4 pb-6 pl-4 pr-2 h-[20vh]">
               <div className="font-Montserrat space-y-1">
                 <p className="text-[#333333] text-xl">Delivered Order</p>
                 <p className="text-[#58B310] text-xl">$2478</p>
-                <p className="text-[#FFB800] text-xs font-semibold pt-1">
-                  27% last week
-                </p>
+                // <p className="text-[#FFB800] text-xs font-semibold pt-1">
+                //   27% last week
+                // </p>
               </div>
               <div>
                 <img src="../assests/icons/Courier.svg" />
@@ -210,11 +213,18 @@ const SellerDashboard = () => {
           {/* Products */}
           <div className="flex flex-row gap-4 font-Montserrat pt-4">
             <button
+              className={`text-[#000000] pt-1 pb-1 pl-8 pr-8 rounded-lg font-bold hover:text-[#FFFFFF] hover:bg-[#58B310] ${activeButton === "all" ? "bg-[#58B310] text-[#FFFFFF]" : ""
+                }`}
+              onClick={() => setActiveButton("all")}
+            >
+              All
+            </button>
+            <button
               className={`text-[#000000] pt-1 pb-1 pl-8 pr-8 rounded-lg font-bold hover:text-[#FFFFFF] hover:bg-[#58B310] ${activeButton === "due" ? "bg-[#58B310] text-[#FFFFFF]" : ""
                 }`}
               onClick={() => setActiveButton("due")}
             >
-              Ordered
+              Orders
             </button>
             <button
               className={`text-[#000000] pt-1 pb-1 pl-8 pr-8 rounded-lg font-bold hover:text-[#FFFFFF] hover:bg-[#58B310] ${activeButton === "active" ? "bg-[#58B310] text-[#FFFFFF]" : ""
@@ -241,7 +251,7 @@ const SellerDashboard = () => {
           {renderTable()}
 
         </div>
-      </div>
+      </div>:<SellerLogin/>}
     </>
   );
 };
