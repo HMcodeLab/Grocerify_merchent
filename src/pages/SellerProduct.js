@@ -43,6 +43,7 @@ const SellerProduct = () => {
         acc[product._id] = product.toggle;
         return acc;
       }, {});
+      console.log(initialToggleStates);
       setToggleStates(initialToggleStates);
       setProducts(productsData);
     } catch (error) {
