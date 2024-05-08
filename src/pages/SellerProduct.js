@@ -126,7 +126,7 @@ const SellerProduct = () => {
               <p className="text-[12px] text-center w-1/6">Action</p>
             </div>
             {products?.map((product, index) => (
-              <div className="justify-between gap-2 text-[#000000] text-[14px] h-[150px] shadow-md pl-2" key={index} style={{ display: "grid", gridTemplateColumns: "1fr 2fr 3fr 3fr 4fr 1.5fr 1fr" }}>
+              <div className="justify-between gap-2 text-[#000000] text-[14px] min-h-[150px] shadow-md pl-2" key={index} style={{ display: "grid", gridTemplateColumns: "1fr 2fr 3fr 3fr 4fr 1.5fr 1fr" }}>
                 <div className=" font-Montserrat flex flex-row items-center">
                   {index + 1}
                 </div>

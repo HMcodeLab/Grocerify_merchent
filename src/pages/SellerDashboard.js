@@ -31,18 +31,18 @@ const SellerDashboard = () => {
   const getOrdersByShop = async () => {
 
     const orders = await getOrderByShop();
-    console.log(orders.data.orders)
-    setOrders(orders.data.orders)
+    console.log(orders?.data.orders)
+    setOrders(orders?.data.orders)
 
     // find todays orders
     let temp = [];
     setTodayOrders(0);
-    orders.data.orders.forEach((val, ind) => {
+    orders?.data?.orders?.forEach((val, ind) => {
       if (val.ordered_on.split('T')[0] === new Date().toISOString().split('T')[0]) {
 
         setTodayOrders((prev) => prev + 1)
       }
-      temp.push(val.ordered_by)
+      temp.push(val?.ordered_by)
 
     })
 
@@ -52,7 +52,7 @@ const SellerDashboard = () => {
 
 
     // find total sales
-    const totalSales = orders.data.orders.reduce((val, acc) => {
+    const totalSales = orders?.data?.orders?.reduce((val, acc) => {
       // console.log(val, acc)
       return val + acc.order_price
     }, 0)
@@ -84,13 +84,13 @@ const SellerDashboard = () => {
   const renderTable = () => {
     switch (activeButton) {
       case "due":
-        return <DueTableSeller getOrdersByShop={getOrdersByShop}  data={orders.filter((val) => val.status === 'ordered')} />;
+        return <DueTableSeller getOrdersByShop={getOrdersByShop}  data={orders?.filter((val) => val.status === 'ordered')} />;
       case "active":
-        return <DueTableSeller getOrdersByShop={getOrdersByShop} data={orders.filter((val) => val.status === 'cancelled')} />;
+        return <DueTableSeller getOrdersByShop={getOrdersByShop} data={orders?.filter((val) => val.status === 'cancelled')} />;
       case "delivered":
-        return <DueTableSeller getOrdersByShop={getOrdersByShop} data={orders.filter((val) => val.status === 'delivered')} />;
+        return <DueTableSeller getOrdersByShop={getOrdersByShop} data={orders?.filter((val) => val.status === 'delivered')} />;
       case "onTheWay":
-        return <DueTableSeller getOrdersByShop={getOrdersByShop} data={orders.filter((val) => val.status === 'shipped')} />;
+        return <DueTableSeller getOrdersByShop={getOrdersByShop} data={orders?.filter((val) => val.status === 'shipped')} />;
       case "all":
         return <DueTableSeller getOrdersByShop={getOrdersByShop} data={orders} />;
       default:
@@ -130,7 +130,7 @@ const SellerDashboard = () => {
 
           {/* description */}
           <div className="font-Gorditas text-[#333333] space-y-1">
-            <p className="text-3xl font-Gorditas">Hello Seller</p>
+            <p className="text-3xl font-Gorditas font-bold ">Hello Seller</p>
             <p className="font-Gorditas">{`Today is ${currentDate}`}</p>
           </div>
 
@@ -151,7 +151,7 @@ const SellerDashboard = () => {
             <div className="flex flex-row justify-between shadow-lg rounded-lg  pt-4 pb-6 pl-4 pr-2 h-[20vh]">
               <div className="font-Montserrat space-y-1">
                 <p className="text-[#333333] text-xl">Visitors</p>
-                <p className="text-[#58B310] text-xl">{sellerDetails.Shop?.visitors}</p>
+                <p className="text-[#58B310] text-xl">{sellerDetails?.Shop?.visitors}</p>
                 {/* <p className="text-[#FFB800] text-xs font-semibold pt-1">
                   27% last week
                 </p> */}
@@ -217,35 +217,35 @@ const SellerDashboard = () => {
                 }`}
               onClick={() => setActiveButton("all")}
             >
-              All
+               All({orders?.length})
             </button>
             <button
               className={`text-[#000000] pt-1 pb-1 pl-8 pr-8 rounded-lg font-bold hover:text-[#FFFFFF] hover:bg-[#58B310] ${activeButton === "due" ? "bg-[#58B310] text-[#FFFFFF]" : ""
                 }`}
               onClick={() => setActiveButton("due")}
             >
-              Orders
+              Orders({orders?.filter((val) => val.status === 'ordered').length})
             </button>
             <button
               className={`text-[#000000] pt-1 pb-1 pl-8 pr-8 rounded-lg font-bold hover:text-[#FFFFFF] hover:bg-[#58B310] ${activeButton === "active" ? "bg-[#58B310] text-[#FFFFFF]" : ""
                 }`}
               onClick={() => setActiveButton("active")}
             >
-              Cancelled
+              Cancelled({orders?.filter((val) => val.status === 'cancelled').length})
             </button>
             <button
               className={`text-[#000000] pt-1 pb-1 pl-8 pr-8 rounded-lg font-bold hover:text-[#FFFFFF] hover:bg-[#58B310] ${activeButton === "delivered" ? "bg-[#58B310] text-[#FFFFFF]" : ""
                 }`}
               onClick={() => setActiveButton("delivered")}
             >
-              Delivered
+              Delivered({orders?.filter((val) => val.status === 'delivered').length})
             </button>
             <button
               className={`text-[#000000] pt-1 pb-1 pl-8 pr-8 rounded-lg font-bold hover:text-[#FFFFFF] hover:bg-[#58B310] ${activeButton === "onTheWay" ? "bg-[#58B310] text-[#FFFFFF]" : ""
                 }`}
               onClick={() => setActiveButton("onTheWay")}
             >
-              On the way
+              On the way({orders?.filter((val) => val.status === 'shipped').length})
             </button>
           </div>
           {renderTable()}

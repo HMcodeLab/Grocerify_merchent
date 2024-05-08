@@ -129,7 +129,7 @@ const SellerProfile = () => {
                 />
                 <div className="flex flex-col">
                   <p className="text-[#333333] font-semibold text-[18px]">
-                    {sellerDetails?.Shop?.OwnerAddress}
+                    {sellerDetails?.Shop?.OwnerAddress || 'Mohali'}
                   </p>
                   <p className="text-[#979797] text-[14px]">Address</p>
                 </div>
@@ -143,7 +143,7 @@ const SellerProfile = () => {
                   <p className="text-[#333333] font-semibold text-[18px]">
                     {sellerDetails?.Aadhar}
                   </p>
-                  <p className="text-[#979797] text-[14px]">Adhar Number</p>
+                  <p className="text-[#979797] text-[14px]">Aadhar Number</p>
                 </div>
               </div>
               <div className="flex flex-row gap-3">

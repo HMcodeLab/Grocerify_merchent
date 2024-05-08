@@ -75,46 +75,46 @@ const SellerOrder = () => {
 
         {/* description */}
         <div className="text-[#333333] space-y-1">
-          <p className="text-3xl font-Gorditas ">Hello Seller</p>
+          <p className="text-3xl font-Gorditas font-bold ">Hello Seller</p>
           <p className="font-Gorditas ">{`Today is ${currentDate}`}</p>
         </div>
 
         {/* data cards */}
         <div className="grid grid-cols-4 gap-14">
-          <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
+          <div className="flex flex-row justify-between shadow-lg rounded-lg pt-4 pb-6 pl-4 pr-2 h-[20vh]">
             <div className="font-Montserrat space-y-1">
               <p className="text-[#333333] text-xl">Total Orders</p>
               <p className="text-[#58B310] text-xl">{orders?.length}</p>
-              <p className="text-[#FFB800] text-xs font-semibold pt-1">
+              {/* <p className="text-[#FFB800] text-xs font-semibold pt-1">
                 27% last week
-              </p>
+              </p> */}
             </div>
           </div>
-          <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
+          <div className="flex flex-row justify-between shadow-lg rounded-lg pt-4 pb-6 pl-4 pr-2 h-[20vh]">
             <div className="font-Montserrat space-y-1">
               <p className="text-[#333333] text-xl">Successful Orders</p>
               <p className="text-[#58B310] text-xl">{orders.filter(order => order.status === 'delivered').length}</p>
-              <p className="text-[#FFB800] text-xs font-semibold pt-1">
+              {/* <p className="text-[#FFB800] text-xs font-semibold pt-1">
                 27% last week
-              </p>
+              </p> */}
             </div>
           </div>
-          <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
+          <div className="flex flex-row justify-between shadow-lg rounded-lg pt-4 pb-6 pl-4 pr-2 h-[20vh]">
             <div className="font-Montserrat space-y-1">
               <p className="text-[#333333] text-xl">Shipped Orders</p>
               <p className="text-[#58B310] text-xl">{orders.filter(order => order.status === 'shipped').length}</p>
-              <p className="text-[#FFB800] text-xs font-semibold pt-1">
+              {/* <p className="text-[#FFB800] text-xs font-semibold pt-1">
                 27% last week
-              </p>
+              </p> */}
             </div>
           </div>
-          <div className="flex flex-row justify-between shadow-lg rounded-lg h-full pt-4 pb-6 pl-4 pr-2">
+          <div className="flex flex-row justify-between shadow-lg rounded-lg pt-4 pb-6 pl-4 pr-2 h-[20vh]">
             <div className="font-Montserrat space-y-1">
               <p className="text-[#333333] text-xl">Cancelled Orders</p>
               <p className="text-[#58B310] text-xl">{orders.filter(order => order.status === 'cancelled').length}</p>
-              <p className="text-[#FFB800] text-xs font-semibold pt-1">
+              {/* <p className="text-[#FFB800] text-xs font-semibold pt-1">
                 27% last week
-              </p>
+              </p> */}
             </div>
           </div>
 
