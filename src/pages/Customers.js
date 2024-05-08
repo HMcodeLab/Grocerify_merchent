@@ -29,7 +29,7 @@ export default function Customers(){
         let decoded=jwtDecode(token)
         const data=await fetch(BASE_URL+'api/getordersgroupbyuser/'+decoded?.shop)
         const response=await data.json()
-        console.log(response);
+        // console.log(response);
         setOrders(response?.orders)
 
       }

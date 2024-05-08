@@ -10,6 +10,8 @@ import { Toaster } from "react-hot-toast";
 import { GlobalInfo } from "../App";
 import { getOrderByShop } from "../helper/helper";
 import SellerLogin from "./SellerLogin";
+import { BASE_URL } from "../api/api";
+import { jwtDecode } from "jwt-decode";
 
 // cards data, navigation - sales, visitors
 // table data
@@ -27,27 +29,31 @@ const SellerDashboard = () => {
   useEffect(() => {
     getOrdersByShop();
   }, [])
+  useEffect(() => {
+    async function Fetchdata(){
+     let token=localStorage.getItem('token')
+     if(token){
+       let decoded=jwtDecode(token)
+       const data=await fetch(BASE_URL+'api/getordersgroupbyuser/'+decoded?.shop)
+       const response=await data.json()
+       console.log(response);
+       setTotalCustomers(response?.orders?.length)
+
+     }
+    }
+    Fetchdata()
+   }, [])
 
   const getOrdersByShop = async () => {
 
     const orders = await getOrderByShop();
-    console.log(orders?.data.orders)
+    // console.log(orders?.data.orders)
     setOrders(orders?.data.orders)
 
     // find todays orders
     let temp = [];
     setTodayOrders(0);
-    orders?.data?.orders?.forEach((val, ind) => {
-      if (val.ordered_on.split('T')[0] === new Date().toISOString().split('T')[0]) {
 
-        setTodayOrders((prev) => prev + 1)
-      }
-      temp.push(val?.ordered_by)
-
-    })
-
-    console.log(temp)
-    setTotalCustomers([...new Set(temp)])
 
 
 
@@ -175,7 +181,7 @@ const SellerDashboard = () => {
             <div className="flex flex-row justify-between shadow-lg rounded-lg  pt-4 pb-6 pl-4 pr-2 h-[20vh]">
               <div className="font-Montserrat space-y-1">
                 <p className="text-[#333333] text-xl">Customers</p>
-                <p className="text-[#58B310] text-xl">{totalCustomers?.length}</p>
+                <p className="text-[#58B310] text-xl">{totalCustomers}</p>
                 {/* <p className="text-[#FFB800] text-xs font-semibold pt-1">
                   27% last week
                 </p> */}
