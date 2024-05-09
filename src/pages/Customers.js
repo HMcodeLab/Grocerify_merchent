@@ -6,12 +6,24 @@ import { Menu } from "react-feather";
 import SearchBarSeller from "../components/SearchBarSeller";
 import { BASE_URL } from "../api/api";
 import { jwtDecode } from "jwt-decode";
+import { getSeller } from "../helper/helper";
 export default function Customers(){
     const [isSidebarOpen, setSidebarOpen] = useState("");
     const [currentDate, setCurrentDate] = useState("");
     const [orders, setOrders] = useState([]);
-  
-  
+    const [ownerName, setownerName] = useState()
+
+    useEffect(() => {
+      async function Fetchusername(){
+        let token=localStorage.getItem('token')
+      if(token){
+        let decoded=jwtDecode(token)
+      const details=await getSeller(decoded)
+      setownerName(details?.data?.data?.OwnerName)
+      }
+      }
+      Fetchusername()
+    }, [])
     useEffect(() => {
       const today = new Date();
       const options = {
@@ -29,7 +41,6 @@ export default function Customers(){
         let decoded=jwtDecode(token)
         const data=await fetch(BASE_URL+'api/getordersgroupbyuser/'+decoded?.shop)
         const response=await data.json()
-        // console.log(response);
         setOrders(response?.orders)
 
       }
@@ -42,6 +53,8 @@ export default function Customers(){
       setSidebarOpen(!isSidebarOpen);
     };
     return(<>
+          <div className="flex flex-row h-auto">
+
        <button
         onClick={toggleSidebar}
         className="absolute text-[#58B310] p-2 ml-2 mt-6 rounded-md"
@@ -61,11 +74,11 @@ export default function Customers(){
 
         {/* description */}
         <div className="text-[#333333] space-y-1">
-          <p className="text-3xl font-Gorditas ">Hello Seller</p>
+          <p className="text-3xl font-Gorditas font-bold">Hello {ownerName}</p>
           <p className="font-Gorditas ">{`Today is ${currentDate}`}</p>
-          <div className="font-Gorditas text-2xl">Customers</div>
+          <div className="font-Gorditas text-2xl font-semibold">Customers</div>
         </div>
-</div>
+      
         {/* data cards */}
   
     <div className="flex flex-col w-full justify-center  items-center gap-y-3">
@@ -100,6 +113,8 @@ export default function Customers(){
         })
       }
 
+    </div>
+    </div>
     </div>
     </>)
 }

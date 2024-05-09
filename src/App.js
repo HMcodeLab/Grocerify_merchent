@@ -37,6 +37,7 @@ import AddProduct from './pages/add_product';
 import axios from 'axios';
 import Customers from './pages/Customers';
 import GetOrderDetails from './pages/getOrderdetails';
+import RequestProduct from './pages/RequestProduct';
 
 
 export const GlobalInfo = createContext()
@@ -109,6 +110,7 @@ function App() {
             <Route exact path={"/add_product"} element={<AddProduct />}></Route>
             <Route exact path={"/customers"} element={<Customers />}></Route>
             <Route exact path={"/getorderdetails"} element={<GetOrderDetails/>}></Route>
+            <Route exact path={"/requestproduct"} element={<RequestProduct/>}></Route>
 
           </Routes>
         </SellerSideMenuProvider>

@@ -8,7 +8,7 @@ import DeliveredTableSeller from "../components/DeliveredTableSeller";
 import OnTheWayTableSeller from "../components/OnTheWayTableSeller";
 import { Toaster } from "react-hot-toast";
 import { GlobalInfo } from "../App";
-import { getOrderByShop } from "../helper/helper";
+import { getOrderByShop, getSeller } from "../helper/helper";
 import SellerLogin from "./SellerLogin";
 import { BASE_URL } from "../api/api";
 import { jwtDecode } from "jwt-decode";
@@ -24,6 +24,7 @@ const SellerDashboard = () => {
   const [totalSales, setTotalSales] = useState();
   const [todayOrders, setTodayOrders] = useState(0);
   const [totalCustomers, setTotalCustomers] = useState();
+  const [ownerName, setownerName] = useState()
 
 
   useEffect(() => {
@@ -36,13 +37,17 @@ const SellerDashboard = () => {
        let decoded=jwtDecode(token)
        const data=await fetch(BASE_URL+'api/getordersgroupbyuser/'+decoded?.shop)
        const response=await data.json()
-       console.log(response);
+       const details=await getSeller(decoded)
+       setownerName(details?.data?.data?.OwnerName)
+      //  console.log(response);
        setTotalCustomers(response?.orders?.length)
 
      }
     }
     Fetchdata()
    }, [])
+
+   
 
   const getOrdersByShop = async () => {
 
@@ -136,7 +141,7 @@ const SellerDashboard = () => {
 
           {/* description */}
           <div className="font-Gorditas text-[#333333] space-y-1">
-            <p className="text-3xl font-Gorditas font-bold ">Hello Seller</p>
+            <p className="text-3xl font-Gorditas font-bold ">Hello {ownerName}</p>
             <p className="font-Gorditas">{`Today is ${currentDate}`}</p>
           </div>
 

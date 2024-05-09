@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Menu } from "react-feather";
 import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
-import { getOrderByShop } from "../helper/helper";
+import { getOrderByShop, getSeller } from "../helper/helper";
 import { formatDate } from "../helper/Validations";
+import { jwtDecode } from "jwt-decode";
 
 // card details
 // order status - data, status color
@@ -12,6 +13,7 @@ const SellerOrder = () => {
   const [isSidebarOpen, setSidebarOpen] = useState("");
   const [currentDate, setCurrentDate] = useState("");
   const [orders, setOrders] = useState([]);
+  const [ownerName, setownerName] = useState()
 
 
   useEffect(() => {
@@ -32,16 +34,18 @@ const SellerOrder = () => {
 
 
   const getOrdersByShop = async () => {
-
+    let token=localStorage.getItem('token')
+    if(token){
+      let decoded=jwtDecode(token)
     const orders = await getOrderByShop();
-    console.log(orders?.data)
+    const details=await getSeller(decoded)
+    setownerName(details?.data?.data?.OwnerName)
+    // console.log(orders?.data)
     setOrders(orders?.data?.orders)
-
+    }
     // find todays orders
 
-    orders?.data?.orders.forEach((val, ind) => {
 
-    })
   }
 
   useEffect(() => {
@@ -75,7 +79,7 @@ const SellerOrder = () => {
 
         {/* description */}
         <div className="text-[#333333] space-y-1">
-          <p className="text-3xl font-Gorditas font-bold ">Hello Seller</p>
+          <p className="text-3xl font-Gorditas font-bold ">Hello {ownerName}</p>
           <p className="font-Gorditas ">{`Today is ${currentDate}`}</p>
         </div>
 

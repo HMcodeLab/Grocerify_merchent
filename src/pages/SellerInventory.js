@@ -7,6 +7,8 @@ import { BASE_URL } from "../api/api";
 import { cropString } from "../utils/utils";
 import { GlobalInfo } from "../App";
 import toast, { Toaster } from "react-hot-toast";
+import { jwtDecode } from "jwt-decode";
+import { getSeller } from "../helper/helper";
 
 
 // make buttons functional
@@ -24,6 +26,7 @@ const SellerInventory = () => {
   const [price, setPrice] = useState(null)
   const [discount, setDiscount] = useState(null)
   const [stock, setStock] = useState(null)
+  const [ownerName, setownerName] = useState()
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -32,15 +35,15 @@ const SellerInventory = () => {
 
 
   const handleSearchChange = (e) => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
     setSearchInput(e.target.value)
   }
   const fetchSearchData = async () => {
     try {
       if (searchInput?.length >= 2) {
-        console.log(searchInput)
+        // console.log(searchInput)
         const res = await axios.get(`${BASE_URL}api/products?search=` + searchInput);
-        console.log(res.data);
+        // console.log(res.data);
         setSearchOutputData(res.data)
 
       }
@@ -59,7 +62,7 @@ const SellerInventory = () => {
 
 
   const handleSelectData = (product) => {
-    console.log(product)
+    // console.log(product)
     setSelectedProduct(product);
     setSearchInput("")
   }
@@ -106,6 +109,18 @@ const SellerInventory = () => {
     setSearchOutputData();
     setSelectedProduct({})
   }
+  useEffect(() => {
+    async function Fetchusername(){
+      let token=localStorage.getItem('token')
+    if(token){
+      let decoded=jwtDecode(token)
+    const details=await getSeller(decoded)
+    setownerName(details?.data?.data?.OwnerName)
+    }
+    }
+    Fetchusername()
+  }, [])
+  
 
   return (
 
@@ -131,7 +146,7 @@ const SellerInventory = () => {
 
           {/* description */}
           <div className="text-[#333333] space-y-1">
-            <p className="text-3xl font-Gorditas ">Hello Seller</p>
+            <p className="text-3xl font-Gorditas font-bold">Hello {ownerName}</p>
             <p className="font-Gorditas ">Upload your Inventory</p>
           </div>
 

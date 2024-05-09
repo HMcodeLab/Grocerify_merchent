@@ -11,6 +11,7 @@ import { GlobalInfo } from "../App";
 import ToggleButton from 'react-toggle-button'
 import { jwtDecode } from "jwt-decode";
 import toast, { Toaster } from "react-hot-toast";
+import { getSeller } from "../helper/helper";
 
 const SellerProduct = () => {
   const { sellerDetails } = useContext(GlobalInfo)
@@ -18,6 +19,7 @@ const SellerProduct = () => {
   const [isSidebarOpen, setSidebarOpen] = useState("");
   const [products, setProducts] = useState([]);
   const [toggleStates, setToggleStates] = useState({}); // State to manage toggle states for each product
+  const [ownerName, setownerName] = useState()
 
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
@@ -90,7 +92,17 @@ const SellerProduct = () => {
     }));
     Changevisibility(productId)
   };
-
+  useEffect(() => {
+    async function Fetchusername(){
+      let token=localStorage.getItem('token')
+    if(token){
+      let decoded=jwtDecode(token)
+    const details=await getSeller(decoded)
+    setownerName(details?.data?.data?.OwnerName)
+    }
+    }
+    Fetchusername()
+  }, [])
   return (
     <>
       <Toaster/>
@@ -111,7 +123,10 @@ const SellerProduct = () => {
           <SearchBarSeller />
 
           <div className="text-[#333333] space-y-1 py-10">
-            <p className="text-3xl font-Gorditas ">Hello Seller</p>
+            <div className="flex justify-between w-full">
+            <p className="text-3xl font-Gorditas font-bold">Hello {ownerName}</p>
+            <Link to='/requestproduct' className="py-1 px-2 rounded bg-[#e9fcd8] border border-[#58B310] text-[#58B310]">Request to add product</Link>
+            </div>
             <p className="font-Gorditas ">Here are your products</p>
           </div>
 

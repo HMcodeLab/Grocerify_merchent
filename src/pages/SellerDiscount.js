@@ -44,7 +44,7 @@ const SellerDiscount = () => {
         </div>
 
         {/* Gift Cards */}
-        <div className="flex flex-row justify-between gap-4">
+        <div className="flex flex-row justify-between max-w-[70vw] gap-4">
           <div className="flex flex-col w-[316px] ">
             <div className="flex flex-col h-[152px] bg-gradient-to-r from-[#1D976C] via-[#1D976C] to-[#93F9B9] border-t border-white rounded-t-2xl text-[#FFFFFF] p-6">
               <div className="font-Montserrat text-[20px]">GIFT CARD</div>
@@ -101,7 +101,7 @@ const SellerDiscount = () => {
         </div>
 
         {/* Gift Cards */}
-        <div className="flex flex-row justify-between gap-4">
+        <div className="flex flex-row justify-between max-w-[70vw]  gap-4">
           <div className="flex flex-col w-[316px] ">
             <div className="flex flex-col h-[152px] bg-gradient-to-r from-[#A2A1A7] via-[#A2A1A7] to-[#A2A1A769] border-t border-white rounded-t-2xl text-[#FFFFFF] p-6">
               <div className="flex flex-col bg-[#ECF0F8] w-full h-[70px] p-1 space-y-1">
