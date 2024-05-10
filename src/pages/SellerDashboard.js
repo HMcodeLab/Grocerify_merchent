@@ -180,7 +180,7 @@ const SellerDashboard = () => {
                 </p> */}
               </div>
               <div>
-                <img src="../assests/icons/received.svg" />
+                <img className="h-10 w-10" src="../assests/icons/orders.svg" />
               </div>
             </div>
             <div className="flex flex-row justify-between shadow-lg rounded-lg  pt-4 pb-6 pl-4 pr-2 h-[20vh]">
@@ -192,7 +192,7 @@ const SellerDashboard = () => {
                 </p> */}
               </div>
               <div>
-                <img src="../assests/icons/target.svg" />
+                <img  className="h-10 w-10" src="../assests/icons/customer.svg" />
               </div>
             </div>
             {/* <div className="flex flex-row justify-between shadow-lg rounded-lg  pt-4 pb-6 pl-4 pr-2 h-[20vh]">

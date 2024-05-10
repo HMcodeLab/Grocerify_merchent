@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "axios"; 
 import toast, { Toaster } from "react-hot-toast";
 import { BASE_URL } from "../api/api";
-
+import { IoArrowBackSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 const AddProduct = () => {
   const initialData = {
     products_title: "",
@@ -127,7 +128,10 @@ const AddProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    if(!product.brand || !product.parent_category_name || !product.productVariants || !product.product_images_url || !product.product_primary_image_url || !product.product_videos_url || !product.products_description || !product.products_title || !product.sub_category_name || !product.tags){
+      toast.error('All fields are required')
+    }
+    else{
     setLoading(true);
     setError(null); // Reset any previous error
 // console.log(product);
@@ -151,16 +155,18 @@ const AddProduct = () => {
     } finally {
       setLoading(false);
     }
+  }
   };
 
   return (
     <div>
       <Toaster />
-      <h1 className="text-3xl font-bold text-center text-orange-500 underline mb-3">
-        ADD Products
-      </h1>
+        <Link to='/sellerproduct' className="absolute left-[20%] top-2"><IoArrowBackSharp className="text-2xl"/></Link>
+        <h1 className="text-3xl font-bold text-center text-orange-500 underline mb-3">
+          ADD Products
+        </h1>
       <form
-        onSubmit={handleSubmit}
+        
         className="flex border-2 flex-col w-[50rem] mx-auto my-auto shadow-md p-10 gap-3 rounded-md"
       >
         <label htmlFor="products_title">Product Title</label>
@@ -371,6 +377,7 @@ const AddProduct = () => {
         </div>
 
         <button
+        onClick={handleSubmit}
           type="submit"
           className="self-center mt-4 w-[10rem] p-2 rounded border-2 border-orange-500 text-orange-500 font-bold hover:bg-orange-500 hover:text-white"
         >
