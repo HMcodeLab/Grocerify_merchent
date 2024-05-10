@@ -4,7 +4,7 @@ import { HiUsers } from "react-icons/hi2";
 const SideMenuSeller = ({ isOpen, onToggle }) => {
   return (
     <div
-      className={`w-1/5 h-auto  flex flex-col bg-[#222222] space-y-12 pr-1 pt-8 pl-12 pb-60 ${isOpen ? "" : "hidden"
+      className={`w-1/5 min-h-[100vh]  flex flex-col bg-[#222222] space-y-12 pr-1 pt-8 pl-12 pb-60 ${isOpen ? "" : "hidden"
         }`}
     >
       <div className="pl-4">
