@@ -11,6 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.getorderdetails::-webkit-scrollbar{
+  width: 0px;
+}
 
 @tailwind base;
 @tailwind components;

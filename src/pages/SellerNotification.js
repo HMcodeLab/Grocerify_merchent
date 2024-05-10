@@ -44,7 +44,8 @@ const SellerNotification = () => {
     if(pathname=='/sellernotification'){
       if (data.status === 201) {
         toast.success("Order Accepted")
-        window.location.reload()
+        getOrdersByShop();
+        // window.location.reload()
       }
       else {
         toast.error("An Unknown Error Occured . Contact to developer")
@@ -58,10 +59,10 @@ const SellerNotification = () => {
     const data = await DeclineOrder(id)
     // console.log(data)
     if(pathname=='/sellernotification'){
-      console.log(pathname);
+    
           if (data.status === 201) {
       toast.success("Order Declined")
-      window.location.reload()
+      getOrdersByShop();
     }
     else {
       toast.error("An Unknown Error Occured . Contact to developer")
@@ -127,7 +128,7 @@ const SellerNotification = () => {
                       {val.product?.stores && <p>₹{val?.product?.stores[0]?.variants1_mrp_price}</p>}
                     </div>
                     <hr />
-                    <div className="flex flex-row justify-between">
+                    <div className="flex flex-row justify-between font-semibold">
                       <p>Total Summary</p>
                       <p>₹{val?.order_price}</p>
                     </div>

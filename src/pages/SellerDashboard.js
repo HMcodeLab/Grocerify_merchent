@@ -118,13 +118,13 @@ const SellerDashboard = () => {
     <>
       <Toaster position="top-right" />
       {localStorage.getItem('token') ? 
-      <div className="flex flex-row h-auto">
+      <div className="flex flex-row h-auto ">
         {/* side menu */}
         <button
           onClick={() => {
             toggleSidebar();
           }}
-          className="absolute text-[#58B310] p-2 ml-2 mt-6 rounded-md"
+          className="absolute text-[#58B310] p-2 ml-2 mt-6 rounded-md  "
           style={{ height: "30px" }}
         >
           <Menu size={30} />

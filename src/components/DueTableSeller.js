@@ -59,7 +59,7 @@ const DueTableSeller = ({ data,getOrdersByShop }) => {
           <div className="w-1/6 font-Gorditas flex items-center">{formatDate(item?.ordered_on)}</div>
           <div className="w-1/6 font-Gorditas">Rs.{item.order_price}</div>
           {
-            item.status==='ordered' ?   <div className="flex flex-row gap-4 w-1/6">
+            item.status==='ordered' ?   <div className="flex flex-row gap-2 h-fit">
             <button className="text-[#FFFFFF] text-[16px] font-Montserrat bg-[#58B310] rounded-md px-4 py-1" onClick={() => acceptOrders(item._id)}>
               Accept
             </button>

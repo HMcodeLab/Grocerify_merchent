@@ -65,8 +65,8 @@ export default function GetOrderDetails(){
     
       }
     return(<>
-    <div className="flex justify-center items-center w-full h-[95vh]">
-            <div className="min-h-[40vh] w-[50%] border space-y-5 p-3 rounded shadow-lg">
+    <div className="flex justify-center items-center w-full h-screen ">
+            <div className="h-[90vh] overflow-y-auto w-[60%]  border space-y-5 p-3 rounded shadow-lg getorderdetails">
                 <Link to='/'><IoMdArrowRoundBack className="text-xl"/></Link>
             <div className="text-center text-xl font-semibold ">Order id : {data?.order_id}</div>
                 <div className="flex justify-between">
@@ -75,11 +75,11 @@ export default function GetOrderDetails(){
                             <div className="text-xl">₹ {data?.order_price}</div>
                         </div>
                         {
-            data?.status==='ordered' ?   <div className="flex flex-row gap-4 w-1/6">
-            <button className="text-[#FFFFFF] text-[16px] font-Montserrat bg-[#58B310] rounded-md px-4 py-1" onClick={() => acceptOrders(data?._id)}>
+            data?.status==='ordered' ?   <div className="flex flex-row gap-2 h-fit">
+            <button className="text-[#FFFFFF] text-[16px] font-Montserrat bg-[#58B310] rounded-md px-4 py-2" onClick={() => acceptOrders(data?._id)}>
               Accept
             </button>
-            <button className="text-[#FFFFFF] text-[16px] font-Montserrat bg-[#888888] rounded-md px-4 py-1"
+            <button className="text-[#FFFFFF] text-[16px] font-Montserrat bg-[#888888] rounded-md px-4 py-2"
               onClick={() => declineOrder(data?._id)}>
               Decline
             </button>
@@ -115,7 +115,7 @@ export default function GetOrderDetails(){
                                 </div>
                         <div className="w-[80%]">
                            <p className="font-semibold">{item?.productid?.products_title}</p>
-                            <p>80gm</p>
+                            <p>{item?.productid?.variants1_weight}gm</p>
                         </div>
                     </div>
                             </>)
