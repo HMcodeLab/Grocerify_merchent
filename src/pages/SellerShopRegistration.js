@@ -79,9 +79,14 @@ const ShopRegistration = () => {
       setBtnLoader(false);
     } else {
       try {
-        const res = await axios.post(`${BASE_URL}api/addshop`, {
-          ...shopDetails,
-        });
+        console.log("dfdasf");
+        const res = await axios.post(`${BASE_URL}api/addshop`,
+          shopDetails,
+          
+           { headers:{
+              'Authorization':'Bearer '+localStorage.getItem('token')
+            }}
+        );
 
         // console.log(res);
         toast.success("Shop Registered Successfully");
