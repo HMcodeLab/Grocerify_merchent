@@ -15,9 +15,9 @@ export default function GetOrderDetails(){
             // console.log(BASE_URL+'api/getorderdetailsbyid/'+id);
             const response=await data.json()
             console.log(response);
-            setdata(response?.order[0])
+            setdata(response?.order)
 
-            const today = new Date(response?.order[0]?.ordered_on);
+            const today = new Date(response?.order?.ordered_on);
         const options = {
           weekday: "long",
           year: "numeric",

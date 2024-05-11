@@ -52,7 +52,7 @@ const DueTableSeller = ({ data,getOrdersByShop }) => {
           key={item.id}  // Replace 'id' with the actual property that uniquely identifies each item
           className="flex flex-row justify-between items-center text-[#333333] text-[14px] h-[82px] shadow-md pt-4 pb-2 pl-4"
         >
-          <Link to={`/getorderdetails?id=${item?.order_id}`} className="w-2/6 font-Gorditas flex flex-row">
+          <Link to={`/getorderdetails?id=${item?._id}`} className="w-2/6 font-Gorditas flex flex-row">
 
             {item?.order_id}
           </Link>
