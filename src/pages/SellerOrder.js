@@ -5,6 +5,7 @@ import SearchBarSeller from "../components/SearchBarSeller";
 import { getOrderByShop, getSeller } from "../helper/helper";
 import { formatDate } from "../helper/Validations";
 import { jwtDecode } from "jwt-decode";
+import { Link } from "react-router-dom";
 
 // card details
 // order status - data, status color
@@ -143,9 +144,9 @@ const SellerOrder = () => {
             orders?.map((val, ind) => {
               return (
                 <div className="flex flex-row justify-between text-[#333333] text-[14px] h-[82px] shadow-md pl-2" key={ind} >
-                  <div className="w-2/6 font-Gorditas flex flex-row items-center">
+                  <Link to={`/getorderdetails?id=${val?.order_id}`} className="w-2/6 font-Gorditas flex flex-row items-center">
                     {val?.order_id}
-                  </div>
+                  </Link>
                   <div className="w-1/6 font-Gorditas flex items-center">
                     COD
                   </div>

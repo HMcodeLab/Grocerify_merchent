@@ -5,54 +5,58 @@ axios.defaults.baseURL = BASE_URL;
 
 /** get User details */
 
-
+let token=localStorage.getItem('token')
 
 export async function getOrderByShop() {
     try {
+        if(token){
         const { data } = await axios.get(`api/ordersbyshop`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             },
         },)
         return { data };
-    } catch (error) {
+   } } catch (error) {
         return { error: "Orders not found!" }
     }
 }
 export async function acceptOrder(id) {
     try {
+        if(token){
         const data = await axios.post(`api/acceptshoporder`, { "orderID": id }, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             },
         },)
         return data;
-    } catch (error) {
+   } } catch (error) {
         return { error: "Not Not accepted" }
     }
 }
 
 export async function DeclineOrder(id) {
     try {
+        if(token){
         const data = await axios.post(`api/cancelshoporder`, { "orderID": id }, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             },
         },)
         return data;
-    } catch (error) {
+   } } catch (error) {
         return { error: "Error While Declining" }
     }
 }
 export async function getSeller({ email }) {
     try {
+        if(token){
         const { data } = await axios.get(`api/seller`, {
             params: {
                 email
             }
         });
         return { data };
-    } catch (error) {
+   } } catch (error) {
         return { error: "User not found!" }
     }
 }
@@ -69,22 +73,22 @@ export async function sellerLoginWithEmail({ email, password }) {
 }
 
 export async function authenticateseller({ mobile }) {
-    console.log(mobile);
     try {
         if (mobile) {
             return await axios.post('api/authenticateseller', { mobile })
         }
-    } catch (error) {
+   } catch (error) {
         return ({ error: "Seller Not Found." })
     }
 }
 
 export async function sendMobileOTP({ mobile }) {
     try {
+        
         if (mobile) {
             return await axios.post('api/generateMobileOTP', { mobile })
         }
-    } catch (error) {
+   } catch (error) {
         return ({ error: "Failed sending OTP" })
     }
 }
@@ -95,7 +99,7 @@ export async function verifySellerLoginMobileOTP({ mobile, otp }) {
             const { data } = await axios.post('api/verifySellerLoginMobileOTP', { mobile, otp })
             return Promise.resolve({ data })
         }
-    } catch (error) {
+   } catch (error) {
         return Promise.reject({ error: "Wrong OTP!" })
     }
 }

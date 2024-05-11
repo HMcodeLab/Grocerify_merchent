@@ -175,13 +175,13 @@ const SellerInventory = () => {
               <li>Sub-Category : {selectedProduct?.sub_category_name}</li>
               <li>Weight : {selectedProduct?.variants1_weight} gm</li>
               <li>
-                Price : <input type="text" className="border w-auto px-3 h-8" placeholder="Enter Your Price" onChange={(e) => setPrice(e.target.value)} />
+                Price : <input type="number" className="border w-auto px-3 h-8" placeholder="Enter Your Price" onChange={(e) => setPrice(e.target.value)} />
               </li>
               <li>
                 Discount : <input type="number" className="border w-auto px-3 h-8" placeholder="Enter Your Discount" onChange={(e) => setDiscount(e.target.value)} />
               </li>
               <li>
-                Stock : <input type="text" className="border w-auto px-3 h-8" placeholder="Enter Your Stock" onChange={(e) => setStock(e.target.value)} />
+                Stock : <input type="number" className="border w-auto px-3 h-8" placeholder="Enter Your Stock" onChange={(e) => setStock(e.target.value)} />
               </li>
             </ul>
             <div className="flex justify-end gap-5 w[100%] ">

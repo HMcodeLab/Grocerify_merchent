@@ -71,8 +71,9 @@ const SellerLogin = () => {
 						{ duration: 5000 }
 					)
 				} else {
-					navigate('/sellerdashboard')
+					
 					toast.success('Login Successful')
+						window.location.href='/sellerdashboard'
 				}
 			} else {
 				toast.error('Invalid Password!')

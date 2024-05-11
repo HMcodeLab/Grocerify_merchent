@@ -12,6 +12,7 @@ import { getOrderByShop, getSeller } from "../helper/helper";
 import SellerLogin from "./SellerLogin";
 import { BASE_URL } from "../api/api";
 import { jwtDecode } from "jwt-decode";
+import Spinner from '../components/Spinner'
 
 // cards data, navigation - sales, visitors
 // table data
@@ -25,15 +26,15 @@ const SellerDashboard = () => {
   const [todayOrders, setTodayOrders] = useState(0);
   const [totalCustomers, setTotalCustomers] = useState();
   const [ownerName, setownerName] = useState()
+  const [show, setshow] = useState(false)
 
 
-  useEffect(() => {
-    getOrdersByShop();
-  }, [])
+ 
   useEffect(() => {
     async function Fetchdata(){
      let token=localStorage.getItem('token')
      if(token){
+      setshow(true)
        let decoded=jwtDecode(token)
        const data=await fetch(BASE_URL+'api/getordersgroupbyuser/'+decoded?.shop)
        const response=await data.json()
@@ -41,7 +42,7 @@ const SellerDashboard = () => {
        setownerName(details?.data?.data?.OwnerName)
       //  console.log(response);
        setTotalCustomers(response?.orders?.length)
-
+setshow(false)
      }
     }
     Fetchdata()
@@ -50,10 +51,10 @@ const SellerDashboard = () => {
    
 
   const getOrdersByShop = async () => {
-
+setshow(true)
     const orders = await getOrderByShop();
     // console.log(orders?.data.orders)
-    setOrders(orders?.data.orders)
+    setOrders(orders?.data?.orders)
 
     // find todays orders
     let temp = [];
@@ -69,12 +70,16 @@ const SellerDashboard = () => {
     }, 0)
     setTotalSales(totalSales)
 
-
+setshow(false)
   }
+  useEffect(() => {
+    getOrdersByShop();
+  }, [])
 
+  
 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const [activeButton, setActiveButton] = useState("due");
+  const [activeButton, setActiveButton] = useState("all");
   const [currentDate, setCurrentDate] = useState("");
 
   useEffect(() => {
@@ -116,6 +121,13 @@ const SellerDashboard = () => {
 
   return (
     <>
+    			{show ? (
+        <div className="w-full h-screen fixed top-0 left-0 bg-[#b4cca1] opacity-80">
+          <Spinner className="" />
+        </div>
+      ) : (
+        ""
+      )}
       <Toaster position="top-right" />
       {localStorage.getItem('token') ? 
       <div className="flex flex-row h-auto ">
@@ -260,7 +272,7 @@ const SellerDashboard = () => {
             </button>
           </div>
           {renderTable()}
-
+		
         </div>
       </div>:<SellerLogin/>}
     </>

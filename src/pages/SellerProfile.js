@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Menu } from "react-feather";
 import SideMenuSeller from "../components/SideMenuSeller";
 import SearchBarSeller from "../components/SearchBarSeller";
@@ -12,7 +12,9 @@ import { GlobalInfo } from "../App";
 
 const SellerProfile = () => {
   const { sellerDetails } = useContext(GlobalInfo)
-  console.log(sellerDetails)
+  // console.log(sellerDetails)
+  let navigate=useNavigate()
+
   // let email = 'sahilkumar142002@gmail.com'
   const [isSidebarOpen, setSidebarOpen] = useState("");
   const [isEditModalOpen, setEditModalOpen] = useState(false);
@@ -30,6 +32,10 @@ const SellerProfile = () => {
   const openEditModal = () => {
     setEditModalOpen(true);
   };
+  function handleLogout(){
+    localStorage.removeItem('token')
+    navigate('/login')
+  }
 
   const closeEditModal = () => {
     setEditModalOpen(false);
@@ -163,8 +169,8 @@ const SellerProfile = () => {
                   src="../assests/icons/profiledetails.svg"
                   className="w-[40px] h-auto"
                 />
-                <div className="flex flex-col">
-                  <p className="text-[#333333] font-semibold text-[18px]">
+                <div className="flex flex-col" onClick={handleLogout}>
+                  <p  className="text-[#333333] font-semibold text-[18px]">
                     Logout
                   </p>
                 </div>
