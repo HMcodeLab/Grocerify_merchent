@@ -144,7 +144,7 @@ const SellerOrder = () => {
             orders?.map((val, ind) => {
               return (
                 <div className="flex flex-row justify-between text-[#333333] text-[14px] h-[82px] shadow-md pl-2" key={ind} >
-                  <Link to={`/getorderdetails?id=${val?.order_id}`} className="w-2/6 font-Gorditas flex flex-row items-center">
+                  <Link to={`/getorderdetails?id=${val?._id}`} className="w-2/6 font-Gorditas flex flex-row items-center">
                     {val?.order_id}
                   </Link>
                   <div className="w-1/6 font-Gorditas flex items-center">

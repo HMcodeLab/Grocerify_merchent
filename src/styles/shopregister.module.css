@@ -137,9 +137,6 @@
       no-repeat content-box;
     border-radius: 50%;
     outline-offset: calc(var(--s) / 10);
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
     cursor: pointer;
     font-size: inherit;
     transition: 0.3s;

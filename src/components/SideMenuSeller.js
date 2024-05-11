@@ -161,7 +161,7 @@ const SideMenuSeller = ({ isOpen, onToggle }) => {
           </div>
         </Link> */}
 
-        {/* <Link to={"/sellershopregistration"}>
+        <Link to={"/sellershopregistration"}>
           <div
             className="flex flex-row items-center hover:bg-[#FFFFFF] pt-2 pb-2 pl-2 mb-2"
             style={{
@@ -177,7 +177,7 @@ const SideMenuSeller = ({ isOpen, onToggle }) => {
             </span>
             <p className="pl-1">ADD STORE</p>
           </div>
-        </Link> */}
+        </Link>
       </div>
     </div>
   );

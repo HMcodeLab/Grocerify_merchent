@@ -14,18 +14,15 @@ const ShopRegistration = () => {
   const [shopDetails, setShopDetails] = useState({
     shopName: "",
     OwnerName: "",
-    OwnerNumber: 12342567,
+    OwnerNumber: undefined,
     OwnerEmail: "",
     OwnerAdd: "",
     BusinessLicenceNumber: "",
     BusinessRegistrationNumber: "",
     TaxIdentificationNumber: "",
     TypeOfProductSold: "",
-    openingHours: {
-      from: "10:00",
-      to: "3:00",
-    },
-    workingDays: 7,
+    openingHours:undefined,
+    workingDays: undefined,
     deliveryInfo: {
       mon: true,
       tue: true,
@@ -37,7 +34,7 @@ const ShopRegistration = () => {
     },
     isProvideDeliveryService: false,
     deliveryArea: "",
-    deliveryCharges: 200,
+    deliveryCharges: undefined,
     paymentType: "cod",
     shopImage:
       "https://img.restaurantguru.com/w312/h280/r9f6-Sahil-Chicken-Centre-interior.jpg",
@@ -86,7 +83,7 @@ const ShopRegistration = () => {
           ...shopDetails,
         });
 
-        console.log(res);
+        // console.log(res);
         toast.success("Shop Registered Successfully");
         navigate('/sellerDashboard')
         setBtnLoader(false);
@@ -204,7 +201,7 @@ const ShopRegistration = () => {
                       />
                     </span>
                     <span>
-                      <p>Opening Hours</p>
+                      <p>Working Hours</p>
                       <input
                         type="text"
                         name="openingHours"
@@ -222,7 +219,7 @@ const ShopRegistration = () => {
                       />
                     </span>
                   </div>
-                  <div className={styles.deliery_info}>
+                  {/* <div className={styles.deliery_info}>
                     <p>Delivery Information(If Applicable)</p>
                     <div className={styles.checkbox_div}>
                       <span style={{ position: "relative", display: "flex", gap: "8px" }}>
@@ -254,18 +251,18 @@ const ShopRegistration = () => {
                         <p>Sunday</p>
                       </span>
                     </div>
-                  </div>
+                  </div> */}
                   <div className={styles.delivery_service}>
                     <p>Do you provide delivery services</p>
 
                     <div className={styles.d_service}>
                       <span>
-                        <input type="radio" name="" id="" />
-                        <h5>Yes</h5>
+                        <input type="radio" name="isProvideDeliveryService" id="yes" />
+                        <label htmlFor="yes">Yes</label>
                       </span>
                       <span>
-                        <input type="radio" name="" id="" />
-                        <h5>No</h5>
+                        <input type="radio" name="isProvideDeliveryService" id="no" />
+                        <label htmlFor="no">No</label>
                       </span>
                     </div>
                   </div>
