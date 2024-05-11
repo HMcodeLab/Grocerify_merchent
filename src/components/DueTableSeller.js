@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const DueTableSeller = ({ data,getOrdersByShop }) => {
   if (!data || data.length === 0) {
-    return <p>No data available</p>;
+    return <p className="text-center w-full">No data available</p>;
   }
   const acceptOrders = async (id) => {
     // console.log('accepted')
@@ -47,7 +47,7 @@ const DueTableSeller = ({ data,getOrdersByShop }) => {
         <p className="w-1/6">Status</p>
       </div>
 
-      {data.map((item) => (
+      {data?.map((item) => (
         <div
           key={item.id}  // Replace 'id' with the actual property that uniquely identifies each item
           className="flex flex-row justify-between items-center text-[#333333] text-[14px] h-[82px] shadow-md pt-4 pb-2 pl-4"
