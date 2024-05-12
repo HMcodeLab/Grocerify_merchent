@@ -164,7 +164,7 @@ const SellerProfile = () => {
                   <p className="text-[#979797] text-[14px]">PAN Card</p>
                 </div>
               </div>
-              <Link to="/" className="flex flex-row gap-3 items-center">
+              <div to="/" className="flex flex-row gap-3 items-center">
                 <img
                   src="../assests/icons/profiledetails.svg"
                   className="w-[40px] h-auto"
@@ -174,7 +174,7 @@ const SellerProfile = () => {
                     Logout
                   </p>
                 </div>
-              </Link>
+              </div>
             </div>
 
             <div className="pr-32 relative">
@@ -203,13 +203,13 @@ const SellerProfile = () => {
       </div>
 
       {/* Edit Form Modal */}
-      {isEditModalOpen && (
+      {/* {isEditModalOpen && (
         <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50 ">
           <div className=" bg-white bg-opacity-90 rounded-md">
             <EditProfileFormSeller onClose={closeEditModal} />
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
